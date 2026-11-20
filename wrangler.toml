@@ -4,9 +4,12 @@ compatibility_date = "2026-08-01"
 compatibility_flags = ["nodejs_compat"]
 keep_vars = true
 
-# No custom domain yet: this deploys to its own workers.dev address.
-# When the domain is connected, switch this on:
-# routes = [{ pattern = "thepeerscertification.com", custom_domain = true }, { pattern = "www.thepeerscertification.com", custom_domain = true }]
+# thepeerscertification.com is attached as a Custom Domain (Cloudflare creates its DNS record and certificate).
+# www already has a proxied DNS record, so it reaches the site through a route.
+routes = [
+  { pattern = "thepeerscertification.com", custom_domain = true },
+  { pattern = "www.thepeerscertification.com/*", zone_name = "thepeerscertification.com" },
+]
 
 [[d1_databases]]
 binding = "DB"
@@ -20,6 +23,7 @@ crons = ["0 * * * *"]
 
 [vars]
 BRAND_NAME = "The Peers Certification"
+SITE_ORIGIN = "https://thepeerscertification.com"
 CURRENCY = "gbp"
 PASS_MARK = "80"
 CERT_PREFIX = "TPC"
