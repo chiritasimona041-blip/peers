@@ -1,4 +1,4 @@
-name = "thepeerscertification"
+name = "peers"
 main = "src/index.ts"
 compatibility_date = "2026-08-01"
 compatibility_flags = ["nodejs_compat"]
@@ -11,8 +11,7 @@ keep_vars = true
 [[d1_databases]]
 binding = "DB"
 database_name = "thepeerscertification"
-# Paste the Database ID from Cloudflare (Storage & databases > D1 SQL database > thepeerscertification) here:
-# database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "e48430c1-1c5c-42da-aa38-9b864fde1ab8"
 migrations_dir = "migrations"
 
 # Hourly: unfinished-enrolment reminder. At 07:00 UTC it also sends study reminders and the daily summary.

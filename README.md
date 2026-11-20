@@ -29,7 +29,7 @@ The Stripe calls have only been tested against signed test payloads, not against
 ## Deploy from GitHub (Cloudflare Workers Builds)
 Every push to `main` builds and deploys the site. No commands needed: the Worker creates its own database tables on first use.
 1. Cloudflare dashboard > Storage & databases > D1 SQL database > Create: name it `thepeerscertification`. Copy its Database ID into `database_id` in `wrangler.toml` and push.
-2. Workers & Pages > Create > Import a repository: pick this repository. Project name `thepeerscertification` (must match `name` in `wrangler.toml`). Deploy command: `npx wrangler deploy`.
+2. Workers & Pages > Create > Import a repository: pick this repository. Project name `peers` (must match `name` in `wrangler.toml`). Deploy command: `npx wrangler deploy`.
 3. The Worker > Settings > Variables and Secrets > Add: type Secret, name `SETUP_TOKEN`, a long random value. Add the other secrets the same way when ready.
 4. Open `/setup` on the site once: it creates the admin and loads the 20 certifications.
 
