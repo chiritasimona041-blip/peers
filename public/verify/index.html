@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify a certificate | The Peers Certification</title>
+<meta name="description" content="Check that a coaching certificate is real.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="narrow sec stack" style="gap:28px"><p class="eyebrow">Verify</p><h1 class="d2">Check a <em>certificate.</em></h1><p class="lead">Type the certificate number exactly as it appears on the certificate.</p>
+<form class="pillform" id="f" novalidate><label class="sr" for="no">Certificate number</label><input id="no" type="text" placeholder="Certificate number" autocomplete="off"><button class="btn btn-ink btn-s" type="submit" style="min-height:52px">Verify</button></form>
+<div id="out" aria-live="polite"></div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, out = document.getElementById('out'), inp = document.getElementById('no');
+function run(no) {
+  no = String(no || '').trim().toUpperCase();
+  if (!no) { out.innerHTML = '<p class="note bad">Enter a certificate number to check it.</p>'; return; }
+  T.api('GET', '/api/verify?no=' + encodeURIComponent(no)).then(function (r) {
+    out.innerHTML = r.ok
+      ? '<div class="card stack" style="gap:8px"><p class="eyebrow">Valid certificate</p><p class="d3">' + T.esc(r.n) + '</p><p class="d4">' + T.esc(r.title) + '</p><p class="muted">Awarded ' + T.esc(T.date(r.at)) + ' · Certificate no. ' + T.esc(r.no) + '</p></div>'
+      : '<p class="note bad">We have no valid certificate with that number. Check the number and try again.</p>';
+  }, function (er) { out.innerHTML = '<p class="note bad">' + T.esc(er.message) + '</p>'; });
+}
+document.getElementById('f').addEventListener('submit', function (e) { e.preventDefault(); run(inp.value); });
+if (T.q('no')) { inp.value = T.q('no'); run(T.q('no')); }
+</script>
+</body>
+</html>

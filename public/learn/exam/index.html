@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Final exam | The Peers Certification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="app"><div class="narrow sec-s stack" style="gap:28px">
+<a class="textlink" href="/learn">← My learning</a>
+<div id="box" class="stack" style="gap:24px"><p class="muted">Loading the exam…</p></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, c = T.q('c'), box = document.getElementById('box'), ex;
+function intro() {
+  if (ex.locked) { box.innerHTML = '<p class="eyebrow">Final exam</p><h1 class="d2">Finish your modules <em>first.</em></h1><p class="lead">The final exam opens once every module is marked complete.</p><div><a class="btn btn-sea" href="/learn/course?c=' + encodeURIComponent(c) + '">Back to my modules</a></div>'; return; }
+  if (!ex.questions.length) { box.innerHTML = '<h1 class="d2">The exam is being <em>prepared.</em></h1><p class="lead">It is not ready yet for this certification. We will email you when it opens.</p>'; return; }
+  if (ex.passed) { box.innerHTML = '<p class="eyebrow">Final exam</p><h1 class="d2">You have already <em>passed.</em></h1><p class="lead">Your best score is ' + ex.best + '%.</p><div><a class="btn btn-sea" href="/learn/certificate?no=' + encodeURIComponent(ex.cert) + '">View your certificate</a></div>'; return; }
+  box.innerHTML = '<p class="eyebrow">Final exam</p><h1 class="d2">Ready when <em>you are.</em></h1>' +
+    '<ul class="lines" style="margin:0;padding:0;list-style:none"><li class="d4">' + ex.questions.length + ' multiple choice questions</li><li class="d4">' + ex.pass + '% to pass</li><li class="d4">No time limit, and you can retake it</li></ul>' +
+    (ex.attempts ? '<p class="muted">Attempts so far: ' + ex.attempts + '. Best score: ' + ex.best + '%.</p>' : '') + '<div><button class="btn btn-sea" type="button" id="go">Start the exam</button></div>';
+  document.getElementById('go').addEventListener('click', paper);
+}
+function paper() {
+  box.innerHTML = '<h1 class="d3">Final <em>exam</em></h1><form id="f" class="stack" style="gap:20px" novalidate>' + ex.questions.map(function (q, i) {
+    return '<fieldset class="q" style="margin:0"><legend><span class="num">' + (i + 1) + '.</span> ' + T.esc(q.q) + '</legend>' + q.o.map(function (o, j) {
+      return '<label class="opt"><input type="radio" name="q' + i + '" value="' + j + '"><span>' + T.esc(o) + '</span></label>'; }).join('') + '</fieldset>';
+  }).join('') + '<p class="note hide" role="alert" id="m"></p><div><button class="btn btn-sea" type="submit">Submit my answers</button></div></form>';
+  window.scrollTo({ top: 0 });
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ans = ex.questions.map(function (q, i) { var r = document.querySelector('input[name=q' + i + ']:checked'); return r ? +r.value : -1; });
+    var missing = ans.filter(function (a) { return a < 0; }).length, m = document.getElementById('m');
+    if (missing) return T.note(m, 'You have ' + missing + ' unanswered ' + (missing === 1 ? 'question' : 'questions') + '.', 'bad');
+    var btn = this.querySelector('button[type=submit]'); btn.disabled = true;
+    T.api('POST', '/api/exam/submit', { course: c, answers: ans }).then(result, function (er) { btn.disabled = false; T.note(m, er.message, 'bad'); });
+  });
+}
+function result(r) {
+  window.scrollTo({ top: 0 });
+  box.innerHTML = r.passed
+    ? '<p class="eyebrow">Passed</p><div class="score">' + r.pct + '%</div><h1 class="d2">You are <em>certified.</em></h1><p class="lead">' + r.right + ' of ' + r.total + ' correct. Your certificate number is ' + T.esc(r.cert) + '.</p><div><a class="btn btn-sea" href="/learn/certificate?no=' + encodeURIComponent(r.cert) + '">View your certificate</a></div>'
+    : '<p class="eyebrow">Not this time</p><div class="score">' + r.pct + '%</div><h1 class="d2">So close. Go <em>again.</em></h1><p class="lead">' + r.right + ' of ' + r.total + ' correct. You need ' + r.pass + '% to pass. Review the modules and retake the exam when you are ready.</p><div class="rowf"><a class="btn btn-sea" href="/learn/course?c=' + encodeURIComponent(c) + '">Review the course</a><button class="btn btn-line" type="button" id="again">Retake the exam</button></div>';
+  var a = document.getElementById('again'); if (a) a.addEventListener('click', function () { ex.attempts++; ex.best = Math.max(ex.best, r.pct); paper(); });
+}
+T.requireLearner().then(function () { return T.api('GET', '/api/exam?course=' + encodeURIComponent(c)); }).then(function (r) { ex = r; intro(); }, function (er) { box.innerHTML = '<p class="note bad">' + T.esc(er.message) + '</p>'; });
+</script>
+</body>
+</html>

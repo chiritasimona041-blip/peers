@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in | The Peers Certification</title>
+<meta name="description" content="Sign in to your certifications.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="wrap sec-s"><form class="authbox" id="f" novalidate><p class="eyebrow">Welcome back</p><h1 class="d3">Sign in to your <em>learning.</em></h1>
+<div class="field"><label for="e">Email address</label><input id="e" type="email" autocomplete="username" required></div>
+<div class="field"><label for="p">Password</label><input id="p" type="password" autocomplete="current-password" required></div>
+<button class="btn btn-sea btn-block" type="submit">Sign in</button><p class="note hide" role="alert" id="m"></p>
+<p class="small"><a href="/forgot">Forgot your password?</a></p><p class="small muted">Not enrolled yet? <a href="/certifications">Find your certification</a></p></form></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, m = document.getElementById('m');
+T.who().then(function (w) { if (w.role === 'learner') location.replace('/learn'); });
+document.getElementById('f').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var e = document.getElementById('e').value.trim().toLowerCase(), p = document.getElementById('p').value;
+  if (!e || !p) return T.note(m, 'Enter your email address and password.', 'bad');
+  var btn = this.querySelector('button'); btn.disabled = true;
+  T.pwHash(e, p).then(function (h) { return T.api('POST', '/api/login', { e: e, h: h }); }).then(function (r) {
+    if (r.ok) { var next = T.q('next'); location.href = r.role === 'admin' ? '/admin' : (next.charAt(0) === '/' && next.charAt(1) !== '/' ? next : '/learn'); return; }
+    btn.disabled = false;
+    T.note(m, r.msg === 'locked' ? 'This account is paused. Please contact us.' : 'That email address and password do not match an account.', 'bad');
+  }, function (er) { btn.disabled = false; T.note(m, er.status === 429 ? 'Too many tries. Please wait 15 minutes.' : er.message, 'bad'); });
+});
+</script>
+</body>
+</html>

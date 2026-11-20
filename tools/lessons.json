@@ -1,0 +1,846 @@
+{
+ "cbt": [
+  {
+   "title": "Introduction to Cognitive Behavioural Therapy (CBT)",
+   "url": "https://coursescourse.xyz/CBT/Module1/story.html"
+  },
+  {
+   "title": "Exploring the Connection: Thoughts, Feelings, and Behaviours",
+   "url": "https://coursescourse.xyz/CBT/Module2/story.html"
+  },
+  {
+   "title": "Core CBT Techniques and Practical Tools",
+   "url": "https://coursescourse.xyz/CBT/Module3/story.html"
+  },
+  {
+   "title": "Using CBT to Address Depression",
+   "url": "https://coursescourse.xyz/CBT/Module4/story.html"
+  },
+  {
+   "title": "Applying CBT to Anxiety Disorders",
+   "url": "https://coursescourse.xyz/CBT/Module5/story.html"
+  },
+  {
+   "title": "CBT Approaches for Other Mental Health Conditions",
+   "url": "https://coursescourse.xyz/CBT/Module6/story.html"
+  },
+  {
+   "title": "Establishing Therapeutic Relationships and Managing Resistance to Change",
+   "url": "https://coursescourse.xyz/CBT/Module7/story.html"
+  },
+  {
+   "title": "Assessment, Treatment Planning, and Follow-Up",
+   "url": "https://coursescourse.xyz/CBT/Module8/story.html"
+  },
+  {
+   "title": "Ethics and Professional Responsibilities",
+   "url": "https://coursescourse.xyz/CBT/Module9/story.html"
+  },
+  {
+   "title": "Practical Application: A Typical CBT Session",
+   "url": "https://coursescourse.xyz/CBT/Module10/story.html"
+  }
+ ],
+ "adhd": [
+  {
+   "title": "Introduction to ADHD",
+   "url": "https://coursescourse.xyz/ADHD/Module1/story.html"
+  },
+  {
+   "title": "Understanding and Assessing ADHD: Diagnosis and Evaluation Methods",
+   "url": "https://coursescourse.xyz/ADHD/Module2/story.html"
+  },
+  {
+   "title": "The Daily Effects of ADHD",
+   "url": "https://coursescourse.xyz/ADHD/Module3/story.html"
+  },
+  {
+   "title": "Effective Approaches to ADHD: Treatment and Management Strategies",
+   "url": "https://coursescourse.xyz/ADHD/Module4/story.html"
+  },
+  {
+   "title": "ADHD and Anxiety Disorders",
+   "url": "https://coursescourse.xyz/ADHD/Module5/story.html"
+  },
+  {
+   "title": "Core Concepts in ADHD Coaching",
+   "url": "https://coursescourse.xyz/ADHD/Module6/story.html"
+  },
+  {
+   "title": "Specialised Coaching Tools and Techniques for ADHD Support",
+   "url": "https://coursescourse.xyz/ADHD/Module7/story.html"
+  },
+  {
+   "title": "Mandala Technique for ADHD Focus and Creativity",
+   "url": "https://coursescourse.xyz/ADHD/Module8/story.html"
+  },
+  {
+   "title": "Emotion and Stress Management Strategy: Mindfulness Meditation",
+   "url": "https://coursescourse.xyz/ADHD/Module9/story.html"
+  },
+  {
+   "title": "Communication and Self-Assertiveness: Technique of Self-Disclosure",
+   "url": "https://coursescourse.xyz/ADHD/Module10/story.html"
+  },
+  {
+   "title": "Applying ADHD Coaching: Practical Strategies and Real-World Implementation",
+   "url": "https://coursescourse.xyz/ADHD/Module11/story.html"
+  },
+  {
+   "title": "Practical Application: Supervised Coaching Sessions",
+   "url": "https://coursescourse.xyz/ADHD/Module12/story.html"
+  }
+ ],
+ "postpartum": [
+  {
+   "title": "Understanding Postnatal Physiology",
+   "url": "https://coursescourse.xyz/Postpartum/Module1/story.html"
+  },
+  {
+   "title": "Introduction to Infant Nutrition and Breastfeeding",
+   "url": "https://coursescourse.xyz/Postpartum/Module2/story.html"
+  },
+  {
+   "title": "Newborn Care and Development",
+   "url": "https://coursescourse.xyz/Postpartum/Module3/story.html"
+  },
+  {
+   "title": "Perinatal Psychology",
+   "url": "https://coursescourse.xyz/Postpartum/Module4/story.html"
+  },
+  {
+   "title": "Coach's Ethics and Posture",
+   "url": "https://coursescourse.xyz/Postpartum/Module5/story.html"
+  },
+  {
+   "title": "Tools for the Coach",
+   "url": "https://coursescourse.xyz/Postpartum/Module6/story.html"
+  },
+  {
+   "title": "Guiding Through Change",
+   "url": "https://coursescourse.xyz/Postpartum/Module7/story.html"
+  },
+  {
+   "title": "Supporting Femininity and Self-Perception",
+   "url": "https://coursescourse.xyz/Postpartum/Module8/story.html"
+  },
+  {
+   "title": "Practical Application: A Typical Session",
+   "url": "https://coursescourse.xyz/Postpartum/Module9/story.html"
+  }
+ ],
+ "hsp": [
+  {
+   "title": "Understanding Hypersensitivity: An Introduction",
+   "url": "https://coursescourse.xyz/HSP/Module1/story.html"
+  },
+  {
+   "title": "Psychology and Personal Growth: Core Concepts",
+   "url": "https://coursescourse.xyz/HSP/Module2/story.html"
+  },
+  {
+   "title": "Tools for Self-Awareness and Personal Insight",
+   "url": "https://coursescourse.xyz/HSP/Module3/story.html"
+  },
+  {
+   "title": "Managing Stress and Emotions in Hypersensitivity",
+   "url": "https://coursescourse.xyz/HSP/Module4/story.html"
+  },
+  {
+   "title": "The Neurobiology and Physiology of Hypersensitivity",
+   "url": "https://coursescourse.xyz/HSP/Module5/story.html"
+  },
+  {
+   "title": "Essential Coaching Skills for HSP Coaches",
+   "url": "https://coursescourse.xyz/HSP/Module6/story.html"
+  },
+  {
+   "title": "Tailored Coaching Tools for Highly Sensitive People",
+   "url": "https://coursescourse.xyz/HSP/Module7/story.html"
+  },
+  {
+   "title": "The Role and Growth of an HSP Coach",
+   "url": "https://coursescourse.xyz/HSP/Module8/story.html"
+  },
+  {
+   "title": "Advanced Applications of HSP Coaching Techniques",
+   "url": "https://coursescourse.xyz/HSP/Module9/story.html"
+  },
+  {
+   "title": "Structuring Sessions and Integrating HSP Coaching Practices",
+   "url": "https://coursescourse.xyz/HSP/Module10/story.html"
+  }
+ ],
+ "journal-therapy": [
+  {
+   "title": "Introduction to Therapeutic Journaling",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module1/story.html"
+  },
+  {
+   "title": "Exploring Different Journal Types and Their Benefits",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module2/story.html"
+  },
+  {
+   "title": "Therapeutic Writing Techniques",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module3/story.html"
+  },
+  {
+   "title": "Positive Psychology and Journal Therapy",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module4/story.html"
+  },
+  {
+   "title": "Exploring Complementary Techniques",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module5/story.html"
+  },
+  {
+   "title": "Tailored Coaching Strategies for Journal Therapy",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module6/story.html"
+  },
+  {
+   "title": "Crafting and Leading Journal Therapy Workshops",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module7/story.html"
+  },
+  {
+   "title": "Practical Application: Standard Session of Journal Therapy Coaching",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module8/story.html"
+  },
+  {
+   "title": "Case Studies",
+   "url": "https://coursescourse.xyz/Journal%20Therapy/Module9/story.html"
+  }
+ ],
+ "stress": [
+  {
+   "title": "Introduction to Stress",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module1/story.html"
+  },
+  {
+   "title": "Physiology of Stress",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module2/story.html"
+  },
+  {
+   "title": "Understanding the Psychology of Stress",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module3/story.html"
+  },
+  {
+   "title": "Stress and Its Impact on Health",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module4/story.html"
+  },
+  {
+   "title": "Stress and Performance",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module5/story.html"
+  },
+  {
+   "title": "Foundations of Stress Management Coaching",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module6/story.html"
+  },
+  {
+   "title": "Stress Management Techniques",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module7/story.html"
+  },
+  {
+   "title": "Coaching and Life Balance",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module8/story.html"
+  },
+  {
+   "title": "Coaching and Behavior Change",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module9/story.html"
+  },
+  {
+   "title": "Professional Growth and Ethics in Coaching",
+   "url": "https://coursescourse.xyz/Stress%20Management/Module10/story.html"
+  }
+ ],
+ "inner-child": [
+  {
+   "title": "Foundations of Psychology",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module1/story.html"
+  },
+  {
+   "title": "Understanding the Inner Child",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module2/story.html"
+  },
+  {
+   "title": "Traumatology",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module3/story.html"
+  },
+  {
+   "title": "Transpersonal Psychology and Spirituality",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module4/story.html"
+  },
+  {
+   "title": "Relational and Therapeutic Skills",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module5/story.html"
+  },
+  {
+   "title": "Techniques for Inner Child Healing",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module6/story.html"
+  },
+  {
+   "title": "Physical and Energetic Approaches",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module7/story.html"
+  },
+  {
+   "title": "Supplementary Tools",
+   "url": "https://coursescourse.xyz/Inner%20Child%20Healing/Module8/story.html"
+  }
+ ],
+ "pet-loss": [
+  {
+   "title": "Introduction to the Grieving Process",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module1/story.html"
+  },
+  {
+   "title": "Understanding Pet Loss Grief",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module2/story.html"
+  },
+  {
+   "title": "Overview of Animal Behavior and Psychology",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module3/story.html"
+  },
+  {
+   "title": "Providing Bereavement Support for Pet Owners",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module4/story.html"
+  },
+  {
+   "title": "Creative Rituals and Symbolism in Pet Bereavement",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module5/story.html"
+  },
+  {
+   "title": "Tools for Assessment and Monitoring",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module6/story.html"
+  },
+  {
+   "title": "Managing Emotions and Relaxation Methods",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module7/story.html"
+  },
+  {
+   "title": "Example Session for Supporting Pet Loss Grief",
+   "url": "https://coursescourse.xyz/Grief%20Coach%20for%20Pet%20Loss/Module8/story.html"
+  }
+ ],
+ "mindset": [
+  {
+   "title": "Foundations of Mindset",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Cognitive Psychology and Mindset",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Positive Psychology and Mindset",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Neuroscience and Mindset",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Personal Growth and the Power of Mindset",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module5/story.html"
+  },
+  {
+   "title": "Core Principles of Mindset Coaching",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module6/story.html"
+  },
+  {
+   "title": "Techniques in Listening and Communication",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Tools for Mindset Coaching",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Practical Application of Mindset Coaching",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module9/story.html"
+  },
+  {
+   "title": "Hands-On Application: Conducting Coaching Sessions",
+   "url": "https://coursescourse.xyz/Mindset%20Coach/Module10/story.html"
+  }
+ ],
+ "family-constellations": [
+  {
+   "title": "Overview of Systemic Family Constellations",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module1/story.html"
+  },
+  {
+   "title": "Understanding Family Systems Theory",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module2/story.html"
+  },
+  {
+   "title": "Intergenerational Patterns and Psychogenealogy",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module3/story.html"
+  },
+  {
+   "title": "Soul Movements and Systemic Dynamics",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module4/story.html"
+  },
+  {
+   "title": "The Spiritual and Philosophical Aspects of Constellations",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module5/story.html"
+  },
+  {
+   "title": "Steps and Methodology of Conducting a Constellation",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module6/story.html"
+  },
+  {
+   "title": "Facilitating and Managing Groups Effectively",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module7/story.html"
+  },
+  {
+   "title": "Additional Techniques and Variations of Constellations",
+   "url": "https://coursescourse.xyz/Systemic%20Family%20Constellation%20Practitioner/Module8/story.html"
+  }
+ ],
+ "laughter": [
+  {
+   "title": "Laughter Therapy",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module1/story.html"
+  },
+  {
+   "title": "The Benefits of Laughter on Physical Health",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module2/story.html"
+  },
+  {
+   "title": "How Laughter Enhances Mental and Emotional Well-being",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module3/story.html"
+  },
+  {
+   "title": "Understanding the Psychological Basis of Laughter Therapy",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module4/story.html"
+  },
+  {
+   "title": "Laughter Therapy in Different Environments",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module5/story.html"
+  },
+  {
+   "title": "Key Skills of a Laughter Therapist",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module6/story.html"
+  },
+  {
+   "title": "Techniques and Exercises of Laughter Therapy",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module7/story.html"
+  },
+  {
+   "title": "Tools and Supports for Laughter Therapy",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module8/story.html"
+  },
+  {
+   "title": "Designing and Facilitating Laughter Therapy Sessions",
+   "url": "https://coursescourse.xyz/Laughter%20Therapist/Module9/story.html"
+  }
+ ],
+ "visualization": [
+  {
+   "title": "Certified Course to Become a Visualization Coach",
+   "url": "https://coursescourse.xyz/Visualization/Module1/story.html"
+  },
+  {
+   "title": "Psychological Basis",
+   "url": "https://coursescourse.xyz/Visualization/Module2/story.html"
+  },
+  {
+   "title": "Neuroscience and Mental Imagery",
+   "url": "https://coursescourse.xyz/Visualization/Module3/story.html"
+  },
+  {
+   "title": "Neuro-Linguistic Programming (NLP)",
+   "url": "https://coursescourse.xyz/Visualization/Module4/story.html"
+  },
+  {
+   "title": "Mindfulness and Visualization Practices",
+   "url": "https://coursescourse.xyz/Visualization/Module5/story.html"
+  },
+  {
+   "title": "Techniques for Visualization Coaching",
+   "url": "https://coursescourse.xyz/Visualization/Module6/story.html"
+  },
+  {
+   "title": "Advanced Visualization Methods",
+   "url": "https://coursescourse.xyz/Visualization/Module7/story.html"
+  },
+  {
+   "title": "Tools for the Visualization Coach",
+   "url": "https://coursescourse.xyz/Visualization/Module8/story.html"
+  },
+  {
+   "title": "Specific Uses of Visualization",
+   "url": "https://coursescourse.xyz/Visualization/Module9/story.html"
+  },
+  {
+   "title": "Typical Session Structure and Launching Your Practice",
+   "url": "https://coursescourse.xyz/Visualization/Module10/story.html"
+  }
+ ],
+ "teen": [
+  {
+   "title": "Introduction to Adolescent Coaching",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Understanding Adolescent Psychology",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Adolescent Growth and Physical Changes",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Communicating Effectively with Teenagers",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Building Trust with Adolescents",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module5/story.html"
+  },
+  {
+   "title": "Techniques and Tools for Coaching Teens",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module6/story.html"
+  },
+  {
+   "title": "Stress and Emotion Management in Adolescents",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Helping Teenagers in Their Personal Growth",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Partnering with Parents and Professionals",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module9/story.html"
+  },
+  {
+   "title": "Implementing Coaching for Teenagers",
+   "url": "https://coursescourse.xyz/Teen%20Coach/Module10/story.html"
+  }
+ ],
+ "parenting": [
+  {
+   "title": "The Foundations of Parenthood: Core Principles",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Building Strong Parent-Child Communication and Relationships",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Positive Discipline and Effective Behaviour Management",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Encouraging Autonomy and Building Self-Esteem in Children",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Navigating the Unique Challenges of Parenthood",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module5/story.html"
+  },
+  {
+   "title": "Introduction to Parent Coaching: Essential Concepts",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module6/story.html"
+  },
+  {
+   "title": "The Parent Coaching Journey: Steps and Structure",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Tailored Coaching Techniques for Parenting Support",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Practical Tools and Resources for Parent Coaching",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module9/story.html"
+  },
+  {
+   "title": "Managing Emotions and Overcoming Limiting Beliefs",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module10/story.html"
+  },
+  {
+   "title": "Exploring Different Parenting Styles and Approaches",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module11/story.html"
+  },
+  {
+   "title": "Supporting Parents: The Art of Coaching for Growth and Transformation",
+   "url": "https://coursescourse.xyz/Parenting%20Coach/Module12/story.html"
+  }
+ ],
+ "menopause": [
+  {
+   "title": "Understanding Menopause: An Introduction",
+   "url": "https://coursescourse.xyz/Menopause/Module1/story.html"
+  },
+  {
+   "title": "Hormonal Changes and Their Effects on the Body",
+   "url": "https://coursescourse.xyz/Menopause/Module2/story.html"
+  },
+  {
+   "title": "Managing the Physical Symptoms of Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module3/story.html"
+  },
+  {
+   "title": "Cardiovascular Health and Menopause-Related Risks",
+   "url": "https://coursescourse.xyz/Menopause/Module4/story.html"
+  },
+  {
+   "title": "Cognitive Health and Brain Aging During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module5/story.html"
+  },
+  {
+   "title": "Hormonal Changes and Their Impact on Oral Health",
+   "url": "https://coursescourse.xyz/Menopause/Module6/story.html"
+  },
+  {
+   "title": "Skin Changes and Aging During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module7/story.html"
+  },
+  {
+   "title": "Psychological and Emotional Effects of Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module8/story.html"
+  },
+  {
+   "title": "Lifestyle Adjustments for Symptom Management",
+   "url": "https://coursescourse.xyz/Menopause/Module9/story.html"
+  },
+  {
+   "title": "Navigating Menopause in the Professional World",
+   "url": "https://coursescourse.xyz/Menopause/Module10/story.html"
+  },
+  {
+   "title": "Social and Relationship Dynamics During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module11/story.html"
+  },
+  {
+   "title": "Exploring Spirituality and Life's Purpose During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module12/story.html"
+  },
+  {
+   "title": "Core Concepts of Menopause Coaching",
+   "url": "https://coursescourse.xyz/Menopause/Module13/story.html"
+  },
+  {
+   "title": "Effective Coaching Tools and Techniques for Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module14/story.html"
+  },
+  {
+   "title": "Nutritional Guidance and Weight Management in Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module15/story.html"
+  },
+  {
+   "title": "Coaching Physical Activity, Stress, and Sexuality During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module16/story.html"
+  },
+  {
+   "title": "Life Coaching for Personal Growth During Menopause",
+   "url": "https://coursescourse.xyz/Menopause/Module17/story.html"
+  },
+  {
+   "title": "Structuring a Menopause Coaching Session and Long-Term Support",
+   "url": "https://coursescourse.xyz/Menopause/Module18/story.html"
+  }
+ ],
+ "relationship": [
+  {
+   "title": "Foundations of Relationship Coaching",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Psychology of Relationships",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Communication and Emotion Management",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Relationship Coaching Tools and Techniques",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Coaching for Couples",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module5/story.html"
+  },
+  {
+   "title": "The Unique Aspects and Obstacles in Family and Parental Coaching",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module6/story.html"
+  },
+  {
+   "title": "Coaching for Friendly and Professional Relationships",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Coaching Self-Relationship",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Practical Implementation: Supervised Coaching Sessions",
+   "url": "https://coursescourse.xyz/Relationship%20Coach/Module9/story.html"
+  }
+ ],
+ "productivity": [
+  {
+   "title": "Introduction to Productivity",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Foundations of Productivity Psychology",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Neuroscience and Productivity",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Productivity and Group Dynamics",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Productivity Coaching Methods",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module5/story.html"
+  },
+  {
+   "title": "Time Management Tools and Techniques",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module6/story.html"
+  },
+  {
+   "title": "Organizing and Managing Information",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Productive Communication Strategies",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Creativity and Problem-Solving",
+   "url": "https://coursescourse.xyz/Productivity%20Coach/Module9/story.html"
+  }
+ ],
+ "neuroscience": [
+  {
+   "title": "Introduction to Neuroscience Coaching",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module01/story.html"
+  },
+  {
+   "title": "Grasping the Brain and Its Roles",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module02/story.html"
+  },
+  {
+   "title": "Understanding Memory",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module03/story.html"
+  },
+  {
+   "title": "Neuroscience of Language and Communication",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module04/story.html"
+  },
+  {
+   "title": "Comprehending and Boosting Motivation",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module05/story.html"
+  },
+  {
+   "title": "Emotional Intelligence: A Neuroscience Insight",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module06/story.html"
+  },
+  {
+   "title": "Neuroscience in Learning and Education",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module07/story.html"
+  },
+  {
+   "title": "Applied Neuroleadership",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module08/story.html"
+  },
+  {
+   "title": "Mastering Neuroscience Coaching",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module09/story.html"
+  },
+  {
+   "title": "Coaching Sessions and Case Studies",
+   "url": "https://coursecourse.pw/Courses/neurosicencecoach/module10/story.html"
+  }
+ ],
+ "life": [
+  {
+   "title": "Foundations of Life Coaching: An Introduction",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module1/story.html"
+  },
+  {
+   "title": "Mastering Communication: Active Listening for Coaches",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module2/story.html"
+  },
+  {
+   "title": "Emotional Resilience and Management in Coaching",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module3/story.html"
+  },
+  {
+   "title": "Healing and Letting Go: Transforming the Past",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module4/story.html"
+  },
+  {
+   "title": "Harnessing NLP: Techniques for Effective Coaching",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module5/story.html"
+  },
+  {
+   "title": "Advanced Coaching Tools for Creating Change",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module6/story.html"
+  },
+  {
+   "title": "Integrating Complementary Therapies in Coaching",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module7/story.html"
+  },
+  {
+   "title": "Professional Ethics and Frameworks for Coaching Practice",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module8/story.html"
+  },
+  {
+   "title": "Practical Coaching Tools and Resources",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module9/story.html"
+  },
+  {
+   "title": "Structuring Coaching Sessions and Professional Practices",
+   "url": "https://coursecourse.pw/Courses/lifecoach/module10/story.html"
+  }
+ ],
+ "transformational": [
+  {
+   "title": "Foundations of Personal Change",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module1/story.html"
+  },
+  {
+   "title": "Foundations of Transformational Coaching",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module2/story.html"
+  },
+  {
+   "title": "Self-Awareness and Personal Growth",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module3/story.html"
+  },
+  {
+   "title": "Managing Emotions and Overcoming Limiting Beliefs",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module4/story.html"
+  },
+  {
+   "title": "Motivation, Engagement, and Taking Action",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module5/story.html"
+  },
+  {
+   "title": "Communication and Interpersonal Skills",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module6/story.html"
+  },
+  {
+   "title": "Achieving Life Balance and Managing Stress",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module7/story.html"
+  },
+  {
+   "title": "Creativity, Intuition, and Alignment",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module8/story.html"
+  },
+  {
+   "title": "Supporting Change and Celebrating Success",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module9/story.html"
+  },
+  {
+   "title": "Conducting a Transformation Coaching Session",
+   "url": "https://coursescourse.xyz/Transformational%20Coach/Module10/story.html"
+  }
+ ]
+}

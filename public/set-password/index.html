@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose your password | The Peers Certification</title>
+<meta name="description" content="Choose your password.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="wrap sec-s"><form class="authbox" id="f" novalidate><p class="eyebrow">Your account</p><h1 class="d3">Choose your <em>password.</em></h1><p id="who" class="muted">Checking your link…</p>
+<div class="field"><label for="p">New password</label><input id="p" type="password" autocomplete="new-password" required><span class="hint">At least 8 characters, with upper and lower case letters and a number.</span></div>
+<div class="field"><label for="p2">Type it again</label><input id="p2" type="password" autocomplete="new-password" required></div>
+<button class="btn btn-sea btn-block" type="submit" disabled>Save password and sign in</button><p class="note hide" role="alert" id="m"></p></form></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, m = document.getElementById('m'), t = T.q('t'), email = '', btn = document.querySelector('#f button');
+T.api('GET', '/api/reset/check?t=' + encodeURIComponent(t)).then(function (r) {
+  if (!r.ok) { document.getElementById('who').textContent = ''; return T.note(m, 'This link has expired or was already used. Ask for a new one from the sign in page.', 'bad'); }
+  email = r.e; document.getElementById('who').textContent = 'For ' + email; btn.disabled = false;
+});
+document.getElementById('f').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var p = document.getElementById('p').value, bad = T.pwProblem(p);
+  if (bad) return T.note(m, bad, 'bad');
+  if (p !== document.getElementById('p2').value) return T.note(m, 'The two passwords do not match.', 'bad');
+  btn.disabled = true;
+  T.pwHash(email, p).then(function (h) {
+    return T.api('POST', '/api/reset', { t: t, h: h }).then(function () { return T.api('POST', '/api/login', { e: email, h: h }); });
+  }).then(function (r) { location.href = r && r.role === 'admin' ? '/admin' : '/learn'; }, function (er) { btn.disabled = false; T.note(m, er.message, 'bad'); });
+});
+</script>
+</body>
+</html>

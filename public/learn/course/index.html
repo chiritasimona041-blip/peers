@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Course | The Peers Certification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="app"><div class="wrap sec-s stack" style="gap:28px">
+<div class="rowf" style="align-items:center;justify-content:space-between"><a class="textlink" href="/learn">← My learning</a><span class="small muted" id="prog"></span></div>
+<h1 class="d3" id="title">Loading…</h1>
+<div class="player"><aside aria-label="Lessons" id="side"></aside><main id="lesson"></main></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC;
+function lessonKeys(c) { var k = []; (c.modules || []).forEach(function (m, mi) { (m.lessons || []).forEach(function (l, li) { k.push(c.id + ':' + mi + ':' + li); }); }); return k; }
+function loadMine(w) {
+  return Promise.all([
+    T.api('GET', '/api/db/list?coll=courses'),
+    T.api('GET', '/api/db/doc?path=' + encodeURIComponent('lsub/' + w.key)),
+    T.api('GET', '/api/certificates')
+  ]).then(function (r) {
+    var courses = r[0].docs.map(function (d) { var c = d.data; c.id = d.id; return c; });
+    return { courses: courses, done: (r[1].exists && r[1].data.w) || {}, certs: r[2].certificates || [] };
+  });
+}
+
+var course, done = {}, key = '', cur = { m: 0, l: 0 };
+var okUrl = /^https:\/\//i; // a module opens in a frame only from a secure address
+function vid(url) {
+  var m = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/.exec(url || ''); if (m) return 'https://www.youtube-nocookie.com/embed/' + m[1];
+  m = /vimeo\.com\/(\d+)/.exec(url || ''); if (m) return 'https://player.vimeo.com/video/' + m[1];
+  return '';
+}
+function flat() { var a = []; course.modules.forEach(function (m, mi) { (m.lessons || []).forEach(function (l, li) { a.push({ m: mi, l: li }); }); }); return a; }
+function k(p) { return course.id + ':' + p.m + ':' + p.l; }
+function save() { return T.api('POST', '/api/db/doc', { path: 'lsub/' + key, op: 'update', data: { w: done } }); }
+var TICK = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+var LOCK = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+var sideOpen = false;
+function draw() {
+  var all = flat(), n = all.filter(function (p) { return done[k(p)]; }).length, allDone = all.length > 0 && n === all.length;
+  var single = course.modules.every(function (m) { return (m.lessons || []).length <= 1; }), word = single ? 'module' : 'lesson';
+  var idx = all.findIndex(function (p) { return p.m === cur.m && p.l === cur.l; }), next = all[idx + 1], prev = all[idx - 1];
+  var upNext = all.filter(function (p) { return !done[k(p)]; })[0];
+  var pct = all.length ? Math.round(n / all.length * 100) : 0, examUrl = '/learn/exam?c=' + encodeURIComponent(course.id);
+  document.getElementById('prog').textContent = '';
+  var side = document.getElementById('side'), step = 0;
+  side.classList.toggle('open', sideOpen);
+  side.innerHTML = '<div class="side-head"><p class="eyebrow">Your progress</p><p class="side-count"><b>' + n + '</b> of ' + all.length + ' ' + word + 's complete</p>' +
+    '<div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Course progress"><i style="width:' + pct + '%"></i></div></div>' +
+    '<button type="button" class="side-toggle" id="sidetoggle" aria-expanded="' + sideOpen + '"><span>' + (idx >= 0 ? cap(word) + ' ' + (idx + 1) + ' of ' + all.length : 'All ' + word + 's') + '</span><span class="side-toggle-r">' + (sideOpen ? 'Hide list' : 'Show all') + '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>' +
+    '<ol class="msteps">' + course.modules.map(function (m, mi) {
+      var many = (m.lessons || []).length > 1;
+      return (many ? '<li class="mod">Module ' + (mi + 1) + ' · ' + T.esc(m.title) + '</li>' : '') + (m.lessons || []).map(function (l, li) {
+        step++;
+        var on = done[course.id + ':' + mi + ':' + li], here = cur.m === mi && cur.l === li, up = upNext && upNext.m === mi && upNext.l === li;
+        var tag = !here && up ? '<span class="pill">Continue</span>' : '';
+        return '<li><button type="button" class="les' + (on ? ' done' : '') + '" data-m="' + mi + '" data-l="' + li + '" aria-current="' + here + '" title="' + T.esc(l.title) + '">' +
+          '<span class="stepn' + (on ? ' on' : '') + '">' + (on ? TICK : step) + '</span><span class="les-t">' + T.esc(l.title) + (on ? '<span class="sr"> (complete)</span>' : '') + '</span>' + tag + '</button></li>';
+      }).join('');
+    }).join('') +
+    (allDone
+      ? '<li class="exam-step"><a class="btn btn-sun btn-block" href="' + examUrl + '">Take the final exam</a></li>'
+      : '<li class="exam-step"><div class="les lock"><span class="stepn">' + LOCK + '</span><span class="les-t">Final exam<small>Complete all ' + word + 's to unlock</small></span></div></li>') + '</ol>';
+  document.getElementById('sidetoggle').addEventListener('click', function () { sideOpen = !sideOpen; draw(); });
+  var les = ((course.modules[cur.m] || {}).lessons || [])[cur.l];
+  var box = document.getElementById('lesson');
+  if (!les) { box.innerHTML = '<p class="d4">Lessons for this certification are being added.</p>'; return; }
+  var v = vid(les.video);
+  var frame = okUrl.test(les.url || '') ? les.url : '';
+  var paras = String(les.body || '').split(/\n\s*\n/).filter(Boolean).map(function (p) { return '<p>' + T.esc(p).replace(/\n/g, '<br>') + '</p>'; }).join('');
+  var one = (course.modules[cur.m].lessons || []).length === 1, isDone = !!done[k(cur)];
+  box.classList.toggle('has-frame', !!frame);
+  box.innerHTML = '<p class="eyebrow">Module ' + (cur.m + 1) + ' of ' + course.modules.length + (one ? '' : ' · Lesson ' + (cur.l + 1)) + (isDone ? ' · Complete' : '') + '</p><h2 class="d2" style="font-size:clamp(30px,3.4vw,48px)">' + T.esc(les.title) + '</h2>' +
+    (frame ? '<div class="frame" id="frame"><div class="frame-bar"><span>Module ' + (cur.m + 1) + ' · ' + T.esc(les.title) + '</span><button type="button" class="btn btn-s btn-sun" id="exitfull">Exit full screen</button></div><iframe src="' + T.esc(frame) + '" title="' + T.esc(les.title) + '" allow="fullscreen; autoplay" allowfullscreen loading="eager"></iframe></div>' +
+      '<div class="rowf frame-tools"><button type="button" class="btn btn-ink btn-s" id="gofull">Open full screen</button><span class="small muted">On a phone, go full screen and turn it sideways.</span></div>' : '') +
+    (v ? '<div class="video"><iframe src="' + v + '" title="' + T.esc(les.title) + '" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>' : '') +
+    '<div class="lesson-body">' + (paras || (v || frame ? '' : '<p class="muted">This lesson has no content yet.</p>')) + '</div>' +
+    '<div class="stepnav">' + (prev ? '<button type="button" class="btn btn-line" id="prev">← Previous</button>' : '<span></span>') +
+    '<div class="rowf" style="gap:12px;justify-content:flex-end">' +
+    (isDone ? (next ? '<button type="button" class="btn btn-sea" id="next">Next ' + word + ' →</button>' : '') : '<button type="button" class="btn btn-sea" id="mark">Mark as complete' + (next ? ' and continue →' : '') + '</button>') +
+    (!next && allDone ? '<a class="btn btn-sun" href="' + examUrl + '">Take the final exam</a>' : '') + '</div></div>' +
+    (!next && isDone && !allDone ? '<p class="small muted">' + (all.length - n) + ' ' + word + (all.length - n === 1 ? '' : 's') + ' still to complete before the final exam unlocks.</p>' : '') +
+    '<p class="note hide" role="alert" id="m"></p>';
+  if (frame) {
+    var fr = document.getElementById('frame');
+    var full = function (on) { fr.classList.toggle('full', on); document.documentElement.classList.toggle('noscroll', on); (on ? document.getElementById('exitfull') : document.getElementById('gofull')).focus(); };
+    document.getElementById('gofull').addEventListener('click', function () { full(true); });
+    document.getElementById('exitfull').addEventListener('click', function () { full(false); });
+  } else document.documentElement.classList.remove('noscroll');
+  var go = function (p) { cur = p; sideOpen = false; draw(); document.querySelector('.player').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  var b = document.getElementById('prev'); if (b) b.addEventListener('click', function () { go(prev); });
+  b = document.getElementById('next'); if (b) b.addEventListener('click', function () { go(next); });
+  b = document.getElementById('mark'); if (b) b.addEventListener('click', function () {
+    done[k(cur)] = 1;
+    save().then(function () { if (next) go(next); else draw(); }, function (er) { delete done[k(cur)]; T.note(document.getElementById('m'), er.message, 'bad'); });
+  });
+}
+function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+document.addEventListener('keydown', function (e) { var b = document.getElementById('exitfull'); if (e.key === 'Escape' && b && document.querySelector('.frame.full')) b.click(); });
+document.getElementById('side').addEventListener('click', function (e) { var b = e.target.closest('button.les'); if (!b) return; cur = { m: +b.dataset.m, l: +b.dataset.l }; sideOpen = false; draw(); });
+T.requireLearner().then(function (w) { key = w.key; return loadMine(w); }).then(function (d) {
+  course = d.courses.filter(function (c) { return c.id === T.q('c'); })[0];
+  if (!course) { document.getElementById('title').textContent = 'You are not enrolled on this certification.'; document.querySelector('.player').innerHTML = '<a class="btn btn-ink" href="/learn">Back to my learning</a>'; return; }
+  course.modules = Array.isArray(course.modules) ? course.modules : [];
+  done = d.done; document.getElementById('title').textContent = course.title; document.title = course.title + ' | The Peers Certification';
+  var first = flat().filter(function (p) { return !done[k(p)]; })[0]; if (first) cur = first;
+  draw();
+}).catch(function (er) { document.getElementById('title').textContent = er.message; });
+</script>
+</body>
+</html>

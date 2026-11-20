@@ -1,0 +1,3750 @@
+{
+ "note": "Catalogue taken from love2coach.io/browsecoachingcourses on 19 Nov 2026: titles, module lists and prices are from that site; descriptions rewritten. Lessons and exam questions still to be added.",
+ "courses": [
+  {
+   "id": "life",
+   "sub": "Start here",
+   "title": "Certified Life Coach",
+   "tag": "Foundations",
+   "img": "session",
+   "price": 29500,
+   "featured": true,
+   "blurb": "The certification most coaches start with. Learn how to listen, ask the questions that unlock people, and run sessions clients pay for and come back to.",
+   "who": [
+    "People starting out as a coach",
+    "Professionals who already mentor and want a method",
+    "Anyone serious about personal development"
+   ],
+   "learn": [
+    "Foundations of coaching: the principles, frameworks and ethics that make clients trust you",
+    "Communication mastery: listening and questioning that gets to what matters",
+    "Emotional resilience: help clients manage emotions and let go of the past",
+    "Tools for change: NLP, goal setting and working through limiting beliefs",
+    "Building your practice: structure sessions and set up a coaching business that lasts"
+   ],
+   "modules": [
+    {
+     "title": "Foundations of Life Coaching: An Introduction",
+     "lessons": []
+    },
+    {
+     "title": "Mastering Communication: Active Listening for Coaches",
+     "lessons": []
+    },
+    {
+     "title": "Emotional Resilience and Management in Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Healing and Letting Go: Transforming the Past",
+     "lessons": []
+    },
+    {
+     "title": "Harnessing NLP: Techniques for Effective Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Advanced Coaching Tools for Creating Change",
+     "lessons": []
+    },
+    {
+     "title": "Integrating Complementary Therapies in Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Professional Ethics and Frameworks for Coaching Practice",
+     "lessons": []
+    },
+    {
+     "title": "Practical Coaching Tools and Resources",
+     "lessons": []
+    },
+    {
+     "title": "Structuring Coaching Sessions and Professional Practices",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Become the person people <em>turn to.</em>",
+    "lede": "A proven method for helping people change their lives, and a certificate that shows you can. Study online, at your own pace, with no experience needed.",
+    "why": {
+     "title": "People are looking for someone like <em>you.</em>",
+     "paras": [
+      "You are probably already the one friends call when life gets complicated. You listen well. You ask the question nobody else thought to ask. People leave a conversation with you feeling clearer than when they arrived.",
+      "Life coaching turns that instinct into a skill with a structure behind it, so you can do it on purpose, for people who need it, as your work."
+     ],
+     "label": "What clients come to a life coach with",
+     "points": [
+      "A job that no longer fits and no idea what comes next",
+      "Starting again after a relationship ends",
+      "Knowing exactly what they want and never following through",
+      "Feeling busy, capable and quietly stuck"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to be a coach. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 9am",
+       "img": "desk",
+       "text": "Coffee, notebook, and a first session with a new client who wants to change career before the summer."
+      },
+      {
+       "when": "Wednesday, 1pm",
+       "img": "call",
+       "text": "A video call with a client in another city. She did the thing she had been putting off for a year."
+      },
+      {
+       "when": "Friday, 4pm",
+       "img": "beach",
+       "text": "Laptop closed. The diary was yours to set, so the afternoon is too."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The career changer",
+       "text": "Capable and bored. Needs someone to help them work out what they want and hold them to it."
+      },
+      {
+       "name": "The person starting over",
+       "text": "After a break-up, a move or a loss. Needs steady support while they rebuild."
+      },
+      {
+       "name": "The one who never follows through",
+       "text": "Full of plans, short on progress. Needs structure, honesty and accountability."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Run a session from first minute to last",
+      "d": "You will know how to open a session, where to take it and how to close it so your client leaves with a clear next step."
+     },
+     {
+      "h": "Ask questions that change how people see things",
+      "d": "Listening and questioning are the core of coaching. You will practise both until they are second nature."
+     },
+     {
+      "h": "Help clients handle what they feel",
+      "d": "Work with emotions, setbacks and the past without getting lost in them, and know where coaching ends and other help begins."
+     },
+     {
+      "h": "Use the tools professionals use",
+      "d": "NLP techniques, goal setting and working through limiting beliefs, with resources you can put in front of a client."
+     },
+     {
+      "h": "Set yourself up to practise",
+      "d": "Ethics, session structure and the practical side of running a coaching practice."
+     }
+    ],
+    "modules": [
+     "What coaching is and is not, the role of the coach, and the principles everything else rests on.",
+     "How to listen so people feel heard, and how to reflect back what you are hearing.",
+     "Understanding emotions in a session, your client's and your own, and staying steady.",
+     "Helping clients make peace with what has happened so it stops running the present.",
+     "The core NLP techniques coaches use, and when each one is useful.",
+     "A wider toolkit for helping clients change beliefs, habits and behaviour.",
+     "Where other approaches can sit alongside coaching, and how to stay within your role.",
+     "Boundaries, confidentiality and the professional standards clients expect.",
+     "Ready-to-use exercises, templates and resources for your sessions.",
+     "Putting it together: planning a session, running a programme and setting up your practice."
+    ],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Work with private clients in person or online, on your own schedule."
+      },
+      {
+       "h": "Group programmes",
+       "d": "Take several people through the same journey together."
+      },
+      {
+       "h": "Workshops and talks",
+       "d": "Run sessions for teams, communities and events."
+      },
+      {
+       "h": "In the job you have",
+       "d": "Use coaching skills as a manager, teacher, mentor or HR professional."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I have never coached anyone.",
+       "a": "Most people who enrol have not. The course starts with the foundations and builds to running a full session."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "I am not sure I am the right kind of person.",
+       "a": "If people already come to you to talk things through, you have the raw material. The course gives you the method."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "transformational",
+   "sub": "Lasting breakthroughs",
+   "title": "Certified Transformational Coach",
+   "tag": "Foundations",
+   "img": "beach",
+   "price": 25000,
+   "blurb": "Guide people through the big changes: a new direction, a new identity, a life that finally fits. You learn the method while going through it yourself.",
+   "who": [
+    "Aspiring coaches with no experience yet",
+    "Leaders and managers who develop people",
+    "Anyone who wants to help others change for good"
+   ],
+   "learn": [
+    "Foundations of transformational coaching: how deep, lasting change really happens",
+    "Self-awareness and growth: tools that surface what is holding a client back",
+    "Emotions and blocks: reframing, stress and building resilience",
+    "Motivation and lasting action: keep clients engaged and moving",
+    "Structuring a session: deliver sessions that land every time"
+   ],
+   "modules": [
+    {
+     "title": "Foundations of Personal Change",
+     "lessons": []
+    },
+    {
+     "title": "Foundations of Transformational Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Self-Awareness and Personal Growth",
+     "lessons": []
+    },
+    {
+     "title": "Managing Emotions and Overcoming Limiting Beliefs",
+     "lessons": []
+    },
+    {
+     "title": "Motivation, Engagement, and Taking Action",
+     "lessons": []
+    },
+    {
+     "title": "Communication and Interpersonal Skills",
+     "lessons": []
+    },
+    {
+     "title": "Achieving Life Balance and Managing Stress",
+     "lessons": []
+    },
+    {
+     "title": "Creativity, Intuition, and Alignment",
+     "lessons": []
+    },
+    {
+     "title": "Supporting Change and Celebrating Success",
+     "lessons": []
+    },
+    {
+     "title": "Conducting a Transformation Coaching Session",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Be there for the <em>turning points.</em>",
+    "lede": "Learn to guide people through the changes that reshape a life, and earn a certificate that shows you can. Online, self-paced, no experience needed.",
+    "why": {
+     "title": "Some changes are too big to <em>make alone.</em>",
+     "paras": [
+      "Most people can tell you the moment their life needed to change. Far fewer can tell you how they got through it. The ones who can usually had someone beside them.",
+      "Transformational coaching is the craft of being that person: helping someone understand where they are, decide who they want to become and keep moving when it gets hard."
+     ],
+     "label": "What clients come to a transformational coach with",
+     "points": [
+      "A life that looks fine from outside and feels wrong inside",
+      "A big decision they keep circling",
+      "Old beliefs that undo every fresh start",
+      "Wanting more and not knowing what more means"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 10am",
+       "img": "session",
+       "text": "A client says out loud, for the first time, what she actually wants. The session changes direction from there."
+      },
+      {
+       "when": "Thursday, 2pm",
+       "img": "call",
+       "text": "A check-in call. He handed in his notice on Monday and has not looked back."
+      },
+      {
+       "when": "Saturday, 9am",
+       "img": "beach",
+       "text": "No sessions today. You set the diary, and the weekend stays yours."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The one at a crossroads",
+       "text": "Career, relationship or location. Needs help choosing a direction and committing to it."
+      },
+      {
+       "name": "The quietly unfulfilled",
+       "text": "Has ticked every box and still feels flat. Needs to work out what matters to them now."
+      },
+      {
+       "name": "The serial restarter",
+       "text": "Begins again every January. Needs to deal with the beliefs that keep pulling them back."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand how people really change",
+      "d": "The foundations of personal change, so you know what is happening for a client at each stage."
+     },
+     {
+      "h": "Build self-awareness, theirs and yours",
+      "d": "Help clients see their own patterns clearly, and keep growing as a coach yourself."
+     },
+     {
+      "h": "Work with emotions and limiting beliefs",
+      "d": "Practical ways to help clients manage what they feel and loosen the beliefs holding them in place."
+     },
+     {
+      "h": "Turn insight into action",
+      "d": "Motivation, engagement and follow-through, so change shows up in real life."
+     },
+     {
+      "h": "Run a full transformation session",
+      "d": "Communication skills, balance, creativity and intuition, brought together in a session you can lead with confidence."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one programmes",
+       "d": "Work with a client over several months through a major life change."
+      },
+      {
+       "h": "Group journeys",
+       "d": "Guide a small group through the same stages together."
+      },
+      {
+       "h": "Retreats and workshops",
+       "d": "Run immersive days built around a single theme."
+      },
+      {
+       "h": "Alongside what you already do",
+       "d": "Add depth to work as a therapist, trainer, mentor or manager."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "How is this different from life coaching?",
+       "a": "Life coaching often works goal by goal. This course focuses on deeper change: identity, beliefs and direction."
+      },
+      {
+       "q": "I have not been through a big transformation myself.",
+       "a": "You do not need a dramatic story. You need the method, the skills and a real interest in people."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "mindset",
+   "sub": "Empowered thinking",
+   "title": "Certified Mindset Coach",
+   "tag": "Foundations",
+   "img": "portrait",
+   "price": 25000,
+   "blurb": "Most people are held back by what they believe about themselves. Learn to spot those beliefs, challenge them and help clients build ones that serve them.",
+   "who": [
+    "Aspiring coaches",
+    "Personal development professionals",
+    "Anyone who wants to help others reach their potential"
+   ],
+   "learn": [
+    "Foundations of mindset: fixed and growth mindsets, and how resilience is built",
+    "Positive psychology and cognitive techniques: guide clients through setbacks",
+    "Practical coaching tools: listening, communication and structured sessions",
+    "The neuroscience of habit: how the brain adapts and new habits stick",
+    "Application: design sessions, set goals and support long-term change"
+   ],
+   "modules": [
+    {
+     "title": "Foundations of Mindset",
+     "lessons": []
+    },
+    {
+     "title": "Cognitive Psychology and Mindset",
+     "lessons": []
+    },
+    {
+     "title": "Positive Psychology and Mindset",
+     "lessons": []
+    },
+    {
+     "title": "Neuroscience and Mindset",
+     "lessons": []
+    },
+    {
+     "title": "Personal Growth and the Power of Mindset",
+     "lessons": []
+    },
+    {
+     "title": "Core Principles of Mindset Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Techniques in Listening and Communication",
+     "lessons": []
+    },
+    {
+     "title": "Tools for Mindset Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Practical Application of Mindset Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Hands-On Application: Conducting Coaching Sessions",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Change what people believe they <em>can do.</em>",
+    "lede": "Learn the psychology of belief and the coaching tools that shift it, and earn a certificate that shows you can. Online, self-paced, no experience needed.",
+    "why": {
+     "title": "Talent is rarely the thing <em>in the way.</em>",
+     "paras": [
+      "You have seen it: capable people who talk themselves out of things before they start. The obstacle is what they believe about themselves.",
+      "Mindset coaching gives you a structured way to help. You learn where beliefs come from, how they shape behaviour and how to help a client build ones that serve them."
+     ],
+     "label": "What clients come to a mindset coach with",
+     "points": [
+      "Self-doubt that shows up at exactly the wrong moment",
+      "Fear of failing, or of being seen to fail",
+      "A harsh inner voice they have stopped noticing",
+      "Giving up the moment something gets difficult"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 8am",
+       "img": "desk",
+       "text": "Preparing for a session with a founder who freezes before every pitch."
+      },
+      {
+       "when": "Wednesday, 6pm",
+       "img": "call",
+       "text": "An evening call with a client who has just applied for the job she said she would never get."
+      },
+      {
+       "when": "Friday, 3pm",
+       "img": "beach",
+       "text": "Done for the week. You chose the hours, so you chose this too."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The capable self-doubter",
+       "text": "Good at what they do and convinced they are not. Needs evidence and a new way of talking to themselves."
+      },
+      {
+       "name": "The perfectionist",
+       "text": "Will not start unless it will be flawless. Needs to learn that progress beats polish."
+      },
+      {
+       "name": "The one who quits early",
+       "text": "Stops at the first setback. Needs to build resilience and a longer view."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Explain what mindset actually is",
+      "d": "The foundations, drawn from cognitive psychology, positive psychology and neuroscience."
+     },
+     {
+      "h": "Spot the belief behind the behaviour",
+      "d": "Hear what a client is really telling themselves and name it with care."
+     },
+     {
+      "h": "Listen and communicate like a coach",
+      "d": "The listening and questioning techniques that make clients feel understood and challenged."
+     },
+     {
+      "h": "Use proven mindset tools",
+      "d": "A practical toolkit for reframing beliefs and building new habits of thought."
+     },
+     {
+      "h": "Run mindset sessions with confidence",
+      "d": "Apply everything in real coaching sessions, from first conversation to follow-up."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Help individual clients get past the beliefs that hold them back."
+      },
+      {
+       "h": "Corporate workshops",
+       "d": "Teach growth mindset to teams and leaders."
+      },
+      {
+       "h": "Sport and performance",
+       "d": "Work with athletes, performers and students under pressure."
+      },
+      {
+       "h": "In your current role",
+       "d": "Bring mindset skills to teaching, managing or mentoring."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Is mindset coaching just positive thinking?",
+       "a": "No. The course is grounded in psychology and neuroscience, and it teaches tools, not slogans."
+      },
+      {
+       "q": "I still doubt myself sometimes.",
+       "a": "So does everyone. Working on your own mindset is part of the course, and it makes you a better coach."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "neuroscience",
+   "sub": "Applied brainpower",
+   "title": "Certified Neuroscience Coach",
+   "tag": "Mind and performance",
+   "img": "neuroscience",
+   "price": 24500,
+   "blurb": "Clients trust a coach who can explain why change is hard and how the brain makes it stick. Add brain science to your coaching, no science background needed.",
+   "who": [
+    "New coaches who want a credible specialism",
+    "Established coaches adding science to their practice",
+    "Leaders interested in how people think and decide"
+   ],
+   "learn": [
+    "Neuroplasticity: how the brain rewires and what that means for change",
+    "Brain science in practice: motivation, memory and decision-making",
+    "Emotional intelligence: techniques grounded in neuroscience",
+    "Communication: language that works with how the brain processes it",
+    "Session design: a clear structure for neuroscience-informed coaching"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Neuroscience Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Grasping the Brain and Its Roles",
+     "lessons": []
+    },
+    {
+     "title": "Understanding Memory",
+     "lessons": []
+    },
+    {
+     "title": "Neuroscience of Language and Communication",
+     "lessons": []
+    },
+    {
+     "title": "Comprehending and Boosting Motivation",
+     "lessons": []
+    },
+    {
+     "title": "Emotional Intelligence: A Neuroscience Insight",
+     "lessons": []
+    },
+    {
+     "title": "Neuroscience in Learning and Education",
+     "lessons": []
+    },
+    {
+     "title": "Applied Neuroleadership",
+     "lessons": []
+    },
+    {
+     "title": "Mastering Neuroscience Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Coaching Sessions and Case Studies",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Coach with the <em>brain in mind.</em>",
+    "lede": "Understand how the brain learns, remembers and changes, and use it to coach better. A certificate course you study online, at your own pace.",
+    "why": {
+     "title": "Clients want to know <em>why it works.</em>",
+     "paras": [
+      "People are more willing to try something when they understand the reason behind it. A coach who can explain why change feels hard, and how the brain adapts, earns trust quickly.",
+      "This course gives you that grounding in plain language, then shows you how to apply it in sessions, in learning and in leadership."
+     ],
+     "label": "What clients come to a neuroscience coach with",
+     "points": [
+      "Habits they understand but cannot break",
+      "Motivation that arrives and disappears",
+      "Trouble learning or remembering under pressure",
+      "Leading a team and wanting to do it better"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 9am",
+       "img": "desk",
+       "text": "Sketching a simple model of habit formation for a client who needs to see it to believe it."
+      },
+      {
+       "when": "Wednesday, 2pm",
+       "img": "group",
+       "text": "A leadership workshop for a management team on how people respond to change."
+      },
+      {
+       "when": "Friday, 1pm",
+       "img": "beach",
+       "text": "A long lunch. Your brain needs recovery too, and now you can explain why."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The analytical sceptic",
+       "text": "Wants evidence before trying anything. Responds to a clear explanation of how it works."
+      },
+      {
+       "name": "The leader",
+       "text": "Runs a team and wants to understand motivation, communication and decision-making."
+      },
+      {
+       "name": "The learner",
+       "text": "Studying or retraining, and wants to learn faster and remember more."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Explain the brain in plain language",
+      "d": "How the brain is organised and what its main parts do, without the jargon."
+     },
+     {
+      "h": "Work with memory and learning",
+      "d": "Help clients learn and retain more by working with the way memory actually functions."
+     },
+     {
+      "h": "Understand and build motivation",
+      "d": "What drives people, why it fades and how to help a client rebuild it."
+     },
+     {
+      "h": "Apply emotional intelligence and communication",
+      "d": "A neuroscience view of emotion and language that sharpens every conversation."
+     },
+     {
+      "h": "Coach leaders and run sessions",
+      "d": "Applied neuroleadership, plus real coaching sessions and case studies to learn from."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "Evidence-informed coaching",
+       "d": "Give private clients an approach grounded in how the brain works."
+      },
+      {
+       "h": "Leadership development",
+       "d": "Coach managers and executives on change, focus and influence."
+      },
+      {
+       "h": "Education and training",
+       "d": "Help teachers, trainers and students apply the science of learning."
+      },
+      {
+       "h": "Workshops and talks",
+       "d": "Popular, practical sessions for organisations and events."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I do not have a science background.",
+       "a": "You do not need one. The course starts from the basics and stays practical throughout."
+      },
+      {
+       "q": "Will I be qualified to diagnose anything?",
+       "a": "No. This is a coaching certification. It does not train you to diagnose or treat medical conditions."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "productivity",
+   "sub": "Peak performance",
+   "title": "Certified Productivity Coach",
+   "tag": "Mind and performance",
+   "img": "desk",
+   "price": 24000,
+   "blurb": "Everyone wants more done in less time, and businesses pay well for it. Learn the psychology of focus and the tools that turn busy people into effective ones.",
+   "who": [
+    "Aspiring coaches",
+    "Professionals who want to coach teams and founders",
+    "Experienced coaches looking for a specialism"
+   ],
+   "learn": [
+    "Productivity psychology: the beliefs, habits and mindset behind getting things done",
+    "Time management: structure time and tasks so the important work happens",
+    "Focus: remove distractions and build environments that support deep work",
+    "Neuroscience-backed tools: decisions, stress and creativity",
+    "Coaching method: set meaningful goals and measure real progress"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Productivity",
+     "lessons": []
+    },
+    {
+     "title": "Foundations of Productivity Psychology",
+     "lessons": []
+    },
+    {
+     "title": "Neuroscience and Productivity",
+     "lessons": []
+    },
+    {
+     "title": "Productivity and Group Dynamics",
+     "lessons": []
+    },
+    {
+     "title": "Productivity Coaching Methods",
+     "lessons": []
+    },
+    {
+     "title": "Time Management Tools and Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Organizing and Managing Information",
+     "lessons": []
+    },
+    {
+     "title": "Productive Communication Strategies",
+     "lessons": []
+    },
+    {
+     "title": "Creativity and Problem-Solving",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Give people their <em>time back.</em>",
+    "lede": "Learn the psychology and the practical systems behind getting the right things done, and earn a certificate that shows you can teach them.",
+    "why": {
+     "title": "Busy is not the same as <em>productive.</em>",
+     "paras": [
+      "Almost everyone you know is overloaded. Long hours, full inboxes and a list that never gets shorter. Very few have ever been shown a better way to work.",
+      "As a productivity coach you help people focus on what matters, organise the rest and finish the day with something to show for it. Individuals value it, and so do employers."
+     ],
+     "label": "What clients come to a productivity coach with",
+     "points": [
+      "A to-do list that only grows",
+      "Procrastinating on the work that matters most",
+      "Drowning in email, messages and meetings",
+      "A team that is busy and still behind"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 9am",
+       "img": "desk",
+       "text": "Planning the week with a client who used to start every Monday already behind."
+      },
+      {
+       "when": "Wednesday, 11am",
+       "img": "group",
+       "text": "A team session on meetings, priorities and how they share information."
+      },
+      {
+       "when": "Friday, 2pm",
+       "img": "beach",
+       "text": "Finished early, as planned. It would be odd if you did not practise this one."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The overwhelmed professional",
+       "text": "Working late every night. Needs priorities, boundaries and a system they will actually keep."
+      },
+      {
+       "name": "The business owner",
+       "text": "Doing everything themselves. Needs to plan, delegate and protect time for the work that grows the business."
+      },
+      {
+       "name": "The team",
+       "text": "Capable people slowed down by poor habits. Needs shared ways of working."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand why people get stuck",
+      "d": "The psychology and neuroscience of productivity, so you treat causes and not symptoms."
+     },
+     {
+      "h": "Teach time management that lasts",
+      "d": "Tools and techniques for planning, prioritising and protecting focus."
+     },
+     {
+      "h": "Tame information overload",
+      "d": "Simple ways to organise and manage information so nothing important gets lost."
+     },
+     {
+      "h": "Improve how teams work together",
+      "d": "Group dynamics and productive communication, for work that depends on other people."
+     },
+     {
+      "h": "Unlock creativity and problem-solving",
+      "d": "Techniques that help clients think clearly when the answer is not obvious."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Help professionals and business owners take control of their week."
+      },
+      {
+       "h": "Corporate training",
+       "d": "Run productivity programmes for teams and departments."
+      },
+      {
+       "h": "Workshops",
+       "d": "Half-day and full-day sessions on focus, time and communication."
+      },
+      {
+       "h": "In your own work",
+       "d": "Use the same methods to run your own practice well."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not the most organised person myself.",
+       "a": "Many good productivity coaches were not. You will apply every method to your own week as you learn."
+      },
+      {
+       "q": "Is this only for corporate clients?",
+       "a": "No. Students, parents, freelancers and founders all look for this help."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "visualization",
+   "sub": "Vision to reality",
+   "title": "Certified Visualization Coach",
+   "tag": "Mind and performance",
+   "img": "visualization",
+   "price": 24500,
+   "blurb": "Athletes and performers have used mental imagery for decades. Learn to guide clients through visualisations that build clarity, confidence and momentum.",
+   "who": [
+    "Aspiring coaches",
+    "Mindset and performance coaches",
+    "Anyone who wants to help people see and reach their goals"
+   ],
+   "learn": [
+    "The psychology of visualization: how the mind processes imagery",
+    "Core techniques: the foundational tools and frameworks",
+    "Advanced practice: tailored, multi-sensory visualizations",
+    "Neuroscience and NLP: combine brain function with proven language patterns",
+    "Session design: structure sessions and launch your practice"
+   ],
+   "modules": [
+    {
+     "title": "Certified Course to Become a Visualization Coach",
+     "lessons": []
+    },
+    {
+     "title": "Psychological Basis",
+     "lessons": []
+    },
+    {
+     "title": "Neuroscience and Mental Imagery",
+     "lessons": []
+    },
+    {
+     "title": "Neuro-Linguistic Programming (NLP)",
+     "lessons": []
+    },
+    {
+     "title": "Mindfulness and Visualization Practices",
+     "lessons": []
+    },
+    {
+     "title": "Techniques for Visualization Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Advanced Visualization Methods",
+     "lessons": []
+    },
+    {
+     "title": "Tools for the Visualization Coach",
+     "lessons": []
+    },
+    {
+     "title": "Specific Uses of Visualization",
+     "lessons": []
+    },
+    {
+     "title": "Typical Session Structure and Launching Your Practice",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help people see it <em>before it happens.</em>",
+    "lede": "Learn the mental imagery techniques used in sport and performance, and how to coach others through them. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "The mind rehearses what the body <em>later does.</em>",
+     "paras": [
+      "Athletes picture the race before they run it. Performers walk through the stage in their heads. Mental rehearsal is a trained skill, and it can be taught.",
+      "As a visualization coach you guide clients through imagery that builds confidence, sharpens goals and prepares them for moments that matter."
+     ],
+     "label": "What clients come to a visualization coach with",
+     "points": [
+      "A goal that still feels vague and far away",
+      "Nerves before a performance, interview or event",
+      "Confidence that drops under pressure",
+      "Wanting a calmer, clearer mind"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 7am",
+       "img": "session",
+       "text": "An early session with a runner preparing for her first marathon."
+      },
+      {
+       "when": "Thursday, 4pm",
+       "img": "call",
+       "text": "Guiding a client through tomorrow's presentation, start to finish, before he gives it."
+      },
+      {
+       "when": "Sunday, 10am",
+       "img": "beach",
+       "text": "A quiet morning and your own practice. You use what you teach."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The performer",
+       "text": "Athlete, speaker or musician. Needs to rehearse success and stay steady on the day."
+      },
+      {
+       "name": "The goal-setter",
+       "text": "Knows roughly what they want. Needs to make it vivid enough to act on."
+      },
+      {
+       "name": "The anxious preparer",
+       "text": "Dreads a specific event. Needs to walk through it calmly in advance."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand why imagery works",
+      "d": "The psychology and neuroscience of mental imagery, explained clearly."
+     },
+     {
+      "h": "Use NLP and mindfulness alongside visualization",
+      "d": "Complementary approaches that deepen the effect of your sessions."
+     },
+     {
+      "h": "Lead guided visualizations",
+      "d": "Core and advanced techniques, with the language and pacing that make them work."
+     },
+     {
+      "h": "Match the method to the goal",
+      "d": "Specific uses of visualization, from performance to confidence to relaxation."
+     },
+     {
+      "h": "Structure sessions and start practising",
+      "d": "A typical session from start to finish, and how to launch your practice."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Help clients prepare for goals, events and performances."
+      },
+      {
+       "h": "Sport and performance",
+       "d": "Work with athletes, teams and performers."
+      },
+      {
+       "h": "Group sessions and classes",
+       "d": "Lead guided visualizations for groups, in person or online."
+      },
+      {
+       "h": "Recorded sessions",
+       "d": "Create guided audio your clients can use between sessions."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Is this scientific?",
+       "a": "The course covers the psychological and neuroscience basis of mental imagery before any technique is taught."
+      },
+      {
+       "q": "I have never led a guided session.",
+       "a": "You will learn scripts, structure and pacing step by step, then how to adapt them to each client."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "stress",
+   "sub": "Calm and thrive",
+   "title": "Certified Stress Management Coach",
+   "tag": "Mind and performance",
+   "img": "stress",
+   "price": 29500,
+   "care": true,
+   "blurb": "Stress is the reason most people look for a coach in the first place. Learn how it works on the body and mind, and how to coach people back to balance.",
+   "who": [
+    "Aspiring coaches",
+    "Wellness professionals and therapists",
+    "HR and people managers"
+   ],
+   "learn": [
+    "Understanding stress: its causes and what it does to body and mind",
+    "Proven techniques: evidence-based methods for reducing stress",
+    "Positive psychology: bring positivity and mindfulness into coaching",
+    "Behaviour and balance: help clients build healthier habits",
+    "Tailored plans: design programmes for individuals and groups"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Stress",
+     "lessons": []
+    },
+    {
+     "title": "Physiology of Stress",
+     "lessons": []
+    },
+    {
+     "title": "Understanding the Psychology of Stress",
+     "lessons": []
+    },
+    {
+     "title": "Stress and Its Impact on Health",
+     "lessons": []
+    },
+    {
+     "title": "Stress and Performance",
+     "lessons": []
+    },
+    {
+     "title": "Foundations of Stress Management Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Stress Management Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Coaching and Life Balance",
+     "lessons": []
+    },
+    {
+     "title": "Coaching and Behavior Change",
+     "lessons": []
+    },
+    {
+     "title": "Professional Growth and Ethics in Coaching",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Be the calm people are <em>looking for.</em>",
+    "lede": "Learn how stress works in the body and mind, and the coaching techniques that help people manage it. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Stress is the reason most people <em>seek help.</em>",
+     "paras": [
+      "Ask people what they most want to change and stress is near the top of the list. It affects sleep, work, health and relationships, and most people have never been taught how to handle it.",
+      "As a stress management coach you help clients understand what is happening to them and build habits that bring the pressure down. You work alongside medical care, never in place of it."
+     ],
+     "label": "What clients come to a stress management coach with",
+     "points": [
+      "Never switching off, even at home",
+      "Work pressure spilling into everything else",
+      "Feeling exhausted and wired at once",
+      "Wanting balance and not knowing where to start"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 12pm",
+       "img": "session",
+       "text": "A lunchtime session with a manager who has not taken a real break in months."
+      },
+      {
+       "when": "Wednesday, 10am",
+       "img": "group",
+       "text": "A workplace wellbeing workshop for a team in its busiest quarter."
+      },
+      {
+       "when": "Friday, 4pm",
+       "img": "beach",
+       "text": "You finish on time. Practising what you teach is part of the job."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The overloaded professional",
+       "text": "High performer, running on empty. Needs to recover without dropping everything."
+      },
+      {
+       "name": "The carer",
+       "text": "Looks after everyone else first. Needs permission and a plan to look after themselves."
+      },
+      {
+       "name": "The team under pressure",
+       "text": "A workplace in a demanding period. Needs practical tools everyone can use."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Explain what stress does",
+      "d": "The physiology and psychology of stress, and its effects on health and performance."
+     },
+     {
+      "h": "Coach with a clear framework",
+      "d": "The foundations of stress management coaching, from first conversation to plan."
+     },
+     {
+      "h": "Teach techniques that work",
+      "d": "Practical stress management techniques clients can use the same day."
+     },
+     {
+      "h": "Help clients rebalance their lives",
+      "d": "Coaching for life balance and lasting behaviour change."
+     },
+     {
+      "h": "Practise ethically",
+      "d": "Professional growth, ethics and knowing when to refer a client to a health professional."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Help individuals bring their stress under control."
+      },
+      {
+       "h": "Workplace wellbeing",
+       "d": "Run programmes and workshops for employers."
+      },
+      {
+       "h": "Group courses",
+       "d": "Take a group through a multi-week stress management course."
+      },
+      {
+       "h": "Alongside other work",
+       "d": "Add it to fitness, yoga, HR or health-related roles."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Do I need a medical background?",
+       "a": "No. You learn the science you need, and where a coach's role ends and medical help begins."
+      },
+      {
+       "q": "I get stressed too.",
+       "a": "Good. You will use every technique yourself first, and clients trust a coach who has been there."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cbt",
+   "sub": "Cognitive transformation",
+   "title": "Certified CBT Practitioner Coach",
+   "tag": "Mind and performance",
+   "img": "call",
+   "price": 24500,
+   "care": true,
+   "blurb": "Thoughts shape feelings, and feelings shape what people do. Learn the cognitive behavioural tools coaches use to help clients break unhelpful patterns.",
+   "who": [
+    "Aspiring coaches",
+    "Therapists and counsellors adding coaching tools",
+    "Professionals who support people through change"
+   ],
+   "learn": [
+    "Thoughts, feelings and behaviour: why people think, feel and act as they do",
+    "Practical CBT tools: foundational and advanced techniques",
+    "Targeted approaches: working with low mood and anxious thinking",
+    "The coaching relationship: build trust and work with resistance",
+    "Real-world application: design and run a CBT-informed session"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Cognitive Behavioural Therapy (CBT)",
+     "lessons": []
+    },
+    {
+     "title": "Exploring the Connection: Thoughts, Feelings, and Behaviours",
+     "lessons": []
+    },
+    {
+     "title": "Core CBT Techniques and Practical Tools",
+     "lessons": []
+    },
+    {
+     "title": "Using CBT to Address Depression",
+     "lessons": []
+    },
+    {
+     "title": "Applying CBT to Anxiety Disorders",
+     "lessons": []
+    },
+    {
+     "title": "CBT Approaches for Other Mental Health Conditions",
+     "lessons": []
+    },
+    {
+     "title": "Establishing Therapeutic Relationships and Managing Resistance to Change",
+     "lessons": []
+    },
+    {
+     "title": "Assessment, Treatment Planning, and Follow-Up",
+     "lessons": []
+    },
+    {
+     "title": "Ethics and Professional Responsibilities",
+     "lessons": []
+    },
+    {
+     "title": "Practical Application: A Typical CBT Session",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help people change the way <em>they think.</em>",
+    "lede": "Learn the principles and tools of cognitive behavioural therapy and how to apply them in a coaching setting. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Thoughts, feelings and actions are <em>connected.</em>",
+     "paras": [
+      "CBT is one of the most widely used approaches to helping people change. Its central idea is simple: how we think affects how we feel, and how we feel affects what we do.",
+      "This course teaches you the model and its tools so you can use them in coaching conversations. It is a coaching certification. It does not license you to diagnose or treat mental health conditions."
+     ],
+     "label": "What clients bring to CBT-informed coaching",
+     "points": [
+      "Unhelpful thinking they cannot seem to stop",
+      "Worry that gets in the way of daily life",
+      "Avoiding things they want or need to do",
+      "Low confidence after a difficult period"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 10am",
+       "img": "session",
+       "text": "Working through a thought record with a client who assumes the worst before every meeting."
+      },
+      {
+       "when": "Thursday, 1pm",
+       "img": "call",
+       "text": "A follow-up call. She tried the experiment you agreed on and the feared outcome did not happen."
+      },
+      {
+       "when": "Friday, 3pm",
+       "img": "desk",
+       "text": "Session notes written, plans set for next week, laptop closed."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The overthinker",
+       "text": "Caught in loops of what-if. Needs tools to notice and question their thoughts."
+      },
+      {
+       "name": "The avoider",
+       "text": "Puts off what makes them anxious. Needs small, structured steps forward."
+      },
+      {
+       "name": "The self-critic",
+       "text": "Holds themselves to impossible standards. Needs a fairer way of judging themselves."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Explain the CBT model",
+      "d": "How thoughts, feelings and behaviours influence each other, in language clients understand."
+     },
+     {
+      "h": "Use core CBT tools",
+      "d": "Practical techniques for noticing, testing and changing unhelpful thinking."
+     },
+     {
+      "h": "Understand common difficulties",
+      "d": "How CBT approaches low mood, anxiety and other problems, and the limits of a coach's role."
+     },
+     {
+      "h": "Build a strong working relationship",
+      "d": "Establish trust, handle resistance to change, and assess, plan and follow up."
+     },
+     {
+      "h": "Run a structured session",
+      "d": "Ethics, professional responsibilities and a typical CBT-informed session from start to finish."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Use CBT tools with private coaching clients."
+      },
+      {
+       "h": "Alongside another practice",
+       "d": "Add structure to work as a life coach, mentor or wellbeing practitioner."
+      },
+      {
+       "h": "Workplace wellbeing",
+       "d": "Teach practical thinking skills in organisations."
+      },
+      {
+       "h": "Workshops",
+       "d": "Run introductory sessions on managing unhelpful thoughts."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Will this make me a therapist?",
+       "a": "No. It certifies you to use CBT principles in coaching. Clinical treatment needs a licensed professional, and the course teaches you when to refer."
+      },
+      {
+       "q": "I have no psychology background.",
+       "a": "The course starts with an introduction to CBT and builds from there."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "adhd",
+   "sub": "Focus and thrive",
+   "title": "Certified ADHD Coach",
+   "tag": "Mind and performance",
+   "img": "adhd",
+   "price": 25000,
+   "care": true,
+   "blurb": "Demand for ADHD coaches has grown fast, and good ones are hard to find. Learn practical strategies that help children, teens and adults work with their brain.",
+   "who": [
+    "Aspiring coaches",
+    "Teachers and educators",
+    "Mental health and support professionals"
+   ],
+   "learn": [
+    "Understanding ADHD: the neurobiological, emotional and social sides",
+    "Tailored strategies: including the Mandala technique and mindfulness",
+    "Emotional resilience: regulation and self-confidence",
+    "Communication: assertiveness and self-disclosure",
+    "Real-world practice: supervised coaching sessions"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to ADHD",
+     "lessons": []
+    },
+    {
+     "title": "Understanding and Assessing ADHD: Diagnosis and Evaluation Methods",
+     "lessons": []
+    },
+    {
+     "title": "The Daily Effects of ADHD",
+     "lessons": []
+    },
+    {
+     "title": "Effective Approaches to ADHD: Treatment and Management Strategies",
+     "lessons": []
+    },
+    {
+     "title": "ADHD and Anxiety Disorders",
+     "lessons": []
+    },
+    {
+     "title": "Core Concepts in ADHD Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Specialised Coaching Tools and Techniques for ADHD Support",
+     "lessons": []
+    },
+    {
+     "title": "Mandala Technique for ADHD Focus and Creativity",
+     "lessons": []
+    },
+    {
+     "title": "Emotion and Stress Management Strategy: Mindfulness Meditation",
+     "lessons": []
+    },
+    {
+     "title": "Communication and Self-Assertiveness: Technique of Self-Disclosure",
+     "lessons": []
+    },
+    {
+     "title": "Applying ADHD Coaching: Practical Strategies and Real-World Implementation",
+     "lessons": []
+    },
+    {
+     "title": "Practical Application: Supervised Coaching Sessions",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help brilliant minds find <em>their focus.</em>",
+    "lede": "Learn how ADHD affects daily life and the coaching strategies that help people work with it. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "People with ADHD do not need <em>fixing.</em>",
+     "paras": [
+      "They need strategies that suit the way their minds work. More adults and families are looking for that support than ever, and coaches who understand ADHD are hard to find.",
+      "As an ADHD coach you help clients build structure, manage time and emotions, and use their strengths. You do not diagnose or treat. You work alongside the medical care a client may already have."
+     ],
+     "label": "What clients come to an ADHD coach with",
+     "points": [
+      "Starting everything and finishing little",
+      "Time that disappears without warning",
+      "Overwhelm, frustration and self-blame",
+      "A recent diagnosis and no idea what to do next"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 10am",
+       "img": "session",
+       "text": "Building a weekly plan with a client that fits how she really works."
+      },
+      {
+       "when": "Wednesday, 5pm",
+       "img": "call",
+       "text": "A short accountability call. Twenty minutes, three wins, one thing to adjust."
+      },
+      {
+       "when": "Friday, 12pm",
+       "img": "desk",
+       "text": "Your own week wrapped up, using the same systems you teach."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The newly diagnosed adult",
+       "text": "Finally has an explanation. Needs practical strategies and a kinder view of their past."
+      },
+      {
+       "name": "The student",
+       "text": "Bright and behind. Needs study structure, planning and someone in their corner."
+      },
+      {
+       "name": "The professional",
+       "text": "Creative and capable, tripped up by organisation. Needs systems that hold."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand ADHD properly",
+      "d": "What ADHD is, how it is assessed and how it affects daily life, including its overlap with anxiety."
+     },
+     {
+      "h": "Know the support landscape",
+      "d": "An overview of treatment and management approaches, so you can work alongside a client's care."
+     },
+     {
+      "h": "Coach with ADHD in mind",
+      "d": "The core concepts of ADHD coaching and specialised tools and techniques."
+     },
+     {
+      "h": "Teach focus, calm and communication",
+      "d": "Mandala work, mindfulness meditation and self-assertiveness techniques."
+     },
+     {
+      "h": "Apply it in real sessions",
+      "d": "Practical strategies, real-world implementation and guided session practice."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Ongoing support for adults and students with ADHD."
+      },
+      {
+       "h": "Family and parent support",
+       "d": "Help parents understand and support a child with ADHD."
+      },
+      {
+       "h": "Education and workplaces",
+       "d": "Advise schools, universities and employers on practical adjustments."
+      },
+      {
+       "h": "Groups",
+       "d": "Run accountability and skills groups."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Do I need to have ADHD myself?",
+       "a": "No, though many coaches do. What matters is understanding, patience and practical skill."
+      },
+      {
+       "q": "Can I diagnose ADHD after this?",
+       "a": "No. Diagnosis and treatment belong to qualified clinicians. You provide coaching alongside them."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "relationship",
+   "sub": "Connection and growth",
+   "title": "Certified Relationship Coach",
+   "tag": "Relationships and family",
+   "img": "relationship",
+   "price": 29500,
+   "blurb": "Relationships are where people feel their biggest wins and deepest struggles. Learn to coach individuals and couples towards the connection they want.",
+   "who": [
+    "Aspiring coaches",
+    "Therapists and counsellors",
+    "Professionals who work with couples and families"
+   ],
+   "learn": [
+    "Foundations of relationship coaching: principles, ethics and method",
+    "Communication and emotion: tools for conflict and connection",
+    "Self-relationship: self-worth and personal growth",
+    "Every kind of relationship: couples, families, friendships and work",
+    "Launching your practice: sessions, programmes and growth"
+   ],
+   "modules": [
+    {
+     "title": "Foundations of Relationship Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Psychology of Relationships",
+     "lessons": []
+    },
+    {
+     "title": "Communication and Emotion Management",
+     "lessons": []
+    },
+    {
+     "title": "Relationship Coaching Tools and Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Coaching for Couples",
+     "lessons": []
+    },
+    {
+     "title": "The Unique Aspects and Obstacles in Family and Parental Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Coaching for Friendly and Professional Relationships",
+     "lessons": []
+    },
+    {
+     "title": "Coaching Self-Relationship",
+     "lessons": []
+    },
+    {
+     "title": "Practical Implementation: Supervised Coaching Sessions",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help people love and connect <em>better.</em>",
+    "lede": "Learn to coach individuals and couples towards healthier relationships, and earn a certificate that shows you can. Online, self-paced, no experience needed.",
+    "why": {
+     "title": "Relationships shape <em>everything else.</em>",
+     "paras": [
+      "When a relationship is going well, the rest of life feels lighter. When it is not, nothing else quite works. Yet most people are never taught how to communicate, repair or connect.",
+      "As a relationship coach you give people those skills: with a partner, with family, with friends and colleagues, and with themselves."
+     ],
+     "label": "What clients come to a relationship coach with",
+     "points": [
+      "The same argument on repeat",
+      "Feeling distant from a partner",
+      "Dating again and getting nowhere",
+      "Difficult family or work relationships"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 6pm",
+       "img": "session",
+       "text": "A couple's session. For the first time in months, each of them listens to the end of the other's sentence."
+      },
+      {
+       "when": "Thursday, 11am",
+       "img": "call",
+       "text": "A call with a client who is dating again after a long marriage."
+      },
+      {
+       "when": "Saturday, 10am",
+       "img": "beach",
+       "text": "A slow morning with the people who matter to you."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The couple in a rut",
+       "text": "Still care, stopped communicating. Need tools to talk and listen again."
+      },
+      {
+       "name": "The single person",
+       "text": "Keeps choosing the same kind of partner. Needs to understand their patterns."
+      },
+      {
+       "name": "The peacemaker",
+       "text": "Struggles with family or colleagues. Needs boundaries and better conversations."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand how relationships work",
+      "d": "The foundations and psychology of relationships, and why they go wrong."
+     },
+     {
+      "h": "Teach communication and emotional skills",
+      "d": "Help clients say what they mean, hear each other and manage strong feelings."
+     },
+     {
+      "h": "Coach couples",
+      "d": "Tools and techniques for working with two people in the room."
+     },
+     {
+      "h": "Work across every kind of relationship",
+      "d": "Family and parenting, friendships, professional relationships and the relationship with oneself."
+     },
+     {
+      "h": "Put it into practice",
+      "d": "Apply your skills in guided coaching session practice."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "Couples coaching",
+       "d": "Work with partners who want to reconnect."
+      },
+      {
+       "h": "Coaching singles",
+       "d": "Help individuals date with more clarity and confidence."
+      },
+      {
+       "h": "Workshops and courses",
+       "d": "Run communication workshops for couples or groups."
+      },
+      {
+       "h": "Workplace relationships",
+       "d": "Coach teams and leaders on working relationships."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "My own relationships are not perfect.",
+       "a": "Nobody's are. You are teaching skills, not presenting yourself as a model."
+      },
+      {
+       "q": "Is this the same as couples therapy?",
+       "a": "No. Coaching is forward-looking and skills-based. The course covers when to refer to a therapist."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "parenting",
+   "sub": "Strong families",
+   "title": "Certified Parenting Coach",
+   "tag": "Relationships and family",
+   "img": "parenting",
+   "price": 35000,
+   "blurb": "Parents rarely get support that is practical and free of judgement. Learn to help them communicate better, guide behaviour kindly and enjoy family life again.",
+   "who": [
+    "Aspiring coaches",
+    "Teachers and educators",
+    "Family and childcare professionals"
+   ],
+   "learn": [
+    "Core principles of effective parenting: styles and the parent-child bond",
+    "Communication and connection: active listening and resolving conflict",
+    "Positive discipline: firm, kind guidance that builds autonomy",
+    "Supporting parents: confidence, emotions and limiting beliefs",
+    "Parent coaching tools: tailored techniques and session structures"
+   ],
+   "modules": [
+    {
+     "title": "The Foundations of Parenthood: Core Principles",
+     "lessons": []
+    },
+    {
+     "title": "Building Strong Parent-Child Communication and Relationships",
+     "lessons": []
+    },
+    {
+     "title": "Positive Discipline and Effective Behaviour Management",
+     "lessons": []
+    },
+    {
+     "title": "Encouraging Autonomy and Building Self-Esteem in Children",
+     "lessons": []
+    },
+    {
+     "title": "Navigating the Unique Challenges of Parenthood",
+     "lessons": []
+    },
+    {
+     "title": "Introduction to Parent Coaching: Essential Concepts",
+     "lessons": []
+    },
+    {
+     "title": "The Parent Coaching Journey: Steps and Structure",
+     "lessons": []
+    },
+    {
+     "title": "Tailored Coaching Techniques for Parenting Support",
+     "lessons": []
+    },
+    {
+     "title": "Practical Tools and Resources for Parent Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Managing Emotions and Overcoming Limiting Beliefs",
+     "lessons": []
+    },
+    {
+     "title": "Exploring Different Parenting Styles and Approaches",
+     "lessons": []
+    },
+    {
+     "title": "Supporting Parents: The Art of Coaching for Growth and Transformation",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help families find their <em>way back to each other.</em>",
+    "lede": "Learn to coach parents with practical, judgement-free support, and earn a certificate that shows you can. Online, self-paced, no experience needed.",
+    "why": {
+     "title": "Nobody hands parents <em>a manual.</em>",
+     "paras": [
+      "Parents are expected to know what to do, and most are working it out as they go. Advice is everywhere. Calm, practical, non-judgemental support is rare.",
+      "As a parenting coach you help parents communicate with their children, handle behaviour without battles and build a family life that feels good to be in."
+     ],
+     "label": "What clients come to a parenting coach with",
+     "points": [
+      "Daily battles over the same things",
+      "Shouting, then feeling guilty about it",
+      "Two parents with two different approaches",
+      "A child who has stopped talking to them"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 10am",
+       "img": "session",
+       "text": "A session with a mother who wants mornings without a fight."
+      },
+      {
+       "when": "Wednesday, 8pm",
+       "img": "call",
+       "text": "An evening call once the children are asleep. Bedtime took twenty minutes, not two hours."
+      },
+      {
+       "when": "Friday, 3pm",
+       "img": "beach",
+       "text": "School pick-up, because your diary lets you."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The exhausted parent",
+       "text": "Trying everything and seeing nothing change. Needs a few approaches that work, used consistently."
+      },
+      {
+       "name": "The divided couple",
+       "text": "One strict, one relaxed. Need to agree on a shared way forward."
+      },
+      {
+       "name": "The new stage parent",
+       "text": "Toddler, tween or teen. Needs to adapt as the child changes."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand the foundations of parenthood",
+      "d": "Core principles, parenting styles and the particular challenges parents face."
+     },
+     {
+      "h": "Strengthen communication and connection",
+      "d": "Help parents build relationships where children listen and feel heard."
+     },
+     {
+      "h": "Teach positive discipline",
+      "d": "Behaviour management that is firm, kind and consistent."
+     },
+     {
+      "h": "Build confident, independent children",
+      "d": "Encourage autonomy and self-esteem at every age."
+     },
+     {
+      "h": "Coach parents step by step",
+      "d": "The parent coaching process, tailored techniques, practical tools and work on emotions and limiting beliefs."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Support individual parents or couples."
+      },
+      {
+       "h": "Parent groups",
+       "d": "Run courses and support groups in your community or online."
+      },
+      {
+       "h": "Schools and nurseries",
+       "d": "Offer talks and workshops for parents and staff."
+      },
+      {
+       "h": "Alongside your profession",
+       "d": "Add it to teaching, childcare, health visiting or family work."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not a perfect parent.",
+       "a": "There is no such thing, and clients do not want one. They want someone practical and kind."
+      },
+      {
+       "q": "Do I need to have children?",
+       "a": "No. You need the knowledge, the method and real respect for how hard parenting is."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "teen",
+   "sub": "Empowering teens",
+   "title": "Certified Teen Life Coach",
+   "tag": "Relationships and family",
+   "img": "teen",
+   "price": 25000,
+   "blurb": "Teenagers will often talk to a coach when they will not talk to anyone else. Learn to earn that trust and help them build confidence for what comes next.",
+   "who": [
+    "Aspiring coaches",
+    "Teachers, youth workers and mentors",
+    "Parents who want to work with young people"
+   ],
+   "learn": [
+    "The psychology of adolescence: how teens develop and think",
+    "Communicating with teens: build trust and honest conversation",
+    "Growth and decisions: emotions, goals and confidence",
+    "Parents and professionals: work alongside families and schools",
+    "Session design: shape sessions around each teenager"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Adolescent Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Understanding Adolescent Psychology",
+     "lessons": []
+    },
+    {
+     "title": "Adolescent Growth and Physical Changes",
+     "lessons": []
+    },
+    {
+     "title": "Communicating Effectively with Teenagers",
+     "lessons": []
+    },
+    {
+     "title": "Building Trust with Adolescents",
+     "lessons": []
+    },
+    {
+     "title": "Techniques and Tools for Coaching Teens",
+     "lessons": []
+    },
+    {
+     "title": "Stress and Emotion Management in Adolescents",
+     "lessons": []
+    },
+    {
+     "title": "Helping Teenagers in Their Personal Growth",
+     "lessons": []
+    },
+    {
+     "title": "Partnering with Parents and Professionals",
+     "lessons": []
+    },
+    {
+     "title": "Implementing Coaching for Teenagers",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Be the adult a teenager <em>actually talks to.</em>",
+    "lede": "Learn how teenagers think and how to coach them through the years that shape who they become. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Teenagers will talk. Just <em>not to everyone.</em>",
+     "paras": [
+      "Adolescence is a storm of change: body, brain, friendships, pressure and identity, all at once. Parents and teachers often find themselves shut out.",
+      "A teen coach is someone outside all that. You earn trust, listen without judgement and help a young person build confidence and skills they will use for life."
+     ],
+     "label": "What teenagers come to a coach with",
+     "points": [
+      "Exam pressure and fear of the future",
+      "Confidence that has collapsed",
+      "Friendship, social and online pressures",
+      "Big feelings they do not know how to handle"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 4pm",
+       "img": "session",
+       "text": "An after-school session. Ten minutes of small talk, then what is really going on."
+      },
+      {
+       "when": "Thursday, 7pm",
+       "img": "call",
+       "text": "A call with parents, sharing how to support what their daughter is working on."
+      },
+      {
+       "when": "Saturday, 11am",
+       "img": "group",
+       "text": "A weekend confidence workshop for a small group of teens."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The anxious achiever",
+       "text": "High grades, high pressure. Needs perspective and ways to manage stress."
+      },
+      {
+       "name": "The withdrawn teen",
+       "text": "Has gone quiet at home. Needs a trusted adult and a reason to open up."
+      },
+      {
+       "name": "The one without direction",
+       "text": "Does not know what they want. Needs help discovering strengths and setting goals."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand the teenage years",
+      "d": "Adolescent psychology, growth and physical changes, and what they mean for behaviour."
+     },
+     {
+      "h": "Communicate so teens listen",
+      "d": "How to talk with teenagers and how to build real trust."
+     },
+     {
+      "h": "Use tools made for teens",
+      "d": "Coaching techniques and tools adapted for young people."
+     },
+     {
+      "h": "Help with stress and emotions",
+      "d": "Support teenagers in managing pressure and strong feelings, and in their personal growth."
+     },
+     {
+      "h": "Work with parents and professionals",
+      "d": "Partner with families and schools, and put a full coaching approach into practice."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Work with teenagers privately, in person or online."
+      },
+      {
+       "h": "Schools and colleges",
+       "d": "Offer coaching and workshops through education settings."
+      },
+      {
+       "h": "Group programmes",
+       "d": "Run confidence and life-skills groups."
+      },
+      {
+       "h": "Parent support",
+       "d": "Help parents understand and support their teenager."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Will teenagers take me seriously?",
+       "a": "Trust is a skill, and two full modules are about communicating with teens and earning it."
+      },
+      {
+       "q": "What about safeguarding?",
+       "a": "You will need to follow the safeguarding rules and checks that apply where you work. The course covers working with parents and professionals."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "postpartum",
+   "sub": "Empowered motherhood",
+   "title": "Certified Postpartum Transition Coach",
+   "tag": "Relationships and family",
+   "img": "postpartum",
+   "price": 29500,
+   "care": true,
+   "blurb": "The months after birth change everything, and most new mothers get very little support. Learn to guide them through recovery, identity and finding their feet.",
+   "who": [
+    "Aspiring coaches",
+    "Midwives, doulas and healthcare professionals",
+    "Wellness practitioners"
+   ],
+   "learn": [
+    "The postpartum body and mind: physiology, hormones and health",
+    "Emotional wellbeing: perinatal psychology and self-image",
+    "Coaching tools: adjusting to change and regaining balance",
+    "The transition to motherhood: identity and new challenges",
+    "Practical application: run sessions and workshops"
+   ],
+   "modules": [
+    {
+     "title": "Understanding Postnatal Physiology",
+     "lessons": []
+    },
+    {
+     "title": "Introduction to Infant Nutrition and Breastfeeding",
+     "lessons": []
+    },
+    {
+     "title": "Newborn Care and Development",
+     "lessons": []
+    },
+    {
+     "title": "Perinatal Psychology",
+     "lessons": []
+    },
+    {
+     "title": "Coach's Ethics and Posture",
+     "lessons": []
+    },
+    {
+     "title": "Tools for the Coach",
+     "lessons": []
+    },
+    {
+     "title": "Guiding Through Change",
+     "lessons": []
+    },
+    {
+     "title": "Supporting Femininity and Self-Perception",
+     "lessons": []
+    },
+    {
+     "title": "Practical Application: A Typical Session",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Hold the mother while she <em>holds the baby.</em>",
+    "lede": "Learn to support new mothers through the physical and emotional changes after birth. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Everyone asks about <em>the baby.</em>",
+     "paras": [
+      "Very few people ask about the mother. The months after birth bring enormous change in body, identity, sleep and relationships, and many women go through it feeling alone.",
+      "As a postpartum transition coach you are the steady, informed presence she needs. You offer support and guidance alongside her midwife, doctor and health visitor, never in place of them."
+     ],
+     "label": "What new mothers come to a coach with",
+     "points": [
+      "Not feeling like themselves any more",
+      "Exhaustion and overwhelm",
+      "Doubt about whether they are doing it right",
+      "A changed body and a changed relationship"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 11am",
+       "img": "session",
+       "text": "A home visit. The baby sleeps, and for an hour the conversation is about her."
+      },
+      {
+       "when": "Wednesday, 2pm",
+       "img": "call",
+       "text": "A video call with a mother six weeks in, planning how to ask for the help she needs."
+      },
+      {
+       "when": "Friday, 10am",
+       "img": "group",
+       "text": "A small circle of new mothers, sharing what nobody told them."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The first-time mother",
+       "text": "Everything is new. Needs reassurance, information and someone to ask."
+      },
+      {
+       "name": "The mother returning to work",
+       "text": "Torn between two worlds. Needs help planning the transition."
+      },
+      {
+       "name": "The one who feels lost",
+       "text": "Loves her baby and misses herself. Needs support rebuilding her sense of who she is."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand the postnatal period",
+      "d": "Postnatal physiology, infant nutrition and breastfeeding, and newborn care and development."
+     },
+     {
+      "h": "Understand perinatal psychology",
+      "d": "The emotional changes around birth, and the signs that mean a mother needs medical support."
+     },
+     {
+      "h": "Hold the right role",
+      "d": "A coach's ethics and posture: what is yours to do and what belongs to health professionals."
+     },
+     {
+      "h": "Guide a mother through change",
+      "d": "Coaching tools for the transition, including femininity and self-perception."
+     },
+     {
+      "h": "Run a typical session",
+      "d": "A complete session from start to finish, ready to adapt to each mother."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one support",
+       "d": "Work with mothers at home or online in the months after birth."
+      },
+      {
+       "h": "Mothers' circles",
+       "d": "Run small supportive groups."
+      },
+      {
+       "h": "Alongside birth work",
+       "d": "Add it to work as a doula, antenatal teacher or lactation supporter."
+      },
+      {
+       "h": "Workplace returners",
+       "d": "Support mothers and employers through the return to work."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not a midwife or nurse.",
+       "a": "You do not need to be. You are trained as a coach, and you learn clearly where medical care takes over."
+      },
+      {
+       "q": "Do I need to be a mother?",
+       "a": "No, though many who enrol are. Knowledge, warmth and good listening matter most."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "family-constellations",
+   "sub": "Healing generations",
+   "title": "Certified Family Constellations Practitioner",
+   "tag": "Relationships and family",
+   "img": "constellations",
+   "price": 23500,
+   "care": true,
+   "blurb": "Some patterns run through whole families. Learn the systemic constellation method for helping clients see inherited dynamics and step out of them.",
+   "who": [
+    "Aspiring coaches",
+    "Therapists and healers",
+    "Practitioners adding systemic work"
+   ],
+   "learn": [
+    "Family systems and hidden dynamics: the core systemic principles",
+    "Intergenerational patterns: spot inherited loyalties and repeated stories",
+    "The practitioner's role: neutrality, safety and running groups",
+    "Running a constellation: a framework from observation to resolution",
+    "The wider view: the spiritual and philosophical side of systemic work"
+   ],
+   "modules": [
+    {
+     "title": "Overview of Systemic Family Constellations",
+     "lessons": []
+    },
+    {
+     "title": "Understanding Family Systems Theory",
+     "lessons": []
+    },
+    {
+     "title": "Intergenerational Patterns and Psychogenealogy",
+     "lessons": []
+    },
+    {
+     "title": "Soul Movements and Systemic Dynamics",
+     "lessons": []
+    },
+    {
+     "title": "The Spiritual and Philosophical Aspects of Constellations",
+     "lessons": []
+    },
+    {
+     "title": "Steps and Methodology of Conducting a Constellation",
+     "lessons": []
+    },
+    {
+     "title": "Facilitating and Managing Groups Effectively",
+     "lessons": []
+    },
+    {
+     "title": "Additional Techniques and Variations of Constellations",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "See the patterns a family <em>carries.</em>",
+    "lede": "Learn the systemic constellation method and how to facilitate it for individuals and groups. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Some patterns are <em>older than we are.</em>",
+     "paras": [
+      "People often notice the same themes repeating through a family: the same conflicts, the same silences, the same roles handed down. Family constellations is a method for making those patterns visible.",
+      "As a practitioner you guide a client to set out their family system and look at it from a new position. It is an experiential, reflective approach. It complements professional mental health care and does not replace it."
+     ],
+     "label": "What clients bring to a constellation",
+     "points": [
+      "A pattern they keep repeating",
+      "A strained or broken family relationship",
+      "A sense of carrying something that is not theirs",
+      "A loss the family never spoke about"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 10am",
+       "img": "session",
+       "text": "A one-to-one constellation using figures on a table. The client moves one piece and goes quiet."
+      },
+      {
+       "when": "Thursday, 6pm",
+       "img": "call",
+       "text": "A follow-up call. She has spoken to her sister for the first time in three years."
+      },
+      {
+       "when": "Saturday, 10am",
+       "img": "group",
+       "text": "A group workshop day, with participants standing in for members of each other's families."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The pattern-repeater",
+       "text": "Keeps ending up in the same situation. Wants to understand where it began."
+      },
+      {
+       "name": "The estranged",
+       "text": "Cut off from a parent or sibling. Wants peace, with or without reconciliation."
+      },
+      {
+       "name": "The seeker",
+       "text": "Curious about their roots and their place in the family story."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand the method",
+      "d": "An overview of systemic family constellations and family systems theory."
+     },
+     {
+      "h": "Trace patterns across generations",
+      "d": "Intergenerational patterns and psychogenealogy."
+     },
+     {
+      "h": "Read systemic dynamics",
+      "d": "The movements and dynamics that appear in a constellation, and its spiritual and philosophical side."
+     },
+     {
+      "h": "Conduct a constellation step by step",
+      "d": "The full methodology, from the opening question to the close."
+     },
+     {
+      "h": "Lead groups and adapt the work",
+      "d": "Group facilitation, plus additional techniques and variations."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one sessions",
+       "d": "Work with individuals using figures or floor markers."
+      },
+      {
+       "h": "Group workshops",
+       "d": "Host constellation days and evenings."
+      },
+      {
+       "h": "Retreats",
+       "d": "Offer constellation work as part of a longer programme."
+      },
+      {
+       "h": "Alongside another practice",
+       "d": "Add it to coaching, counselling or bodywork."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Is this therapy?",
+       "a": "No. It is a facilitated, reflective method. The course is clear that it sits alongside professional mental health care."
+      },
+      {
+       "q": "Do I need a group to do it?",
+       "a": "No. You learn to work one-to-one as well as with groups."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "menopause",
+   "sub": "Thrive through change",
+   "title": "Certified Menopause Coach",
+   "tag": "Wellbeing and healing",
+   "img": "menopause",
+   "price": 25000,
+   "care": true,
+   "blurb": "Millions of women go through menopause with little guidance. Become the informed, steady support they are looking for, with our most in-depth curriculum.",
+   "who": [
+    "Aspiring coaches",
+    "Wellness practitioners",
+    "Professionals who support women at work"
+   ],
+   "learn": [
+    "Hormonal changes: how menopause affects body and mind",
+    "Symptom support: help clients through hot flushes, mood shifts and poor sleep",
+    "Lifestyle and wellbeing: nutrition, activity and stress",
+    "Coaching tools: session structures built for menopause",
+    "Relationships and purpose: help clients find direction in this chapter"
+   ],
+   "modules": [
+    {
+     "title": "Understanding Menopause: An Introduction",
+     "lessons": []
+    },
+    {
+     "title": "Hormonal Changes and Their Effects on the Body",
+     "lessons": []
+    },
+    {
+     "title": "Managing the Physical Symptoms of Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Cardiovascular Health and Menopause-Related Risks",
+     "lessons": []
+    },
+    {
+     "title": "Cognitive Health and Brain Aging During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Hormonal Changes and Their Impact on Oral Health",
+     "lessons": []
+    },
+    {
+     "title": "Skin Changes and Aging During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Psychological and Emotional Effects of Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Lifestyle Adjustments for Symptom Management",
+     "lessons": []
+    },
+    {
+     "title": "Navigating Menopause in the Professional World",
+     "lessons": []
+    },
+    {
+     "title": "Social and Relationship Dynamics During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Exploring Spirituality and Life's Purpose During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Core Concepts of Menopause Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Effective Coaching Tools and Techniques for Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Nutritional Guidance and Weight Management in Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Coaching Physical Activity, Stress, and Sexuality During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Life Coaching for Personal Growth During Menopause",
+     "lessons": []
+    },
+    {
+     "title": "Structuring a Menopause Coaching Session and Long-Term Support",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Be the guide she <em>never had.</em>",
+    "lede": "The most in-depth certification we offer: 18 modules on menopause, from hormones and health to coaching women through the change. Online and self-paced.",
+    "why": {
+     "title": "Half the population goes through this. <em>Few are prepared.</em>",
+     "paras": [
+      "Menopause affects body, mind, work and relationships, often for years. Many women reach it with almost no information and nobody to talk to.",
+      "As a menopause coach you offer informed, practical support: helping women understand what is happening and make changes that help. You do not give medical advice. You work alongside her doctor."
+     ],
+     "label": "What women come to a menopause coach with",
+     "points": [
+      "Symptoms they did not expect and do not understand",
+      "Poor sleep, low energy and brain fog",
+      "Confidence at work slipping",
+      "Feeling invisible or unlike themselves"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 10am",
+       "img": "session",
+       "text": "A first session. She has a list of questions she has not felt able to ask anyone."
+      },
+      {
+       "when": "Wednesday, 1pm",
+       "img": "group",
+       "text": "A lunchtime talk for an employer that wants to support its staff properly."
+      },
+      {
+       "when": "Friday, 9am",
+       "img": "beach",
+       "text": "A walk before work. You know what movement does, and you make time for it."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The woman in the thick of it",
+       "text": "Symptoms are affecting daily life. Needs understanding and a practical plan."
+      },
+      {
+       "name": "The professional",
+       "text": "Worried about performing at work. Needs strategies and the confidence to ask for support."
+      },
+      {
+       "name": "The woman looking ahead",
+       "text": "In her forties and wants to be ready. Needs clear information early."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand menopause in depth",
+      "d": "Hormonal changes and their effects on the body, from heart and brain health to skin and oral health."
+     },
+     {
+      "h": "Support symptom management",
+      "d": "Physical symptoms, lifestyle adjustments, nutrition and weight, activity and stress."
+     },
+     {
+      "h": "Address the emotional side",
+      "d": "Psychological effects, relationships, sexuality, work, and questions of purpose and spirituality."
+     },
+     {
+      "h": "Coach with specialist tools",
+      "d": "The core concepts of menopause coaching and the techniques that go with them."
+     },
+     {
+      "h": "Offer structured, long-term support",
+      "d": "How to structure a session and support a woman over months, including coaching for personal growth."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Private support for women before, during and after menopause."
+      },
+      {
+       "h": "Workplace programmes",
+       "d": "Talks, training and coaching for employers."
+      },
+      {
+       "h": "Group courses",
+       "d": "Take a group of women through a structured programme."
+      },
+      {
+       "h": "Alongside health and fitness work",
+       "d": "Add it to nutrition, fitness, yoga or wellbeing practice."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not medically trained.",
+       "a": "You do not need to be. The course teaches the health background, and you learn to work alongside a woman's doctor."
+      },
+      {
+       "q": "Eighteen modules sounds like a lot.",
+       "a": "It is our most thorough course, and it is self-paced. Take it a module at a time."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "laughter",
+   "sub": "Joyful living",
+   "title": "Certified Laughter Therapist",
+   "tag": "Wellbeing and healing",
+   "img": "laughter",
+   "price": 22500,
+   "blurb": "The most fun you can have getting certified. Learn the science of laughter and how to lead sessions for workplaces, care homes, schools and communities.",
+   "who": [
+    "Aspiring coaches",
+    "Wellbeing and activity leaders",
+    "Anyone who lights up a room"
+   ],
+   "learn": [
+    "The science of laughter: what it does for body, mind and mood",
+    "Core techniques: exercises, tools and frameworks",
+    "A universal language: connect people of every background",
+    "Running sessions: healthcare, corporate, education and social settings",
+    "Your role: the skills, ethics and mindset of a laughter therapist"
+   ],
+   "modules": [
+    {
+     "title": "Laughter Therapy",
+     "lessons": []
+    },
+    {
+     "title": "The Benefits of Laughter on Physical Health",
+     "lessons": []
+    },
+    {
+     "title": "How Laughter Enhances Mental and Emotional Well-being",
+     "lessons": []
+    },
+    {
+     "title": "Understanding the Psychological Basis of Laughter Therapy",
+     "lessons": []
+    },
+    {
+     "title": "Laughter Therapy in Different Environments",
+     "lessons": []
+    },
+    {
+     "title": "Key Skills of a Laughter Therapist",
+     "lessons": []
+    },
+    {
+     "title": "Techniques and Exercises of Laughter Therapy",
+     "lessons": []
+    },
+    {
+     "title": "Tools and Supports for Laughter Therapy",
+     "lessons": []
+    },
+    {
+     "title": "Designing and Facilitating Laughter Therapy Sessions",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Get paid to make people <em>laugh.</em>",
+    "lede": "Learn the science of laughter and how to lead sessions that leave a room lighter. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Laughter is serious <em>business.</em>",
+     "paras": [
+      "People feel better after a good laugh. They are more relaxed, more connected and more open. Laughter sessions use that on purpose, in workplaces, care settings, schools and community groups.",
+      "As a laughter session leader you learn why it works and how to run a session where even the most reluctant person ends up joining in."
+     ],
+     "label": "Who books a laughter session",
+     "points": [
+      "Teams that need to reconnect",
+      "Care homes and community groups",
+      "Wellbeing days and retreats",
+      "People who simply want more joy"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 9am",
+       "img": "group",
+       "text": "A team away-day. Arms folded at the start. Tears of laughter twenty minutes later."
+      },
+      {
+       "when": "Thursday, 2pm",
+       "img": "session",
+       "text": "An afternoon session at a care home. The staff join in too."
+      },
+      {
+       "when": "Saturday, 10am",
+       "img": "beach",
+       "text": "A laughter club in the park. Passers-by stop to watch, then take part."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The stressed team",
+       "text": "Working hard and barely speaking. Needs to loosen up together."
+      },
+      {
+       "name": "Older adults",
+       "text": "In care or community settings. Benefit from gentle movement, breath and company."
+      },
+      {
+       "name": "The wellbeing group",
+       "text": "On a retreat or course. Wants something joyful alongside the serious work."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand the approach",
+      "d": "What laughter therapy is and the psychology behind it."
+     },
+     {
+      "h": "Explain the benefits",
+      "d": "How laughter affects physical health and mental and emotional wellbeing."
+     },
+     {
+      "h": "Adapt to any setting",
+      "d": "Running sessions in different environments, for different groups."
+     },
+     {
+      "h": "Lead with skill",
+      "d": "The key skills of a session leader, plus techniques, exercises, tools and supports."
+     },
+     {
+      "h": "Design your own sessions",
+      "d": "Plan and facilitate complete laughter sessions from start to finish."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "Corporate sessions",
+       "d": "Team days, conferences and wellbeing weeks."
+      },
+      {
+       "h": "Care and community settings",
+       "d": "Regular sessions for older adults and community groups."
+      },
+      {
+       "h": "Laughter clubs",
+       "d": "Run your own weekly group."
+      },
+      {
+       "h": "Retreats and events",
+       "d": "Add a session to someone else's programme."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not a naturally funny person.",
+       "a": "You do not need to be. Sessions use exercises, not jokes."
+      },
+      {
+       "q": "Is the title recognised where I live?",
+       "a": "Rules on the word therapist vary by country. Check what applies locally and describe your services accordingly."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "pet-loss",
+   "sub": "Healing hearts",
+   "title": "Certified Pet Loss Grief Coach",
+   "tag": "Wellbeing and healing",
+   "img": "petloss",
+   "price": 25000,
+   "care": true,
+   "blurb": "Losing a pet is losing family, and people are often left to grieve alone. Learn to hold that space with compassion and help them find peace.",
+   "who": [
+    "Aspiring coaches",
+    "Therapists and counsellors",
+    "Vets, groomers and pet care professionals"
+   ],
+   "learn": [
+    "Understanding pet loss grief: why it runs so deep",
+    "Compassionate support: hold space for guilt and loss",
+    "Symbolism and ritual: create personal, meaningful goodbyes",
+    "Emotional tools: help clients manage what they feel",
+    "Session frameworks: guide clients towards comfort and closure"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to the Grieving Process",
+     "lessons": []
+    },
+    {
+     "title": "Understanding Pet Loss Grief",
+     "lessons": []
+    },
+    {
+     "title": "Overview of Animal Behavior and Psychology",
+     "lessons": []
+    },
+    {
+     "title": "Providing Bereavement Support for Pet Owners",
+     "lessons": []
+    },
+    {
+     "title": "Creative Rituals and Symbolism in Pet Bereavement",
+     "lessons": []
+    },
+    {
+     "title": "Tools for Assessment and Monitoring",
+     "lessons": []
+    },
+    {
+     "title": "Managing Emotions and Relaxation Methods",
+     "lessons": []
+    },
+    {
+     "title": "Example Session for Supporting Pet Loss Grief",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Sit with people in a grief others <em>overlook.</em>",
+    "lede": "Learn to support people through the loss of a pet with compassion and skill. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "It was never <em>just a pet.</em>",
+     "paras": [
+      "For many people a pet is family: daily company, routine and unconditional affection. When that ends, the grief is real, and it is often met with a shrug from everyone else.",
+      "As a pet loss grief coach you give that grief the space and respect it deserves, and you help people find their way through it. You offer support, not clinical treatment."
+     ],
+     "label": "What people come to a pet loss grief coach with",
+     "points": [
+      "Grief that others do not take seriously",
+      "Guilt over a decision at the end",
+      "An empty house and a broken routine",
+      "Not knowing whether or when to love another animal"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 11am",
+       "img": "session",
+       "text": "A first conversation. He apologises for crying, and you tell him there is no need."
+      },
+      {
+       "when": "Thursday, 3pm",
+       "img": "call",
+       "text": "Planning a small memorial with a family, something the children can take part in."
+      },
+      {
+       "when": "Sunday, 9am",
+       "img": "beach",
+       "text": "A long walk with your own dog."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The person living alone",
+       "text": "Has lost their daily companion. Needs to be heard and to rebuild a routine."
+      },
+      {
+       "name": "The family",
+       "text": "Parents unsure how to help children through a first loss."
+      },
+      {
+       "name": "The one carrying guilt",
+       "text": "Had to make the final decision. Needs to make peace with it."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand grief",
+      "d": "The grieving process in general, and what is particular to losing a pet."
+     },
+     {
+      "h": "Understand the bond",
+      "d": "An overview of animal behaviour and psychology, and why the attachment runs so deep."
+     },
+     {
+      "h": "Support people through bereavement",
+      "d": "Practical ways to support pet owners, with tools for assessment and monitoring."
+     },
+     {
+      "h": "Use ritual and creativity",
+      "d": "Creative rituals and symbolism that help people honour a pet and say goodbye."
+     },
+     {
+      "h": "Run a full session",
+      "d": "Managing emotions, relaxation methods and an example support session."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one support",
+       "d": "Work with bereaved owners in person or online."
+      },
+      {
+       "h": "Partnering with vets",
+       "d": "Offer support through veterinary practices and pet crematoria."
+      },
+      {
+       "h": "Support groups",
+       "d": "Host regular groups for people who have lost a pet."
+      },
+      {
+       "h": "Alongside animal work",
+       "d": "Add it to work as a groomer, trainer, sitter or veterinary nurse."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Is there really demand for this?",
+       "a": "Most pet owners will face this loss, and few find support for it. Vets are often glad to have someone to refer to."
+      },
+      {
+       "q": "Will it be too sad?",
+       "a": "It is tender work, and it is also deeply rewarding. The course covers managing emotions, including your own."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "inner-child",
+   "sub": "Return to yourself",
+   "title": "Certified Inner Child Healing Practitioner",
+   "tag": "Wellbeing and healing",
+   "img": "innerchild",
+   "price": 29500,
+   "care": true,
+   "blurb": "So much of adult life is shaped in childhood. Learn to guide clients back to those roots with care, and help them reconnect with who they really are.",
+   "who": [
+    "Coaches",
+    "Therapists and counsellors",
+    "Holistic practitioners"
+   ],
+   "learn": [
+    "Inner child psychology: how childhood shapes adult behaviour and relationships",
+    "Healing techniques: practical tools for nurturing the inner child",
+    "Understanding early wounds: recognise lasting patterns",
+    "Body and energy: approaches that bring mind and body together",
+    "Running sessions: guide clients safely towards breakthroughs"
+   ],
+   "modules": [
+    {
+     "title": "Foundations of Psychology",
+     "lessons": []
+    },
+    {
+     "title": "Understanding the Inner Child",
+     "lessons": []
+    },
+    {
+     "title": "Traumatology",
+     "lessons": []
+    },
+    {
+     "title": "Transpersonal Psychology and Spirituality",
+     "lessons": []
+    },
+    {
+     "title": "Relational and Therapeutic Skills",
+     "lessons": []
+    },
+    {
+     "title": "Techniques for Inner Child Healing",
+     "lessons": []
+    },
+    {
+     "title": "Physical and Energetic Approaches",
+     "lessons": []
+    },
+    {
+     "title": "Supplementary Tools",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help people come home <em>to themselves.</em>",
+    "lede": "Learn to guide clients gently back to the experiences that shaped them. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "The past is still <em>in the room.</em>",
+     "paras": [
+      "So much of how adults react, relate and protect themselves was learned early. People often sense that an old feeling is driving a present-day response, without knowing what to do about it.",
+      "As an inner child healing practitioner you help clients reconnect with those younger parts of themselves with care. This is supportive, reflective work. It does not replace therapy, and the course teaches you when to refer."
+     ],
+     "label": "What clients bring to inner child work",
+     "points": [
+      "Reactions that feel bigger than the moment",
+      "Difficulty trusting or feeling safe with others",
+      "A harsh inner critic",
+      "A sense that something is missing"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 10am",
+       "img": "session",
+       "text": "A guided exercise. The client writes a letter to herself at seven years old."
+      },
+      {
+       "when": "Thursday, 4pm",
+       "img": "call",
+       "text": "A gentle check-in after a session that stirred a lot up."
+      },
+      {
+       "when": "Friday, 2pm",
+       "img": "beach",
+       "text": "Time to rest and reflect. This work asks you to look after yourself too."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The people-pleaser",
+       "text": "Says yes to everyone and resents it. Needs to understand where that began."
+      },
+      {
+       "name": "The self-critic",
+       "text": "Never good enough in their own eyes. Needs a kinder inner voice."
+      },
+      {
+       "name": "The one who feels disconnected",
+       "text": "Functioning well and feeling little. Needs to rediscover play, feeling and spontaneity."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Ground your work in psychology",
+      "d": "The foundations of psychology and what is meant by the inner child."
+     },
+     {
+      "h": "Understand the effects of early experience",
+      "d": "An introduction to trauma, so you recognise it and know the limits of your role."
+     },
+     {
+      "h": "Hold a safe space",
+      "d": "The relational skills this work depends on, and the place of transpersonal and spiritual perspectives."
+     },
+     {
+      "h": "Use inner child techniques",
+      "d": "A set of methods for guiding clients back to younger parts of themselves."
+     },
+     {
+      "h": "Broaden your toolkit",
+      "d": "Physical and energetic approaches and supplementary tools."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one sessions",
+       "d": "Work privately with clients over several sessions."
+      },
+      {
+       "h": "Workshops and circles",
+       "d": "Lead small groups through guided exercises."
+      },
+      {
+       "h": "Retreats",
+       "d": "Offer inner child work within a longer programme."
+      },
+      {
+       "h": "Alongside another practice",
+       "d": "Add it to coaching, bodywork or wellbeing work."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Is this therapy?",
+       "a": "No. It is supportive, reflective work. The course covers trauma awareness so you know when a client needs a licensed professional."
+      },
+      {
+       "q": "Do I need to have done this work myself?",
+       "a": "It helps, and many people take the course partly for their own growth."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "journal-therapy",
+   "sub": "Insightful reflection",
+   "title": "Certified Journal Therapy Coach",
+   "tag": "Wellbeing and healing",
+   "img": "journal",
+   "price": 35000,
+   "blurb": "A pen and a page can do what hours of talking cannot. Learn to use therapeutic writing with clients, and to run journalling workshops of your own.",
+   "who": [
+    "Aspiring coaches",
+    "Therapists and educators",
+    "Writers and wellness professionals"
+   ],
+   "learn": [
+    "Foundations of therapeutic journalling: its history, benefits and principles",
+    "Methods and techniques: journal types and writing approaches",
+    "Positive psychology: bring positive practices into the page",
+    "Coaching strategy: fit techniques to each client's goals",
+    "Leading workshops: design and run individual and group sessions"
+   ],
+   "modules": [
+    {
+     "title": "Introduction to Therapeutic Journaling",
+     "lessons": []
+    },
+    {
+     "title": "Exploring Different Journal Types and Their Benefits",
+     "lessons": []
+    },
+    {
+     "title": "Therapeutic Writing Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Positive Psychology and Journal Therapy",
+     "lessons": []
+    },
+    {
+     "title": "Exploring Complementary Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Tailored Coaching Strategies for Journal Therapy",
+     "lessons": []
+    },
+    {
+     "title": "Crafting and Leading Journal Therapy Workshops",
+     "lessons": []
+    },
+    {
+     "title": "Practical Application: Standard Session of Journal Therapy Coaching",
+     "lessons": []
+    },
+    {
+     "title": "Case Studies",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help people write their way <em>to clarity.</em>",
+    "lede": "Learn to use therapeutic writing with clients and groups, and earn a certificate that shows you can. Online, self-paced, no experience needed.",
+    "why": {
+     "title": "Some things are easier to write <em>than to say.</em>",
+     "paras": [
+      "Putting words on a page slows thought down. People notice what they feel, see patterns and often surprise themselves with what comes out.",
+      "As a journal therapy coach you choose the right kind of writing for each person, guide them through it and help them make sense of what they find."
+     ],
+     "label": "What clients come to journaling for",
+     "points": [
+      "A busy mind that will not settle",
+      "Feelings they cannot put into spoken words",
+      "A decision they keep going round",
+      "Wanting to know themselves better"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Monday, 9am",
+       "img": "desk",
+       "text": "Choosing three prompts for a client working through a career decision."
+      },
+      {
+       "when": "Wednesday, 7pm",
+       "img": "group",
+       "text": "An evening writing circle. Ten minutes of silence, then the sharing begins."
+      },
+      {
+       "when": "Friday, 11am",
+       "img": "beach",
+       "text": "Your own notebook, a coffee, and nowhere to be."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The overthinker",
+       "text": "Thoughts on a loop. Needs to get them out of their head and onto paper."
+      },
+      {
+       "name": "The quiet one",
+       "text": "Finds talking hard. Opens up far more easily in writing."
+      },
+      {
+       "name": "The person in transition",
+       "text": "Changing job, home or relationship. Needs somewhere to think it through."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand therapeutic journaling",
+      "d": "What it is, why it works and the different types of journal and their benefits."
+     },
+     {
+      "h": "Teach therapeutic writing techniques",
+      "d": "A range of methods, and how to match each to a person and a purpose."
+     },
+     {
+      "h": "Draw on positive psychology",
+      "d": "Use writing to build gratitude, strengths and optimism, with complementary techniques."
+     },
+     {
+      "h": "Coach individuals",
+      "d": "Tailored coaching strategies and a standard one-to-one session."
+     },
+     {
+      "h": "Create and lead workshops",
+      "d": "Design group sessions, and learn from real case studies."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Guide private clients through a journaling programme."
+      },
+      {
+       "h": "Writing circles and workshops",
+       "d": "Run regular groups in person or online."
+      },
+      {
+       "h": "Courses and guided journals",
+       "d": "Create your own prompts, courses or printed journals."
+      },
+      {
+       "h": "Alongside another practice",
+       "d": "Add it to coaching, teaching or wellbeing work."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "I am not a writer.",
+       "a": "You do not need to be, and nor do your clients. This is about honest words, not good ones."
+      },
+      {
+       "q": "Is the title recognised where I live?",
+       "a": "Rules on the word therapy vary by country. Check what applies locally and describe your services accordingly."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "hsp",
+   "sub": "Empowered sensitivity",
+   "title": "Certified HSP Coach",
+   "tag": "Wellbeing and healing",
+   "img": "hsp",
+   "price": 19500,
+   "care": true,
+   "blurb": "Highly sensitive people feel everything more, and often think something is wrong with them. Learn to help them turn sensitivity into their strength.",
+   "who": [
+    "Aspiring coaches",
+    "Mental health professionals",
+    "Sensitive people who want to help others like them"
+   ],
+   "learn": [
+    "Understanding the trait: the science, psychology and needs of sensitive people",
+    "Stress and emotion: overstimulation, processing and resilience",
+    "Tailored tools: strategies for home and working life",
+    "Sensitivity as strength: confidence and letting go of limiting beliefs",
+    "Your role: position yourself as a specialist and build trust"
+   ],
+   "modules": [
+    {
+     "title": "Understanding Hypersensitivity: An Introduction",
+     "lessons": []
+    },
+    {
+     "title": "Psychology and Personal Growth: Core Concepts",
+     "lessons": []
+    },
+    {
+     "title": "Tools for Self-Awareness and Personal Insight",
+     "lessons": []
+    },
+    {
+     "title": "Managing Stress and Emotions in Hypersensitivity",
+     "lessons": []
+    },
+    {
+     "title": "The Neurobiology and Physiology of Hypersensitivity",
+     "lessons": []
+    },
+    {
+     "title": "Essential Coaching Skills for HSP Coaches",
+     "lessons": []
+    },
+    {
+     "title": "Tailored Coaching Tools for Highly Sensitive People",
+     "lessons": []
+    },
+    {
+     "title": "The Role and Growth of an HSP Coach",
+     "lessons": []
+    },
+    {
+     "title": "Advanced Applications of HSP Coaching Techniques",
+     "lessons": []
+    },
+    {
+     "title": "Structuring Sessions and Integrating HSP Coaching Practices",
+     "lessons": []
+    }
+   ],
+   "cur": "usd",
+   "was": 39500,
+   "page": {
+    "promise": "Help sensitive people see it as <em>a strength.</em>",
+    "lede": "Learn to coach highly sensitive people towards a life that suits how they are made. Online, self-paced, with a certificate at the end.",
+    "why": {
+     "title": "Nothing is wrong with <em>feeling deeply.</em>",
+     "paras": [
+      "Some people notice more, feel more and tire sooner in a loud, fast world. Many have spent years being told they are too sensitive and believing it.",
+      "As an HSP coach you help them understand the trait, manage overwhelm and build a life around their strengths. Sensitivity is a trait, not a diagnosis, and this is coaching, not treatment."
+     ],
+     "label": "What highly sensitive people come to a coach with",
+     "points": [
+      "Feeling overwhelmed by noise, crowds or pressure",
+      "Absorbing other people's moods",
+      "Needing far more recovery time than others",
+      "Years of being told they are too much"
+     ]
+    },
+    "day": {
+     "title": "A week that looks like <em>yours.</em>",
+     "intro": "There is no single way to do this work. Here is one way a week can look.",
+     "moments": [
+      {
+       "when": "Tuesday, 10am",
+       "img": "session",
+       "text": "A calm, unhurried session. She realises she has been designing her life for someone else."
+      },
+      {
+       "when": "Thursday, 2pm",
+       "img": "call",
+       "text": "A call with a client who has just negotiated two quiet working days a week."
+      },
+      {
+       "when": "Friday, 1pm",
+       "img": "beach",
+       "text": "A quiet afternoon. You plan your own week with the same care."
+      }
+     ]
+    },
+    "clients": {
+     "title": "Who you will <em>help.</em>",
+     "list": [
+      {
+       "name": "The overwhelmed professional",
+       "text": "Thriving on paper and drained in practice. Needs boundaries and recovery built in."
+      },
+      {
+       "name": "The self-doubter",
+       "text": "Believes sensitivity is a flaw. Needs to see what it gives them."
+      },
+      {
+       "name": "The empath",
+       "text": "Takes on everyone's feelings. Needs to tell their own apart from other people's."
+      }
+     ]
+    },
+    "outcomes": [
+     {
+      "h": "Understand high sensitivity",
+      "d": "What the trait is, with its psychology, neurobiology and physiology."
+     },
+     {
+      "h": "Build self-awareness",
+      "d": "Tools that help clients understand themselves and their limits."
+     },
+     {
+      "h": "Help manage stress and emotion",
+      "d": "Practical ways to prevent overwhelm and recover from it."
+     },
+     {
+      "h": "Coach with tailored tools",
+      "d": "Essential coaching skills and tools adapted for highly sensitive people."
+     },
+     {
+      "h": "Structure your practice",
+      "d": "Advanced applications, session structure and your own growth as an HSP coach."
+     }
+    ],
+    "modules": [],
+    "uses": {
+     "title": "Four ways to use your <em>certification.</em>",
+     "list": [
+      {
+       "h": "One-to-one coaching",
+       "d": "Calm, private sessions in person or online."
+      },
+      {
+       "h": "Small groups",
+       "d": "Bring sensitive people together, often for the first time."
+      },
+      {
+       "h": "Workplace advice",
+       "d": "Help employers get the best from sensitive staff."
+      },
+      {
+       "h": "Parents of sensitive children",
+       "d": "Support families in understanding a sensitive child."
+      }
+     ]
+    },
+    "doubts": {
+     "title": "If you are thinking <em>“yes, but”</em>",
+     "list": [
+      {
+       "q": "Do I need to be highly sensitive myself?",
+       "a": "No, though many HSP coaches are, and it can be a real advantage."
+      },
+      {
+       "q": "Is high sensitivity a medical condition?",
+       "a": "No. It is a personality trait, and the course treats it that way."
+      },
+      {
+       "q": "I work full time.",
+       "a": "It is self-paced with 12 months of access. Study in the evenings, at weekends or on your lunch break."
+      },
+      {
+       "q": "What if it is not for me?",
+       "a": "You are covered by our [X]-day money-back guarantee."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

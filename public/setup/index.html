@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up | The Peers Certification</title>
+<meta name="description" content="One-time setup for the site owner.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="wrap sec-s"><form class="authbox" id="f" novalidate><p class="eyebrow">First time only</p><h1 class="d3">Set up your <em>site.</em></h1>
+<p class="small muted">Creates the admin account and loads the 20 certifications. It works once: after that, sign in as usual.</p>
+<div class="field"><label for="t">Setup token</label><input id="t" type="password" autocomplete="off" required><span class="small muted">The SETUP_TOKEN secret you added in Cloudflare.</span></div>
+<div class="field"><label for="n">Your name</label><input id="n" type="text" autocomplete="name" required></div>
+<div class="field"><label for="e">Admin email address</label><input id="e" type="email" autocomplete="username" required></div>
+<div class="field"><label for="p">Password</label><input id="p" type="password" autocomplete="new-password" required><span class="small muted">At least 8 characters, with an upper and a lower case letter and a number.</span></div>
+<div class="field"><label for="p2">Password again</label><input id="p2" type="password" autocomplete="new-password" required></div>
+<button class="btn btn-sea btn-block" type="submit">Set up the site</button><p class="note hide" role="status" id="m"></p></form></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, m = document.getElementById('m'), $ = function (id) { return document.getElementById(id); };
+$('f').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var t = $('t').value.trim(), n = $('n').value.trim(), e = $('e').value.trim().toLowerCase(), p = $('p').value;
+  if (!t) return T.note(m, 'Enter the setup token.', 'bad');
+  if (!n) return T.note(m, 'Enter your name.', 'bad');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) return T.note(m, 'Enter a valid email address.', 'bad');
+  var bad = T.pwProblem(p); if (bad) return T.note(m, bad, 'bad');
+  if (p !== $('p2').value) return T.note(m, 'The two passwords are different.', 'bad');
+  var btn = this.querySelector('button'); btn.disabled = true; T.note(m, 'Setting up…');
+  T.pwHash(e, p).then(function (h) {
+    return fetch('/api/setup', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-Setup-Token': t }, body: JSON.stringify({ email: e, name: n, h: h, seed: true }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j, h: h }; }); });
+  }).then(function (r) {
+    if (r.s === 409) { btn.disabled = false; return T.note(m, 'This site is already set up. Sign in instead.', 'bad'); }
+    if (r.s === 403) { btn.disabled = false; return T.note(m, 'That setup token is not right. Check the SETUP_TOKEN secret in Cloudflare.', 'bad'); }
+    if (r.s !== 200) { btn.disabled = false; return T.note(m, (r.j && r.j.error) || 'Something went wrong. Please try again.', 'bad'); }
+    T.note(m, 'Done. ' + (r.j.courses || 0) + ' certifications loaded. Signing you in…', 'good');
+    return T.api('POST', '/api/login', { e: e, h: r.h }).then(function () { location.href = '/admin'; });
+  }, function () { btn.disabled = false; T.note(m, 'Could not reach the site. Please try again.', 'bad'); });
+});
+</script>
+</body>
+</html>

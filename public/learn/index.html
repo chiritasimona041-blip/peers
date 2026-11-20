@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>My learning | The Peers Certification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="app"><div class="wrap sec-s stack" style="gap:40px">
+<div class="rowf" style="align-items:flex-end;justify-content:space-between"><div class="stack" style="gap:12px"><p class="eyebrow">My learning</p><h1 class="d2" id="hi">Welcome <em>back.</em></h1></div><div class="rowf" style="gap:12px"><a class="btn btn-line btn-s" href="/account">Account</a><button class="btn btn-line btn-s" type="button" id="out">Sign out</button></div></div>
+<div id="list" class="grid-cards"><p class="muted">Loading your certifications…</p></div>
+<div id="certs"></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC;
+function lessonKeys(c) { var k = []; (c.modules || []).forEach(function (m, mi) { (m.lessons || []).forEach(function (l, li) { k.push(c.id + ':' + mi + ':' + li); }); }); return k; }
+function loadMine(w) {
+  return Promise.all([
+    T.api('GET', '/api/db/list?coll=courses'),
+    T.api('GET', '/api/db/doc?path=' + encodeURIComponent('lsub/' + w.key)),
+    T.api('GET', '/api/certificates')
+  ]).then(function (r) {
+    var courses = r[0].docs.map(function (d) { var c = d.data; c.id = d.id; return c; });
+    return { courses: courses, done: (r[1].exists && r[1].data.w) || {}, certs: r[2].certificates || [] };
+  });
+}
+
+document.getElementById('out').addEventListener('click', T.signOut);
+T.requireLearner().then(function (w) {
+  if (w.n) document.getElementById('hi').innerHTML = 'Welcome back, <em>' + T.esc(String(w.n).split(' ')[0]) + '.</em>';
+  return loadMine(w);
+}).then(function (d) {
+  var list = document.getElementById('list');
+  if (!d.courses.length) { list.innerHTML = '<div class="card stack"><p class="d4">You are not enrolled on a certification yet.</p><div><a class="btn btn-sea" href="/certifications">Find your certification</a></div></div>'; return; }
+  list.innerHTML = d.courses.map(function (c, i) {
+    var keys = lessonKeys(c), n = keys.filter(function (k) { return d.done[k]; }).length, pct = keys.length ? Math.round(n / keys.length * 100) : 0;
+    var cert = d.certs.filter(function (x) { return x.course === c.id; })[0];
+    var u = encodeURIComponent(c.id);
+    return '<article class="ccard"><div class="pic"><img src="' + T.photoFor(c, i) + '" alt=""></div><div class="body">' +
+      '<h2 class="d4" style="font-size:32px">' + T.esc(c.title) + '</h2>' +
+      '<div class="stack" style="gap:8px"><div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Course progress"><i style="width:' + pct + '%"></i></div><span class="small muted">' + n + ' of ' + keys.length + ' modules complete</span></div>' +
+      '<div class="rowf" style="gap:10px;margin-top:auto">' +
+      (cert ? '<a class="btn btn-sea btn-s" href="/learn/certificate?no=' + encodeURIComponent(cert.no) + '">View certificate</a><a class="btn btn-line btn-s" href="/learn/course?c=' + u + '">Review course</a>'
+            : '<a class="btn btn-sea btn-s" href="/learn/course?c=' + u + '">' + (n ? 'Continue' : 'Start') + ' learning</a>' + (keys.length && n < keys.length ? '<span class="small muted" style="align-self:center">Final exam opens after the last module</span>' : '<a class="btn btn-sun btn-s" href="/learn/exam?c=' + u + '">Take the final exam</a>')) +
+      '</div></div></article>';
+  }).join('');
+  if (d.certs.length) document.getElementById('certs').innerHTML = '<div class="stack"><h2 class="d3">Your <em>certificates</em></h2><div class="lines">' + d.certs.map(function (x) {
+    return '<a href="/learn/certificate?no=' + encodeURIComponent(x.no) + '" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;text-decoration:none;color:var(--ink)"><span class="d4">' + T.esc(x.title) + '</span><span class="muted">' + T.esc(x.no) + ' · ' + T.esc(T.date(x.at)) + '</span></a>'; }).join('') + '</div></div>';
+}).catch(function (er) { document.getElementById('list').innerHTML = '<p class="note bad">' + T.esc(er.message) + '</p>'; });
+</script>
+</body>
+</html>

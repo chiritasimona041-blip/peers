@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forgot password | The Peers Certification</title>
+<meta name="description" content="Reset your password.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="wrap sec-s"><form class="authbox" id="f" novalidate><p class="eyebrow">Password</p><h1 class="d3">Get a link to choose a <em>new password.</em></h1>
+<div class="field"><label for="e">Email address</label><input id="e" type="email" autocomplete="username" required></div>
+<button class="btn btn-sea btn-block" type="submit">Email me the link</button><p class="note hide" role="status" id="m"></p><p class="small"><a href="/login">Back to sign in</a></p></form></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, m = document.getElementById('m');
+document.getElementById('f').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var e = document.getElementById('e').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) return T.note(m, 'Please enter a valid email address.', 'bad');
+  T.api('POST', '/api/forgot', { e: e }).then(function () { T.note(m, 'If that address has an account, a link is on its way. It works once and lasts 30 minutes.', 'good'); }, function (er) { T.note(m, er.message, 'bad'); });
+});
+</script>
+</body>
+</html>

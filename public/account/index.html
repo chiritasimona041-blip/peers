@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Account | The Peers Certification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="app"><div class="narrow sec-s stack" style="gap:28px">
+<a class="textlink" href="/learn">← My learning</a><h1 class="d2">Your <em>account</em></h1>
+<form class="card stack" id="fn" novalidate><h2 class="d4">Your details</h2><p class="small muted">This is the name printed on your certificates.</p><div class="field"><label for="n">Name</label><input id="n" type="text" autocomplete="name"></div><label class="checkline"><input type="checkbox" id="rem"> Email me a reminder when I have not studied for a week</label><div><button class="btn btn-ink btn-s" type="submit">Save name</button></div><p class="note hide" role="status" id="mn"></p></form>
+<form class="card stack" id="fe" novalidate><h2 class="d4">Email address</h2><div class="field"><label for="e">Email address</label><input id="e" type="email" autocomplete="username"></div><div class="field"><label for="ep">Current password</label><input id="ep" type="password" autocomplete="current-password"></div><div><button class="btn btn-ink btn-s" type="submit">Change email</button></div><p class="note hide" role="status" id="me"></p></form>
+<form class="card stack" id="fp" novalidate><h2 class="d4">Password</h2><div class="field"><label for="pc">Current password</label><input id="pc" type="password" autocomplete="current-password"></div><div class="field"><label for="pn">New password</label><input id="pn" type="password" autocomplete="new-password"><span class="hint">At least 8 characters, with upper and lower case letters and a number.</span></div><div><button class="btn btn-ink btn-s" type="submit">Change password</button></div><p class="note hide" role="status" id="mp"></p></form>
+<div><button class="btn btn-line" type="button" id="out">Sign out</button></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, email = '', $ = function (id) { return document.getElementById(id); };
+$('out').addEventListener('click', T.signOut);
+T.requireLearner().then(function () { return T.api('GET', '/api/me'); }).then(function (a) { email = a.e; $('n').value = a.n; $('rem').checked = a.rem !== false; $('e').value = a.e; });
+$('fn').addEventListener('submit', function (ev) { ev.preventDefault();
+  T.api('POST', '/api/me/profile', { n: $('n').value.trim(), rem: $('rem').checked }).then(function () { T.note($('mn'), 'Saved. New certificates will use this name.', 'good'); }, function (er) { T.note($('mn'), er.message, 'bad'); }); });
+$('fe').addEventListener('submit', function (ev) { ev.preventDefault();
+  var ne = $('e').value.trim().toLowerCase(), pw = $('ep').value;
+  if (!pw) return T.note($('me'), 'Enter your current password to change your email.', 'bad');
+  Promise.all([T.pwHash(email, pw), T.pwHash(ne, pw)]).then(function (h) { return T.api('POST', '/api/me/email', { e: ne, cur: h[0], h: h[1] }); })
+    .then(function (r) { email = r.e; $('ep').value = ''; T.note($('me'), 'Email changed. Sign in with ' + r.e + ' from now on.', 'good'); }, function (er) { T.note($('me'), er.message, 'bad'); }); });
+$('fp').addEventListener('submit', function (ev) { ev.preventDefault();
+  var cur = $('pc').value, np = $('pn').value, bad = T.pwProblem(np);
+  if (!cur) return T.note($('mp'), 'Enter your current password.', 'bad');
+  if (bad) return T.note($('mp'), bad, 'bad');
+  Promise.all([T.pwHash(email, cur), T.pwHash(email, np)]).then(function (h) { return T.api('POST', '/api/me/password', { cur: h[0], h: h[1] }); })
+    .then(function () { $('pc').value = ''; $('pn').value = ''; T.note($('mp'), 'Password changed.', 'good'); }, function (er) { T.note($('mp'), er.message, 'bad'); }); });
+</script>
+</body>
+</html>

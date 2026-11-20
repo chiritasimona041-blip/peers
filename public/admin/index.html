@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin | The Peers Certification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="app"><div class="wrap sec-s stack" style="gap:28px">
+<div class="stack" style="gap:6px"><p class="eyebrow">Admin</p><h1 class="d2">Run the <em>school.</em></h1></div>
+<nav class="atabs" aria-label="Admin sections" id="tabs"></nav>
+<p class="note hide" role="alert" id="msg"></p>
+<div id="view" class="stack" style="gap:24px"><p class="muted">Loading…</p></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, E = T.esc, D = {}, tab = 'overview', open = '', query = '';
+var TABS = [['overview', 'Overview'], ['orders', 'Orders'], ['learners', 'Learners'], ['courses', 'Courses and exams'], ['certs', 'Certificates'], ['leads', 'Enquiries']];
+var view = document.getElementById('view'), msg = document.getElementById('msg');
+function list(coll) { return T.api('GET', '/api/db/list?coll=' + encodeURIComponent(coll)).then(function (r) { return r.docs.map(function (d) { var x = d.data || {}; x.id = d.id; return x; }); }); }
+function put(path, data, op) { return T.api('POST', '/api/db/doc', { path: path, op: op || 'set', data: data }); }
+function key(email) { return String(email).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 80); }
+function byDate(a, b) { return String(b.at || b.cr || '').localeCompare(String(a.at || a.cr || '')); }
+function say(text, kind) { T.note(msg, text, kind || 'good'); if (text) msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+function fail(er) { say(er.message || 'Something went wrong.', 'bad'); }
+function title(id) { var c = D.courses.filter(function (x) { return x.id === id; })[0]; return c ? c.title : id; }
+function examFor(id) { return D.exams.filter(function (x) { return x.id === id; })[0] || { id: id, q: [] }; }
+function badge(text, kind) { return '<span class="badge ' + (kind || '') + '">' + E(text) + '</span>'; }
+function empty(text) { return '<div class="card"><p class="d4" style="margin:0">' + E(text) + '</p></div>'; }
+function table(head, rows) { return '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + head.map(function (h) { return '<th scope="col">' + E(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.join('') + '</tbody></table></div>'; }
+function row(head, cells) { return '<tr>' + cells.map(function (c, i) { return '<td data-h="' + E(head[i]) + '"><div>' + c + '</div></td>'; }).join('') + '</tr>'; }
+
+function load() {
+  return Promise.all([list('courses'), list('orders'), list('lacct'), list('certs'), list('leads/contact/items'), list('leads/newsletter/items'), list('exams')]).then(function (r) {
+    D = { courses: r[0].sort(function (a, b) { return String(a.title).localeCompare(String(b.title)); }), orders: r[1].sort(byDate), learners: r[2].filter(function (a) { return !a.gone; }).sort(byDate), certs: r[3].sort(byDate), leads: r[4].sort(byDate), news: r[5].sort(byDate), exams: r[6] };
+  });
+}
+function draw() {
+  document.getElementById('tabs').innerHTML = TABS.map(function (t) { return '<button type="button" data-tab="' + t[0] + '" aria-current="' + (tab === t[0]) + '">' + t[1] + '</button>'; }).join('');
+  var tools = SHEETS[tab] ? '<div class="rowf tools"><label class="sr" for="q">Search</label><input id="q" type="search" placeholder="Search this list" value="' + E(query) + '"><button type="button" class="btn btn-line btn-s" id="csv">Download as a spreadsheet</button></div>' : '';
+  view.innerHTML = tools + ({ overview: overview, orders: orders, learners: learners, courses: courses, certs: certs, leads: leads })[tab]();
+  filter();
+}
+// search: hides rows and cards that do not contain the words typed
+function filter() {
+  var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  [].forEach.call(view.querySelectorAll('.tbl tbody tr:not(.panel), #view > article.card'), function (el) {
+    var text = el.textContent.toLowerCase(), hit = words.every(function (w) { return text.indexOf(w) >= 0; });
+    el.style.display = hit ? '' : 'none'; var nx = el.nextElementSibling; if (nx && nx.classList.contains('panel')) nx.style.display = hit ? '' : 'none';
+  });
+}
+// download: the whole list of the open tab, as a file any spreadsheet program opens
+var SHEETS = {
+  orders: function () { return [['Date', 'Name', 'Email', 'Certification', 'Amount', 'Currency', 'Status']].concat(D.orders.map(function (o) { return [o.paidAt || o.at, o.n, o.e, o.title, (Number(o.amount) / 100).toFixed(2), String(o.cur || '').toUpperCase(), o.status === 'paid' ? 'Paid' : 'Not paid']; })); },
+  learners: function () { return [['Name', 'Email', 'Certifications', 'Status', 'Added']].concat(D.learners.map(function (a) { return [a.n, a.e, (a.c || []).map(title).join('; '), a.lock ? 'Locked' : 'Active', a.at || '']; })); },
+  certs: function () { return [['Number', 'Name', 'Certification', 'Issued', 'Score', 'Status']].concat(D.certs.map(function (c) { return [c.no || c.id, c.n, c.title, c.at, (c.pct || 0) + '%', c.revoked ? 'Revoked' : 'Valid']; })); },
+  leads: function () { return [['Date', 'Subject', 'Name', 'Email', 'Message']].concat(D.leads.concat(D.news).sort(byDate).map(function (l) { var f = l.fields || {}; return [l.at, l.subject, f.Name || '', f.Email || '', f.Message || '']; })); }
+};
+function download() {
+  var cell = function (v) { v = String(v == null ? '' : v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
+  var csv = SHEETS[tab]().map(function (r) { return r.map(cell).join(','); }).join('\r\n');
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv' })); a.download = 'coach-certifications-' + tab + '-' + new Date().toISOString().slice(0, 10) + '.csv';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+}
+function overview() {
+  var paid = D.orders.filter(function (o) { return o.status === 'paid'; }), rev = {};
+  paid.forEach(function (o) { rev[o.cur] = (rev[o.cur] || 0) + (Number(o.amount) || 0); });
+  var revText = Object.keys(rev).map(function (c) { return T.money(rev[c], c); }).join(' + ') || T.money(0, (D.courses[0] || {}).cur || 'usd');
+  var noExam = D.courses.filter(function (c) { return !(examFor(c.id).q || []).length; }), noLessons = D.courses.filter(function (c) { return !(c.modules || []).some(function (m) { return (m.lessons || []).length; }); });
+  var tile = function (n, label) { return '<div class="stat"><b>' + E(n) + '</b><span>' + E(label) + '</span></div>'; };
+  var todo = [];
+  if (noExam.length) todo.push(noExam.length + ' of ' + D.courses.length + ' certifications have no exam questions, so nobody can pass them yet. Add them under Courses and exams.');
+  if (noLessons.length) todo.push(noLessons.length + ' certifications have no modules loaded.');
+  var pend = D.orders.length - paid.length; if (pend) todo.push(pend + ' orders were started and not paid.');
+  return '<div class="stats">' + tile(revText, 'Taken') + tile(paid.length, 'Paid enrolments') + tile(D.learners.length, 'Learners') + tile(D.certs.filter(function (c) { return !c.revoked; }).length, 'Certificates issued') + tile(D.leads.length, 'Enquiries') + tile(D.news.length, 'Newsletter sign-ups') + '</div>' +
+    '<div class="card stack"><h2 class="d4">Needs your attention</h2>' + (todo.length ? '<ul class="plain">' + todo.map(function (t) { return '<li>' + E(t) + '</li>'; }).join('') + '</ul>' : '<p class="muted" style="margin:0">Nothing right now.</p>') + '</div>';
+}
+function orders() {
+  if (!D.orders.length) return empty('No orders yet.');
+  var H = ['Date', 'Learner', 'Certification', 'Amount', 'Status'];
+  return '<p class="small muted">Refunds are made in your payment account. After refunding, remove the certification from the learner under Learners.</p>' + table(H, D.orders.map(function (o) {
+    return row(H, [E(T.date(o.paidAt || o.at)), E(o.n) + '<br><span class="small muted">' + E(o.e) + '</span>', E(o.title), E(T.money(o.amount, o.cur)), o.status === 'paid' ? badge('Paid', 'good') : badge('Not paid')]);
+  }));
+}
+function learners() {
+  var H = ['Learner', 'Certifications', 'Status', ''];
+  var opts = D.courses.map(function (c) { return '<option value="' + E(c.id) + '">' + E(c.title) + '</option>'; }).join('');
+  var add = '<form class="card stack" id="addl" novalidate><h2 class="d4">Add a learner by hand</h2><p class="small muted">For someone who paid another way. They are emailed a link to choose their password.</p>' +
+    '<div class="rowf" style="gap:14px"><div class="field" style="flex:1 1 200px"><label for="ln">Name</label><input id="ln" type="text" autocomplete="off"></div><div class="field" style="flex:1 1 240px"><label for="le">Email address</label><input id="le" type="email" autocomplete="off"></div><div class="field" style="flex:1 1 240px"><label for="lc">Certification</label><select id="lc">' + opts + '</select></div></div><div><button class="btn btn-sea btn-s" type="submit">Add learner</button></div></form>';
+  var rows = D.learners.map(function (a) {
+    var cs = Array.isArray(a.c) ? a.c : [], isOpen = open === a.id;
+    var r = row(H, [E(a.n) + '<br><span class="small muted">' + E(a.e) + '</span>', cs.length ? cs.map(function (id) { return E(title(id)); }).join('<br>') : '<span class="muted">None</span>', a.lock ? badge('Locked', 'bad') : badge('Active', 'good'), '<button type="button" class="btn btn-line btn-s" data-open="' + E(a.id) + '">' + (isOpen ? 'Close' : 'Manage') + '</button>']);
+    if (isOpen) r += '<tr class="panel"><td colspan="4"><form class="stack" data-save="' + E(a.id) + '" novalidate><fieldset class="checks"><legend>Certifications this learner can open</legend>' + D.courses.map(function (c) { return '<label><input type="checkbox" name="c" value="' + E(c.id) + '"' + (cs.indexOf(c.id) >= 0 ? ' checked' : '') + '> ' + E(c.title) + '</label>'; }).join('') + '</fieldset>' +
+      '<label class="checkline"><input type="checkbox" name="lock"' + (a.lock ? ' checked' : '') + '> Lock this account (they cannot sign in)</label>' +
+      '<div class="rowf" style="gap:10px"><button class="btn btn-sea btn-s" type="submit">Save changes</button><button class="btn btn-line btn-s" type="button" data-pw="' + E(a.e) + '">Email a password link</button></div></form></td></tr>';
+    return r;
+  });
+  return add + (D.learners.length ? table(H, rows) : empty('No learners yet.'));
+}
+function courses() {
+  var H = ['Certification', 'Price', 'Modules', 'Exam questions', 'On sale', ''];
+  return '<p class="small muted">Only show a was price that the certification was really sold at. Learners need every module ticked and ' + 'the pass mark in the final exam to earn a certificate. A certification with no exam questions cannot be completed.</p>' + table(H, D.courses.map(function (c) {
+    var q = (examFor(c.id).q || []).length, isOpen = open === c.id, mods = (c.modules || []).length;
+    var r = row(H, [E(c.title), E(T.money(c.price, c.cur)), String(mods), q ? badge(q + ' questions', 'good') : badge('None yet', 'bad'), c.live === false ? badge('Hidden') : badge('On sale', 'good'), '<button type="button" class="btn btn-line btn-s" data-open="' + E(c.id) + '">' + (isOpen ? 'Close' : 'Edit') + '</button>']);
+    if (isOpen) r += '<tr class="panel"><td colspan="6">' + editor(c) + '</td></tr>';
+    return r;
+  }));
+}
+function qBlock(q, i) {
+  var o = (q.o || []).concat(['', '', '', '']).slice(0, 4);
+  return '<fieldset class="qedit" data-q><legend>Question ' + (i + 1) + '</legend><div class="field"><label>Question</label><textarea data-qq rows="2">' + E(q.q || '') + '</textarea></div>' +
+    '<p class="small muted" style="margin:0">Answers. Select the correct one. Leave spare boxes empty.</p>' + o.map(function (t, j) { return '<label class="ans"><input type="radio" name="a' + i + '" value="' + j + '"' + (q.a === j ? ' checked' : '') + ' aria-label="Answer ' + (j + 1) + ' is correct"><input type="text" data-qo value="' + E(t) + '" aria-label="Answer ' + (j + 1) + '"></label>'; }).join('') +
+    '<div><button type="button" class="textlink" data-delq="' + i + '">Remove this question</button></div></fieldset>';
+}
+var draft = null;
+function editor(c) {
+  if (!draft || draft.id !== c.id) { var ex = examFor(c.id); draft = { id: c.id, q: JSON.parse(JSON.stringify(ex.q || [])) }; }
+  return '<div class="stack" style="gap:24px"><form class="stack" data-course="' + E(c.id) + '" novalidate><h3 class="d4">Price and visibility</h3><div class="rowf" style="gap:14px;align-items:flex-end"><div class="field" style="flex:0 1 200px"><label for="pr">Price</label><input id="pr" type="number" min="1" step="0.01" value="' + (Number(c.price) / 100).toFixed(2) + '"></div>' +
+    '<div class="field" style="flex:0 1 200px"><label for="was">Was price (optional)</label><input id="was" type="number" min="0" step="0.01" value="' + (c.was ? (Number(c.was) / 100).toFixed(2) : '') + '" placeholder="None"></div>' +
+    '<div class="field" style="flex:0 1 160px"><label for="cur">Currency</label><select id="cur">' + ['usd', 'gbp', 'eur'].map(function (k) { return '<option value="' + k + '"' + (String(c.cur).toLowerCase() === k ? ' selected' : '') + '>' + k.toUpperCase() + '</option>'; }).join('') + '</select></div>' +
+    '<label class="checkline" style="padding-bottom:14px"><input type="checkbox" id="live"' + (c.live === false ? '' : ' checked') + '> On sale on the website</label><button class="btn btn-sea btn-s" type="submit" style="margin-bottom:3px">Save</button></div></form>' +
+    '<form class="stack" data-exam="' + E(c.id) + '" novalidate><h3 class="d4">Final exam</h3>' + (draft.q.length ? draft.q.map(qBlock).join('') : '<p class="muted" style="margin:0">No questions yet.</p>') +
+    '<div class="rowf" style="gap:10px"><button type="button" class="btn btn-line btn-s" id="addq">Add a question</button><button class="btn btn-sea btn-s" type="submit">Save exam</button></div></form></div>';
+}
+function readDraft() {
+  var blocks = view.querySelectorAll('[data-q]');
+  draft.q = [].map.call(blocks, function (b) { var r = b.querySelector('input[type=radio]:checked'); return { q: b.querySelector('[data-qq]').value.trim(), o: [].map.call(b.querySelectorAll('[data-qo]'), function (x) { return x.value.trim(); }), a: r ? +r.value : -1 }; });
+}
+function certs() {
+  if (!D.certs.length) return empty('No certificates issued yet.');
+  var H = ['Number', 'Learner', 'Certification', 'Issued', 'Score', ''];
+  return table(H, D.certs.map(function (c) { return row(H, [E(c.no || c.id), E(c.n), E(c.title), E(T.date(c.at)), E((c.pct || 0) + '%'), (c.revoked ? badge('Revoked', 'bad') + ' ' : '') + '<button type="button" class="btn btn-line btn-s" data-revoke="' + E(c.id) + '" data-to="' + (c.revoked ? '0' : '1') + '">' + (c.revoked ? 'Restore' : 'Revoke') + '</button>']); }));
+}
+function leads() {
+  var all = D.leads.concat(D.news).sort(byDate);
+  if (!all.length) return empty('No enquiries yet.');
+  return all.map(function (l) { var f = l.fields || {}; return '<article class="card stack" style="gap:10px"><div class="rowf" style="justify-content:space-between;gap:10px"><h2 class="d4" style="margin:0;font-size:26px">' + E(l.subject || 'Enquiry') + '</h2><span class="small muted">' + E(T.date(l.at)) + '</span></div>' + Object.keys(f).map(function (k) { return '<p style="margin:0"><b>' + E(k) + ':</b> ' + E(f[k]).replace(/\n/g, '<br>') + '</p>'; }).join('') + '</article>'; }).join('');
+}
+function refresh(text) { return load().then(function () { draw(); if (text) say(text); }); }
+
+document.getElementById('tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (!b) return; tab = b.dataset.tab; open = ''; draft = null; query = ''; say(''); draw(); });
+view.addEventListener('input', function (e) { if (e.target.id === 'q') { query = e.target.value; filter(); } });
+view.addEventListener('click', function (e) {
+  var b = e.target.closest('button'); if (!b) return;
+  if (b.id === 'csv') { download(); return; }
+  if (b.dataset.open !== undefined) { open = open === b.dataset.open ? '' : b.dataset.open; draft = null; draw(); }
+  else if (b.id === 'addq') { readDraft(); draft.q.push({ q: '', o: ['', '', '', ''], a: -1 }); draw(); }
+  else if (b.dataset.delq !== undefined) { readDraft(); draft.q.splice(+b.dataset.delq, 1); draw(); }
+  else if (b.dataset.pw) { T.api('POST', '/api/forgot', { e: b.dataset.pw }).then(function () { say('Password link sent to ' + b.dataset.pw + '.'); }, fail); }
+  else if (b.dataset.revoke) { put('certs/' + b.dataset.revoke, { revoked: b.dataset.to === '1' }, 'update').then(function () { return refresh(b.dataset.to === '1' ? 'Certificate revoked. It no longer verifies.' : 'Certificate restored.'); }, fail); }
+});
+view.addEventListener('submit', function (e) {
+  e.preventDefault(); var f = e.target;
+  if (f.id === 'addl') {
+    var n = f.querySelector('#ln').value.trim(), em = f.querySelector('#le').value.trim().toLowerCase(), c = f.querySelector('#lc').value;
+    if (!n || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return say('Enter a name and a valid email address.', 'bad');
+    var old = D.learners.filter(function (a) { return a.id === key(em); })[0], cs = old && Array.isArray(old.c) ? old.c.slice() : [];
+    if (cs.indexOf(c) < 0) cs.push(c);
+    var data = old ? Object.assign({}, old, { c: cs }) : { n: n, e: em, c: cs, lock: false, gone: false, cr: 'admin', at: new Date().toISOString() }; delete data.id;
+    put('lacct/' + key(em), data).then(function () { return old ? null : T.api('POST', '/api/forgot', { e: em }); }).then(function () { return refresh(old ? 'Certification added to ' + em + '.' : 'Learner added. A link to choose a password has been emailed to ' + em + '.'); }, fail);
+  } else if (f.dataset.save) {
+    var a = D.learners.filter(function (x) { return x.id === f.dataset.save; })[0], next = Object.assign({}, a, { c: [].map.call(f.querySelectorAll('input[name=c]:checked'), function (x) { return x.value; }), lock: f.querySelector('input[name=lock]').checked }); delete next.id;
+    put('lacct/' + a.id, next).then(function () { return refresh('Saved.'); }, fail);
+  } else if (f.dataset.course) {
+    var price = Math.round(parseFloat(f.querySelector('#pr').value) * 100);
+    if (!(price > 0)) return say('Enter a price above zero.', 'bad');
+    var was = Math.round(parseFloat(f.querySelector('#was').value) * 100) || 0;
+    if (was && was <= price) return say('The was price must be higher than the price, or left empty.', 'bad');
+    put('courses/' + f.dataset.course, { price: price, was: was, cur: f.querySelector('#cur').value, live: f.querySelector('#live').checked }, 'update').then(function () { return refresh('Saved.'); }, fail);
+  } else if (f.dataset.exam) {
+    readDraft();
+    var qs = draft.q.map(function (q) { var kept = [], a = -1; q.o.forEach(function (t, j) { if (t) { if (j === q.a) a = kept.length; kept.push(t); } }); return { q: q.q, o: kept, a: a }; });
+    var bad = qs.findIndex(function (q) { return !q.q || q.o.length < 2 || q.a < 0; });
+    if (bad >= 0) return say('Question ' + (bad + 1) + ' needs its text, at least two answers and a correct answer selected.', 'bad');
+    var ex = examFor(f.dataset.exam), body = Object.assign({}, ex, { q: qs }); delete body.id;
+    put('exams/' + f.dataset.exam, body).then(function () { draft = null; return refresh('Exam saved: ' + qs.length + ' questions.'); }, fail);
+  }
+});
+T.who().then(function (w) { if (w.role !== 'admin') { location.href = '/login?next=/admin'; return; } return load().then(draw); }).catch(function (er) { view.innerHTML = '<p class="note bad">' + E(er.message) + '</p>'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All certifications | The Peers Certification</title>
+<meta name="description" content="Every coaching certification we offer, each with the full course, final exam and a verifiable certificate.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D1916">
+</head>
+<body>
+<div id="site-header"></div>
+<main><div class="wrap pagehead stack" style="gap:24px"><p class="eyebrow">Certifications</p><h1 class="d1" style="font-size:clamp(48px,7vw,108px);max-width:9em">Find the coach you were <em>meant to be.</em></h1><p class="lead" id="intro">One payment per certification. The full course, the final exam and your certificate are all included.</p>
+<div class="filters" id="filters" role="group" aria-label="Filter certifications"></div></div>
+<section class="panel-top"><div class="wrap sec" style="padding-top:56px"><div class="cgrid" id="grid"><p class="muted">Loading certifications…</p></div></div></section></main>
+<div id="site-footer"></div>
+<script src="/assets/app.js"></script>
+<script>
+var T = window.TCC, E = T.esc, all = [], cur = 'All';
+function card(c, i) {
+  var u = T.url(c);
+  return '<article class="icard"><a class="pic" href="' + u + '"><img src="' + T.photoFor(c, i) + '" alt="" loading="lazy"><span class="tagpill">' + E(c.tag) + '</span></a><div class="body"><p class="eyebrow">' + E(c.sub) + '</p><h3><a href="' + u + '">' + E(c.title) + '</a></h3><p style="font-size:16px">' + E(c.blurb) + '</p><p class="small muted">' + c.modules + ' modules · Final exam · Certificate</p><div class="foot">' + T.priceHtml(c) + '<span class="rowf" style="gap:8px"><a class="btn btn-line btn-s" href="' + u + '">Details</a><button class="btn btn-ink btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol</button></span></div></div></article>';
+}
+function draw() {
+  var list = all.filter(function (c) { return cur === 'All' || c.tag === cur; });
+  document.getElementById('grid').innerHTML = list.map(card).join('');
+  [].forEach.call(document.querySelectorAll('.filt'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.t === cur)); });
+}
+T.catalogue().then(function (list) {
+  all = list;
+  if (!list.length) { document.getElementById('grid').innerHTML = '<p class="muted">Our certifications open for enrolment soon.</p>'; return; }
+  var tags = []; list.forEach(function (c) { if (c.tag && tags.indexOf(c.tag) < 0) tags.push(c.tag); });
+  document.getElementById('intro').textContent = list.length + ' certifications. One payment each, with the full course, the final exam and your certificate included.';
+  document.getElementById('filters').innerHTML = ['All'].concat(tags).map(function (t) { var n = t === 'All' ? list.length : list.filter(function (c) { return c.tag === t; }).length; return '<button type="button" class="filt" data-t="' + E(t) + '" aria-pressed="false">' + E(t) + ' <span class="muted" style="font-weight:500">' + n + '</span></button>'; }).join('');
+  document.getElementById('filters').addEventListener('click', function (e) { var b = e.target.closest('.filt'); if (!b) return; cur = b.dataset.t; draw(); });
+  draw();
+}, function () { document.getElementById('grid').innerHTML = '<p class="muted">We could not load the certifications. Please refresh the page.</p>'; });
+</script>
+</body>
+</html>
