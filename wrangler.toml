@@ -24,6 +24,10 @@ CURRENCY = "gbp"
 PASS_MARK = "80"
 CERT_PREFIX = "TPC"
 NOTIFY_TO = "info@thepeerscertification.com"
+# Namecheap Private Email: the site sends from this mailbox. Its password is the SMTP_PASS secret (Cloudflare > peers > Settings > Variables and Secrets).
+SMTP_USER = "info@thepeerscertification.com"
+SMTP_HOST = "mail.privateemail.com"
+SMTP_PORT = "465"
 
 [assets]
 directory = "./public"

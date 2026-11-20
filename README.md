@@ -20,7 +20,7 @@ Everything specific to Cyberally has been deleted (expert accounts and profiles,
 - `orders/<uuid>`, `certs/<number>`, `lexam/<learner>--<course>` are written by the server only
 
 ## Before go-live
-Secrets: `SETUP_TOKEN`, `SMTP_USER`, `SMTP_PASS`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`; optional `SITE_ORIGIN`. Team emails go to `NOTIFY_TO` in `wrangler.toml` (info@thepeerscertification.com); do not also set it as a secret, or deploy will refuse the duplicate name.
+Secrets: `SETUP_TOKEN`, `SMTP_PASS` (the info@ mailbox password), `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`; optional `SITE_ORIGIN`. `NOTIFY_TO`, `SMTP_USER`, `SMTP_HOST` and `SMTP_PORT` are set in `wrangler.toml` (info@thepeerscertification.com on mail.privateemail.com, port 465); do not also set them as secrets, or deploy will refuse the duplicate names.
 Until the Stripe keys are set, enrol answers "Online payment is not switched on yet" and gives nothing away.
 The Stripe calls have only been tested against signed test payloads, not against Stripe itself: run one real test-mode payment before launch.
 `public/` holds the site: homepage, certifications, certification page, welcome, sign in, forgot and set password, verify, contact, learner dashboard, course player, exam, certificate and account. Shared look in `public/assets/site.css`, shared behaviour in `public/assets/app.js`. Still to build: admin screens and the legal pages.
