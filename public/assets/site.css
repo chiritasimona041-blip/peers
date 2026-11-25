@@ -537,3 +537,37 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .floatcard .small.muted{color:#6A615A !important}
 .pv-pill{border:0;cursor:pointer;align-self:center} .pv-pill:hover{background:var(--ink);color:#fff}
 .faq-contact{flex:1 1 100%;margin:8px 0 0;font-size:17px} .faq-contact a{color:var(--sea);font-weight:700}
+
+/* ---- course page: mid-page offer band and stronger cards ---- */
+.midoffer{position:relative;overflow:hidden;background:var(--sea);color:#DCEAE7}
+.midoffer::before{content:"";position:absolute;right:-180px;top:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(240,168,104,.28),rgba(240,168,104,0) 70%)}
+.midoffer .wrap{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:36px 64px;padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px)}
+.midoffer .mo-copy{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.midoffer .eyebrow{color:var(--sun)}
+.midoffer h2{color:#fff;font-size:clamp(48px,6.4vw,104px);line-height:.95;letter-spacing:-.03em;margin:0}
+.midoffer h2 em{color:var(--sun)} .midoffer h2 s{font-size:.42em;color:#9FC2BC;letter-spacing:0;margin-left:8px;vertical-align:.35em}
+.midoffer .mo-sub{margin:0;font-size:18px;max-width:30em}
+.midoffer .mo-timer{flex:0 1 auto;display:flex;flex-direction:column;gap:16px}
+.midoffer .timer .tu{min-width:76px;padding:12px 8px 10px;border-radius:16px;background:rgba(0,0,0,.22)}
+.midoffer .timer .tu b{font-size:48px}
+.midoffer .btn-line{color:#fff;border-color:rgba(255,255,255,.5)}
+.midoffer .assure{color:#DCEAE7}
+.pcard p,.doubt p,.ocard p,.quad p,.moment .t span{font-size:17px}
+.pcard{background:#fff;border:1px solid var(--line);min-height:260px}
+.pcard .num{font-family:var(--serif);font-style:italic;font-size:52px;line-height:1;color:var(--sea)}
+.pcard h3{margin-top:auto}
+.doubt{border-left:4px solid var(--sun)}
+.moment{min-height:520px}
+@media (max-width:760px){.midoffer .timer .tu{min-width:58px}.midoffer .timer .tu b{font-size:34px}.moment{min-height:380px}}
+.ocard h3{margin-top:8px}
+.whycard{background:var(--sea);color:#DCEAE7;position:sticky;top:100px}
+.whycard .small{color:var(--sun) !important} .whycard .lines>*{border-color:rgba(255,255,255,.2)} .whycard .d4{color:#fff}
+.bigp{font-size:clamp(22px,2vw,30px)}
+@media (min-width:900px){.mods-head{position:sticky;top:96px;align-self:flex-start}}
+.pvcard{position:relative;display:block;width:100%;max-width:440px;height:260px;margin-top:12px;padding:0;border:0;border-radius:28px;overflow:hidden;cursor:pointer;background:var(--ink);text-align:left}
+.pvcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;transition:transform .6s ease,opacity .3s ease}
+.pvcard:hover img{transform:scale(1.04);opacity:.6}
+.pvcard .pv-play{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--sun);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5)}
+.pvcard .pv-t{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(0deg,rgba(29,25,22,.9),rgba(29,25,22,0));color:#fff;display:flex;flex-direction:column;gap:2px}
+.pvcard .pv-t b{font-size:18px} .pvcard .pv-t span{font-size:14px;color:#D9CFC3}
+@media (max-width:760px){.pv-pill{display:none}}
