@@ -603,5 +603,9 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .fit-yes{background:#fff;border:1px solid var(--line)} .fit-yes svg{flex:none;color:var(--sea);margin-top:2px}
 .fit-no{background:var(--ink);color:#D9CFC3} .fit-no h3{color:#fff}
 .fit-no .x{flex:none;width:22px;text-align:center;font-size:24px;line-height:1;color:var(--sun)}
-.askfirst{margin:0;font-size:15px;color:#D9CFC3} .askfirst a{color:var(--sun);font-weight:700}
 @media (max-width:760px){.fit{grid-template-columns:1fr}.stage .st-n{font-size:34px}.stage h3{font-size:24px}}
+/* course name is the page's main heading; the promise sits under it */
+.lhero h1.ctitle{font-size:clamp(40px,4vw,64px);line-height:1;letter-spacing:-.02em;margin:0;color:#fff}
+.lhero h1.ctitle em{font-style:italic;color:var(--sun)}
+.lhero .promise{margin:0;font-family:var(--serif);font-size:clamp(28px,2.6vw,40px);line-height:1.1;color:#E9E1D6;max-width:16em}
+.lhero .promise em{font-style:italic;color:var(--sun)}
