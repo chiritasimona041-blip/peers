@@ -76,7 +76,7 @@ T.catalogue().then(function (list) {
        : '<p class="eyebrow">' + E(c.sub || 'Certification') + '</p><h1>' + T.titleHtml(c.title) + '</h1><p class="lead hero-lede">' + E(c.blurb) + '</p>') +
     priceBlock(52) +
     '<div class="rowf" style="align-items:center;gap:12px">' + enrolBtn('btn-sea', 'Enrol now') + tryBtn + '</div>' + assure +
-    '<p class="askfirst">Not sure yet? <a href="mailto:info@thepeerscertification.com?subject=' + encodeURIComponent('Question about ' + c.title) + '">Ask us first</a> or <a href="/certifications#quiz">take the 30-second quiz</a>.</p>' +
+    '<p class="askfirst">Not sure yet? <a href="mailto:info@thepeerscertification.com?subject=' + encodeURIComponent('Question about ' + c.title) + '">Ask us first</a>.</p>' +
     '<div class="facts"><span class="fact">' + ic('book', 16) + n + ' modules</span><span class="fact">' + ic('device', 16) + '100% online, self-paced</span><span class="fact">' + ic('check', 16) + 'Final exam included</span><span class="fact">' + ic('award', 16) + 'Verifiable certificate</span></div>' +
     '</div><div class="pic"><img src="' + T.photoFor(c, idx) + '" alt=""><span class="tagpill floattag">Enrolment open</span>' +
     '<div class="floatcard">' + SEAL + '<div><span class="d4" style="font-size:20px;display:block;line-height:1.1">' + E(c.title) + '</span><span class="small muted" style="font-size:13px">Numbered and verifiable online</span></div></div></div></section>';

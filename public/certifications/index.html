@@ -16,7 +16,6 @@
 <div id="site-header"></div>
 <main><div class="wrap pagehead stack" style="gap:24px"><p class="eyebrow">Certifications</p><h1 class="d1" style="font-size:clamp(48px,7vw,108px);max-width:9em">Find the coach you were <em>meant to be.</em></h1><p class="lead" id="intro">One payment per certification. The full course, the final exam and your certificate are all included.</p>
 <div class="filters" id="filters" role="group" aria-label="Filter certifications"></div></div>
-<section id="quiz" class="quizband"><div class="wrap"><div class="quiz" id="quizbox" aria-live="polite"><p class="eyebrow">30-second quiz</p><h2>Not sure which one? <em>Answer three questions.</em></h2><p class="q-load">Loading…</p></div></div></section>
 <section class="panel-top"><div class="wrap sec" style="padding-top:56px"><div class="cgrid" id="grid"><p class="muted">Loading certifications…</p></div></div></section></main>
 <div id="site-footer"></div>
 <script src="/assets/app.js"></script>
@@ -39,41 +38,8 @@ T.catalogue().then(function (list) {
   document.getElementById('filters').innerHTML = ['All'].concat(tags).map(function (t) { var n = t === 'All' ? list.length : list.filter(function (c) { return c.tag === t; }).length; return '<button type="button" class="filt" data-t="' + E(t) + '" aria-pressed="false">' + E(t) + ' <span class="muted" style="font-weight:500">' + n + '</span></button>'; }).join('');
   document.getElementById('filters').addEventListener('click', function (e) { var b = e.target.closest('.filt'); if (!b) return; cur = b.dataset.t; draw(); });
   draw();
-  quiz(list);
 }, function () { document.getElementById('grid').innerHTML = '<p class="muted">We could not load the certifications. Please refresh the page.</p>'; });
 
-// ---- the quiz: who you want to help -> school; where you start; which focus -> a certification ----
-function quiz(list) {
-  var box = document.getElementById('quizbox'), a = {};
-  var SCHOOLS = [['Foundations', 'People changing their life or career'], ['Mind and performance', 'People stuck on stress, focus or confidence'], ['Relationships and family', 'Couples, parents, teens or families'], ['Wellbeing and healing', 'People healing, grieving or going through big changes']];
-  var short = function (t) { return t.replace(/^Certified /, ''); };
-  function head(k) { return '<p class="eyebrow">30-second quiz · question ' + k + ' of 3</p>'; }
-  function opts(name, items) { return '<div class="q-opts">' + items.map(function (o) { return '<button type="button" class="q-opt" data-k="' + name + '" data-v="' + E(o[0]) + '">' + E(o[1]) + '</button>'; }).join('') + '</div>'; }
-  function back(k) { return k > 1 ? '<button type="button" class="q-back" data-back="' + (k - 1) + '">Back</button>' : ''; }
-  function step(k) {
-    if (k === 1) box.innerHTML = head(1) + '<h2>Who do you most want to <em>help?</em></h2>' + opts('school', SCHOOLS);
-    if (k === 2) box.innerHTML = head(2) + '<h2>Where are you <em>starting from?</em></h2>' + opts('start', [['new', 'New to coaching'], ['pro', 'I already coach, teach, mentor or care for people']]) + back(2);
-    if (k === 3) {
-      var mine = list.filter(function (c) { return c.tag === a.school; });
-      box.innerHTML = head(3) + '<h2>Which sounds <em>closest?</em></h2>' + opts('course', mine.map(function (c) { return [c.id, short(c.title) + (c.sub ? ' · ' + c.sub : '')]; })) + back(3);
-    }
-    if (k === 4) {
-      var pick = list.filter(function (c) { return c.id === a.course; })[0], base = list.filter(function (c) { return c.id === 'life'; })[0];
-      var recs = [pick].concat(a.start === 'new' && pick && pick.tag !== 'Foundations' && base ? [base] : []);
-      box.innerHTML = '<p class="eyebrow">Your match</p><h2>' + (recs.length > 1 ? 'Start with <em>' + E(short(pick.title)) + '</em>, and add the basics.' : 'Your best fit: <em>' + E(short(pick.title)) + '.</em>') + '</h2>' +
-        (recs.length > 1 ? '<p class="q-why">You are new to coaching, so Certified Life Coach gives you the core skills that every specialism builds on. Take them in either order.</p>' : '<p class="q-why">Try module 1 free on the course page before you decide.</p>') +
-        '<div class="q-recs">' + recs.map(function (c) { return '<a class="q-rec" href="' + T.url(c) + '"><span class="q-t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + '<span class="q-go">View certification' + T.ARROW + '</span></a>'; }).join('') + '</div>' +
-        '<div class="rowf" style="gap:10px"><button type="button" class="q-back" data-back="1">Start again</button><button type="button" class="q-back" data-school="' + E(a.school) + '">See all in ' + E(a.school) + '</button></div>';
-    }
-  }
-  box.addEventListener('click', function (e) {
-    var o = e.target.closest('.q-opt'), b = e.target.closest('.q-back');
-    if (o) { a[o.dataset.k] = o.dataset.v; step({ school: 2, start: 3, course: 4 }[o.dataset.k]); return; }
-    if (b && b.dataset.school) { cur = b.dataset.school; draw(); document.getElementById('grid').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
-    if (b) step(Number(b.dataset.back));
-  });
-  step(1);
-}
 </script>
 </body>
 </html>
