@@ -200,7 +200,7 @@
   });
   // ---------- the emblem: the mark of the awarding body, used in the header, footer and on certificates ----------
   var EMBLEM = '<svg class="emblem" aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#F0A868"/><circle cx="32" cy="32" r="26" fill="none" stroke="#1D1916" stroke-width="1" stroke-dasharray="1.5 3"/>' +
-    '<text x="31" y="45" text-anchor="middle" font-family="Instrument Serif,Georgia,serif" font-style="italic" font-size="38" fill="#1D1916">P</text><path d="M46 14l1.7 4.8 4.8 1.7-4.8 1.7L46 27l-1.7-4.8-4.8-1.7 4.8-1.7z" fill="#12514D"/></svg>';
+    '<text x="31" y="45" text-anchor="middle" font-family="Instrument Serif,Georgia,serif" font-style="italic" font-size="38" fill="#1D1916">P</text><path d="M46 14l1.7 4.8 4.8 1.7-4.8 1.7L46 27l-1.7-4.8-4.8-1.7 4.8-1.7z" fill="#A8521D"/></svg>';
 
   // ---------- motion: sections ease in as they are reached and headline numbers count up (off for people who ask for less motion) ----------
   function motion() {
@@ -225,7 +225,7 @@
     return '<svg class="seal" aria-hidden="true" viewBox="0 0 120 150"><path d="M38 92l-12 54 18-9 10 13 10-50z" fill="#C97A36"/><path d="M82 92l12 54-18-9-10 13-10-50z" fill="#D98B45"/>' +
       '<polygon points="' + pts.join(' ') + '" fill="#F0A868"/><circle cx="60" cy="60" r="41" fill="none" stroke="#1D1916" stroke-width=".8"/><circle cx="60" cy="60" r="27" fill="#FBF8F2" stroke="#1D1916" stroke-width=".8"/>' +
       '<defs><path id="seal-ring" d="M60 60m-33.5 0a33.5 33.5 0 1 1 67 0a33.5 33.5 0 1 1 -67 0"/></defs><text font-family="DM Sans,system-ui,sans-serif" font-size="6.4" font-weight="700" letter-spacing="1.9" fill="#1D1916"><textPath href="#seal-ring" startOffset="0">CERTIFIED COACH  ✦  VERIFIED ONLINE  ✦  </textPath></text>' +
-      '<path d="M48 61l8.5 8.5L73 51" fill="none" stroke="#12514D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      '<path d="M48 61l8.5 8.5L73 51" fill="none" stroke="#1D1916" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
   function certificate(o) {
     var name = String(o.n || ''), size = name.length > 30 ? 4.6 : name.length > 22 ? 5.6 : 7;
