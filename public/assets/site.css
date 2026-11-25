@@ -497,7 +497,7 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
   .certificate{width:270mm;margin:0 auto;break-inside:avoid}
 }
 
-/* ---- launch offer, guarantee line, free preview (course pages) ---- */
+/* ---- launch offer and guarantee line (course pages) ---- */
 .offerbar{background:var(--sea);color:#E9E1D6;font-size:14px;line-height:1.4}
 .offerbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 18px;padding-top:9px;padding-bottom:9px;text-align:center}
 .offerbar b{color:var(--sun)} .offerbar .ends{white-space:nowrap}
@@ -536,7 +536,6 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 @media (max-width:760px){.offerbar .wide-only{display:none}}
 .floatcard .small.muted{color:#6A615A !important}
 .pv-pill{border:0;cursor:pointer;align-self:center} .pv-pill:hover{background:var(--ink);color:#fff}
-.faq-contact{flex:1 1 100%;margin:8px 0 0;font-size:17px} .faq-contact a{color:var(--sea);font-weight:700}
 
 /* ---- course page: mid-page offer band and stronger cards ---- */
 .midoffer{position:relative;overflow:hidden;background:var(--sea);color:#E9E1D6}

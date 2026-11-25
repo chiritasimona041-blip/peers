@@ -38,9 +38,8 @@ export function offerNow(env: Env, now = Date.now()): Offer {
 /** What the buyer pays now: the offer price, rounded down to a whole unit (e.g. $206.50 -> $206), or the full price. */
 export const payPrice = (price: number, offer: Offer) => (offer ? Math.floor((price * (100 - offer.pct)) / 10000) * 100 : price);
 const guaranteeDays = (env: Env) => { const n = Number(env.GUARANTEE_DAYS || 0); return Number.isInteger(n) && n > 0 && n <= 60 ? n : 0; };
-const firstLesson = (d: Doc) => { const u = String(d?.modules?.[0]?.lessons?.[0]?.url || ""); return /^https:\/\/[^\s"'<>]+$/.test(u) ? u : ""; };
 
-// What a visitor may see of a course: never lessons (except module 1, the free preview), never exam answers.
+// What a visitor may see of a course: never lessons, never exam answers.
 const publicCourse = (id: string, d: Doc, offer: Offer = null, guarantee = 0) => ({
   id, title: S(d.title, 120), tag: S(d.tag, 40), blurb: S(d.blurb, 400),
   price: payPrice(Number(d.price) || 0, offer), full: Number(d.price) || 0, cur: S(d.cur, 3) || "",
@@ -48,7 +47,7 @@ const publicCourse = (id: string, d: Doc, offer: Offer = null, guarantee = 0) =>
   outline: (Array.isArray(d.modules) ? d.modules : []).slice(0, 40).map((m: Doc) => ({ title: S(m?.title, 120), lessons: Array.isArray(m?.lessons) ? m.lessons.length : 0 })),
   learn: (Array.isArray(d.learn) ? d.learn : []).slice(0, 12).map((x: unknown) => S(x, 200)),
   img: /^[a-z]{1,20}$/.test(String(d.img)) ? String(d.img) : "", featured: !!d.featured,
-  sub: S(d.sub, 60), was: offer ? Number(d.price) || 0 : 0, offer, guarantee, preview: firstLesson(d), care: !!d.care,
+  sub: S(d.sub, 60), was: offer ? Number(d.price) || 0 : 0, offer, guarantee, care: !!d.care,
   who: (Array.isArray(d.who) ? d.who : []).slice(0, 6).map((x: unknown) => S(x, 120)),
   slug: slugOf(d.title),
   // optional long-form landing page content, written by an admin

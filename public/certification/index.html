@@ -16,7 +16,7 @@
 <div id="site-header"></div>
 <main id="main"><div class="wrap sec"><p class="muted">Loading…</p></div></main>
 <template id="tpl-steps"><section class="dark"><div class="wrap sec stack" style="gap:64px"><div class="stack"><p class="eyebrow">How it works</p><h2 class="d2" style="max-width:14em">Enrolled today, <em>certified</em> in months.</h2></div><div class="steps"><div class="step"><span class="n">1</span><h3>Enrol in two minutes</h3><p>Name, email, card. Your login arrives by email straight away.</p></div><div class="step"><span class="n">2</span><h3>Study around your life</h3><p>Short modules on any device, at your own pace, with 12 months of access.</p></div><div class="step"><span class="n">3</span><h3>Pass the final exam</h3><p>Multiple choice, 80% to pass, retake it if you need to.</p></div><div class="step"><span class="n">4</span><h3>Download your certificate</h3><p>Named, numbered and checkable online by any client.</p></div></div></div></section></template>
-<template id="tpl-faq"><section class="panel" style="margin-top:24px"><div class="wrap sec rowf" style="gap:32px 72px"><div class="stack" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Questions</p><h2 class="d2" style="max-width:8em">Asked before <em>enrolling.</em></h2></div><div style="flex:1.6 1 520px;min-width:0;border-bottom:1px solid var(--line)"><details class="faq" open><summary>How do I get access after paying?</summary><p>Your login details are emailed as soon as payment goes through. Choose a password and start the first module straight away.</p></details><details class="faq"><summary>Do I need any experience?</summary><p>No. Each certification starts from the foundations and builds up to running real sessions.</p></details><details class="faq"><summary>How long does it take?</summary><p>It is self-paced. At a few hours a week you can finish in a few months, and you have 12 months of access.</p></details><details class="faq"><summary>How is the exam marked?</summary><p>The final exam is multiple choice and marked instantly. You need 80% to pass and can retake it.</p></details><details class="faq"><summary>Who recognises the certificate?</summary><p>Your certificate is issued by The Peers Certification. Coaching is not a regulated profession, so you do not need a licence to practise; what clients look for is training they can check, and every certificate carries a number anyone can verify on our site.</p></details><details class="faq"><summary>Can I get a refund?</summary><p>Yes. You are covered by our 14-day money-back guarantee, as long as you have not completed the course or downloaded the certificate.</p></details></div><p class="faq-contact">Still deciding? Email <a href="mailto:info@thepeerscertification.com">info@thepeerscertification.com</a> and we will answer before you enrol.</p></div></section></template>
+<template id="tpl-faq"><section class="panel" style="margin-top:24px"><div class="wrap sec rowf" style="gap:32px 72px"><div class="stack" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Questions</p><h2 class="d2" style="max-width:8em">Asked before <em>enrolling.</em></h2></div><div style="flex:1.6 1 520px;min-width:0;border-bottom:1px solid var(--line)"><details class="faq" open><summary>How do I get access after paying?</summary><p>Your login details are emailed as soon as payment goes through. Choose a password and start the first module straight away.</p></details><details class="faq"><summary>Do I need any experience?</summary><p>No. Each certification starts from the foundations and builds up to running real sessions.</p></details><details class="faq"><summary>How long does it take?</summary><p>It is self-paced. At a few hours a week you can finish in a few months, and you have 12 months of access.</p></details><details class="faq"><summary>How is the exam marked?</summary><p>The final exam is multiple choice and marked instantly. You need 80% to pass and can retake it.</p></details><details class="faq"><summary>Who recognises the certificate?</summary><p>Your certificate is issued by The Peers Certification. Coaching is not a regulated profession, so you do not need a licence to practise; what clients look for is training they can check, and every certificate carries a number anyone can verify on our site.</p></details><details class="faq"><summary>Can I get a refund?</summary><p>Yes. You are covered by our 14-day money-back guarantee, as long as you have not completed the course or downloaded the certificate.</p></details></div></div></section></template>
 <div id="site-footer"></div>
 <script src="/assets/app.js"></script>
 <script>
@@ -64,7 +64,7 @@ T.catalogue().then(function (list) {
       '<p class="ob-t">You save ' + E(T.money(c.full - c.price, c.cur)) + '. Full price ' + E(T.money(c.full, c.cur)) + ' after ' + E(T.endDate(c.offer.until)) + '.</p></div>' +
       (noTimer ? '' : '<div class="ob-r"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '</div>') + '</div>';
   };
-  var tryBtn = c.preview ? '<button class="btn btn-line" type="button" data-preview>' + ic('play', 18) + 'Try module 1 free</button>' : '';
+  var tryBtn = '';
   var assure = '<p class="assure">' + (g ? '<span>' + ic('shield', 16) + g + '-day money-back guarantee</span>' : '') + '<span>' + ic('lock', 16) + 'Secure checkout by Stripe</span><span>' + ic('check', 16) + 'One payment, instant access</span></p>';
   var enrolBtn = function (cls, label) { return '<button class="btn ' + cls + '" type="button" data-enrol="' + E(c.id) + '">' + label + T.ARROW + '</button>'; };
   var lifePics = LIFE.filter(function (p) { return p[0] !== c.img; }).slice(0, 2);
@@ -98,7 +98,7 @@ T.catalogue().then(function (list) {
   var nums = '<section class="dark"><div class="wrap nums">' +
     '<div><b>' + n + '</b><span>modules in ' + E(method.short) + ', from first principles to real sessions</span></div>' +
     (g ? '<div><b>' + g + '</b><span>day money-back guarantee, no reason needed</span></div>' : '') +
-    (c.preview ? '<div><b>Free</b><span>first module, so you can try it before you pay</span></div>' : '') +
+    '<div><b>80%</b><span>pass mark on the final exam, with retakes included</span></div>' +
     '<div><b>1 year</b><span>of access to study, then a certificate anyone can verify online</span></div></div></section>';
 
   var life = P && P.day ? '' : '<section><div class="wrap sec rowf" style="align-items:center;gap:40px 64px">' +
@@ -113,8 +113,8 @@ T.catalogue().then(function (list) {
 
   var CUT = 999, more = false;
   var outline = c.outline.length ? '<section class="modsec"><div class="wrap sec rowf" style="gap:40px 80px"><div class="stack mods-head" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Inside the course · ' + n + ' modules</p><h2 class="d2" style="max-width:8em">' + method.name + '</h2><p class="lead">Three stages, taken in order. Each one builds on the last, and the final stage puts it all together in real sessions.</p>' +
-    (c.preview ? '<button type="button" class="pvcard" data-preview><img src="' + T.photoFor(c, idx) + '" alt="" loading="lazy"><span class="pv-play">' + ic('play', 30) + '</span><span class="pv-t"><b>Watch module 1 free</b><span>' + E(c.outline[0] ? c.outline[0].title : '') + '</span></span></button>' : '') + '</div>' +
-    '<div style="flex:1.4 1 480px;min-width:0">' + stageList(c.outline.map(function (m, i) { return '<li' + (more && i >= CUT ? ' class="hide extra"' : '') + '><span class="num" style="flex:0 0 40px">' + String(i + 1).padStart(2, '0') + '</span><span class="d4" style="flex:1">' + E(m.title) + (P && P.modules && P.modules[i] ? '<span class="desc">' + E(P.modules[i]) + '</span>' : '') + '</span>' + (i === 0 && c.preview ? '<button type="button" class="pill pv-pill" data-preview>Free preview</button>' : m.lessons ? '<span class="small muted">' + m.lessons + (m.lessons === 1 ? ' lesson' : ' lessons') + '</span>' : '') + '</li>'; }), method) +
+    '</div>' +
+    '<div style="flex:1.4 1 480px;min-width:0">' + stageList(c.outline.map(function (m, i) { return '<li' + (more && i >= CUT ? ' class="hide extra"' : '') + '><span class="num" style="flex:0 0 40px">' + String(i + 1).padStart(2, '0') + '</span><span class="d4" style="flex:1">' + E(m.title) + (P && P.modules && P.modules[i] ? '<span class="desc">' + E(P.modules[i]) + '</span>' : '') + '</span>' + (m.lessons ? '<span class="small muted">' + m.lessons + (m.lessons === 1 ? ' lesson' : ' lessons') + '</span>' : '') + '</li>'; }), method) +
     (more ? '<button type="button" class="btn btn-line btn-s" id="allmods" style="margin-top:20px">Show all ' + n + ' modules</button>' : '') + '</div></div></section>' : '';
 
   var cert = '<section class="sandbg"><div class="wrap sec rowf" style="align-items:center;gap:48px 72px"><div style="flex:1 1 420px;min-width:0;display:flex;justify-content:center">' + T.certificate({ n: 'Your Name Here', title: c.title, no: 'TPC-000000', date: 'DD Month YYYY', example: true, cls: 'tilt', style: 'max-width:600px' }) + '</div>' +
@@ -150,7 +150,6 @@ T.catalogue().then(function (list) {
   main.innerHTML = hero + nums + fit + why + day + life + learn + mid + outline + care + clients + uses + cert + stories + document.getElementById('tpl-steps').innerHTML + doubts + offer + document.getElementById('tpl-faq').innerHTML +
     '<div class="sticky-enrol" id="sticky"><span class="t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + (c.offer ? '<span class="st-end">' + c.offer.pct + '% off until ' + E(T.endDate(c.offer.until)) + '</span>' : '') + '<button class="btn btn-sea btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol now</button></div>';
   T.tick();
-  [].forEach.call(document.querySelectorAll('[data-preview]'), function (b) { b.addEventListener('click', function () { preview(c); }); });
   fetch('/tutor.json', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (t) { if (t) tutor(t); }).catch(function () {});
   var am = document.getElementById('allmods');
   if (am) am.addEventListener('click', function () { [].forEach.call(document.querySelectorAll('.mods .extra'), function (li) { li.classList.remove('hide'); }); am.remove(); });
@@ -158,25 +157,6 @@ T.catalogue().then(function (list) {
   var onScroll = function () { st.classList.toggle('show', window.scrollY > 640 && window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 500); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 }, function () { main.innerHTML = '<div class="wrap sec"><p>We could not load this page. Please refresh.</p></div>'; });
-
-// Module 1, free: the real first lesson in a window, with the way to enrol right under it.
-function preview(c) {
-  var old = document.querySelector('.modal'); if (old) old.remove();
-  var d = document.createElement('div'); d.className = 'modal';
-  d.innerHTML = '<div class="box wide" role="dialog" aria-modal="true" aria-labelledby="pv-h"><button type="button" class="x" aria-label="Close"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg></button>' +
-    '<p class="eyebrow">Free preview</p><h2 id="pv-h" class="d3" style="padding-right:48px">Module 1: <em>' + E(c.outline[0] ? c.outline[0].title : c.title) + '</em></h2>' +
-    '<iframe class="pv-frame" src="' + E(c.preview) + '" title="Module 1 preview" allow="fullscreen; autoplay" allowfullscreen></iframe>' +
-    '<p class="small muted" style="margin:-8px 0 0">Not loading? <a href="' + E(c.preview) + '" target="_blank" rel="noopener">Open module 1 in a new tab</a>.</p>' +
-    '<div class="rowf" style="align-items:center;justify-content:space-between;gap:12px 20px"><p style="margin:0">Like it? The other ' + Math.max(c.modules - 1, 0) + ' modules, the exam and your certificate are one step away.</p><button class="btn btn-sea" type="button" data-enrol="' + E(c.id) + '">Enrol now' + T.ARROW + '</button></div></div>';
-  document.body.appendChild(d);
-  var onKey = function (e) { if (e.key === 'Escape') close(); };
-  var close = function () { d.remove(); document.removeEventListener('keydown', onKey); };
-  d.querySelector('.x').addEventListener('click', close);
-  d.addEventListener('click', function (e) { if (e.target === d) close(); });
-  d.querySelector('[data-enrol]').addEventListener('click', function () { close(); }, true);
-  document.addEventListener('keydown', onKey);
-  d.querySelector('.x').focus();
-}
 
 // Your tutor: shown only when public/tutor.json holds a real person (name, role, bio; photo and credentials optional).
 function tutor(t) {
