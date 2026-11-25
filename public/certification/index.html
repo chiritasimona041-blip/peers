@@ -28,6 +28,22 @@ var IC = {
 };
 function ic(n, s) { return '<svg aria-hidden="true" width="' + (s || 22) + '" height="' + (s || 22) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + IC[n] + '</svg>'; }
 var SEAL = '<svg aria-hidden="true" width="46" height="46" viewBox="0 0 72 72" fill="none" style="flex:none"><circle cx="36" cy="36" r="34" fill="#F0A868"/><circle cx="36" cy="36" r="26" stroke="#1D1916" stroke-width="1.5" stroke-dasharray="2 4"/><path d="M25 37l8 8 15-17" stroke="#1D1916" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+// One named method per school. Every course's modules run from foundations, to tools, to real practice, so they are grouped in three stages in order.
+var METHODS = {
+  'Foundations': { name: 'The Peers <em>Path.</em>', short: 'The Peers Path', st: ['Understand', 'Practise', 'Lead'] },
+  'Mind and performance': { name: 'The Clear Mind <em>Method.</em>', short: 'The Clear Mind Method', st: ['Know', 'Train', 'Apply'] },
+  'Relationships and family': { name: 'The Connection <em>Method.</em>', short: 'The Connection Method', st: ['Understand', 'Support', 'Guide'] },
+  'Wellbeing and healing': { name: 'The Steady Ground <em>Method.</em>', short: 'The Steady Ground Method', st: ['Ground', 'Process', 'Grow'] }
+};
+var STAGE_TXT = ['The foundations: what this kind of coaching is, how it works and where it fits.', 'The core tools and techniques you will use with clients, one at a time.', 'Putting it together: real sessions, professional practice and your next steps.'];
+function stageList(items, method) {
+  var n = items.length, a = Math.ceil(n / 3), b = Math.ceil((n - a) / 2), cuts = [[0, a], [a, a + b], [a + b, n]];
+  return cuts.map(function (r, k) {
+    if (r[1] <= r[0]) return '';
+    return '<div class="stage"><div class="st-h"><span class="st-n">Stage ' + ['I', 'II', 'III'][k] + '</span><h3>' + method.st[k] + '</h3><p>' + STAGE_TXT[k] + '</p><span class="st-m">' + (r[1] - r[0] > 1 ? 'Modules ' + (r[0] + 1) + '–' + r[1] : 'Module ' + r[1]) + '</span></div>' +
+      '<ol class="mods">' + items.slice(r[0], r[1]).join('') + '</ol></div>';
+  }).join('');
+}
 var LIFE = [['beach', 'Finished by four'], ['desk', 'Tuesday, 9am'], ['call', 'Client in Lisbon']];
 
 T.catalogue().then(function (list) {
@@ -40,12 +56,13 @@ T.catalogue().then(function (list) {
   var school = 'School of ' + String(c.tag).replace(/\b(performance|family|healing)\b/g, function (w) { return w.charAt(0).toUpperCase() + w.slice(1); });
   var price = T.money(c.price, c.cur), short = c.title.replace(/^Certified /, ''), n = c.modules;
   var save = T.saveHtml(c), g = c.guarantee;
+  var method = METHODS[c.tag] || METHODS['Foundations'];
   // the launch offer is real: it ends on its date and the full price comes back on its own
-  var priceBlock = function (size) {
+  var priceBlock = function (size, noTimer) {
     if (!c.offer) return '<div class="rowf" style="align-items:center;gap:10px 18px">' + T.priceHtml(c, size) + save + '</div>';
     return '<div class="offerbox"><div class="ob-l"><p class="ob-h">Launch offer · ' + c.offer.pct + '% off</p>' + T.priceHtml(c, size) +
       '<p class="ob-t">You save ' + E(T.money(c.full - c.price, c.cur)) + '. Full price ' + E(T.money(c.full, c.cur)) + ' after ' + E(T.endDate(c.offer.until)) + '.</p></div>' +
-      '<div class="ob-r"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '</div></div>';
+      (noTimer ? '' : '<div class="ob-r"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '</div>') + '</div>';
   };
   var tryBtn = c.preview ? '<button class="btn btn-line" type="button" data-preview>' + ic('play', 18) + 'Try module 1 free</button>' : '';
   var assure = '<p class="assure">' + (g ? '<span>' + ic('shield', 16) + g + '-day money-back guarantee</span>' : '') + '<span>' + ic('lock', 16) + 'Secure checkout by Stripe</span><span>' + ic('check', 16) + 'One payment, instant access</span></p>';
@@ -59,6 +76,7 @@ T.catalogue().then(function (list) {
        : '<p class="eyebrow">' + E(c.sub || 'Certification') + '</p><h1>' + T.titleHtml(c.title) + '</h1><p class="lead hero-lede">' + E(c.blurb) + '</p>') +
     priceBlock(52) +
     '<div class="rowf" style="align-items:center;gap:12px">' + enrolBtn('btn-sea', 'Enrol now') + tryBtn + '</div>' + assure +
+    '<p class="askfirst">Not sure yet? <a href="mailto:info@thepeerscertification.com?subject=' + encodeURIComponent('Question about ' + c.title) + '">Ask us first</a> or <a href="/certifications#quiz">take the 30-second quiz</a>.</p>' +
     '<div class="facts"><span class="fact">' + ic('book', 16) + n + ' modules</span><span class="fact">' + ic('device', 16) + '100% online, self-paced</span><span class="fact">' + ic('check', 16) + 'Final exam included</span><span class="fact">' + ic('award', 16) + 'Verifiable certificate</span></div>' +
     '</div><div class="pic"><img src="' + T.photoFor(c, idx) + '" alt=""><span class="tagpill floattag">Enrolment open</span>' +
     '<div class="floatcard">' + SEAL + '<div><span class="d4" style="font-size:20px;display:block;line-height:1.1">' + E(c.title) + '</span><span class="small muted" style="font-size:13px">Numbered and verifiable online</span></div></div></div></section>';
@@ -79,10 +97,10 @@ T.catalogue().then(function (list) {
   var stories = '<div id="tutor"></div>';
 
   var nums = '<section class="dark"><div class="wrap nums">' +
-    '<div><b>' + n + '</b><span>modules, from first principles to running real sessions</span></div>' +
-    '<div><b>100%</b><span>online and self-paced, on any device</span></div>' +
-    '<div><b>12</b><span>months of access to study and revisit</span></div>' +
-    '<div><b>1</b><span>certificate with your name and a number anyone can verify</span></div></div></section>';
+    '<div><b>' + n + '</b><span>modules in ' + E(method.short) + ', from first principles to real sessions</span></div>' +
+    (g ? '<div><b>' + g + '</b><span>day money-back guarantee, no reason needed</span></div>' : '') +
+    (c.preview ? '<div><b>Free</b><span>first module, so you can try it before you pay</span></div>' : '') +
+    '<div><b>1 year</b><span>of access to study, then a certificate anyone can verify online</span></div></div></section>';
 
   var life = P && P.day ? '' : '<section><div class="wrap sec rowf" style="align-items:center;gap:40px 64px">' +
     '<div class="rowf" style="flex:1.1 1 440px;min-width:0">' + lifePics.map(function (p, i) { return '<div style="flex:1 1 200px;min-width:0' + (i ? ';padding-top:48px' : '') + '" class="' + (i ? 'nudge' : '') + '"><div class="photo ph-b" style="height:420px"><img src="/img/' + p[0] + '.jpg" alt="" loading="lazy"><span class="chip">' + p[1] + '</span></div></div>'; }).join('') + '</div>' +
@@ -94,10 +112,10 @@ T.catalogue().then(function (list) {
   var learn = c.learn.length ? '<section><div class="wrap sec stack" style="gap:48px"><div class="rowf" style="align-items:flex-end;justify-content:space-between"><div class="stack"><p class="eyebrow">What you will learn</p><h2 class="d2" style="max-width:11em">What you will be able to <em>do.</em></h2></div><p style="font-size:18px;max-width:22em">Five skills you take straight into sessions with real clients.</p></div><div class="ogrid">' +
     (P && P.outcomes ? P.outcomes.map(function (o) { return o.h + '|' + o.d; }) : c.learn).map(function (x, i) { var bar = x.indexOf('|'), k = bar > 0 ? bar : x.indexOf(': '), h = k > 0 ? x.slice(0, k) : x, d = k > 0 ? x.slice(k + (bar > 0 ? 1 : 2)) : ''; return '<article class="ocard"><span class="n">' + String(i + 1).padStart(2, '0') + '</span><h3>' + E(h) + '</h3>' + (d ? '<p>' + E(d.charAt(0).toUpperCase() + d.slice(1)) + (bar > 0 ? '' : '.') + '</p>' : '') + '</article>'; }).join('') + '</div></div></section>' : '';
 
-  var CUT = P && P.modules ? 99 : 8, more = c.outline.length > CUT;
-  var outline = c.outline.length ? '<section><div class="wrap sec rowf" style="gap:32px 72px;' + (learn ? 'padding-top:0' : '') + '"><div class="stack mods-head" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Inside the course</p><h2 class="d2" style="max-width:8em">' + n + ' modules, start to <em>certified.</em></h2><p class="lead">Each module builds on the last, and the final one puts it all together in a real session.</p>' +
+  var CUT = 999, more = false;
+  var outline = c.outline.length ? '<section><div class="wrap sec rowf" style="gap:32px 72px;' + (learn ? 'padding-top:0' : '') + '"><div class="stack mods-head" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Inside the course · ' + n + ' modules</p><h2 class="d2" style="max-width:8em">' + method.name + '</h2><p class="lead">Three stages, taken in order. Each one builds on the last, and the final stage puts it all together in real sessions.</p>' +
     (c.preview ? '<button type="button" class="pvcard" data-preview><img src="' + T.photoFor(c, idx) + '" alt="" loading="lazy"><span class="pv-play">' + ic('play', 30) + '</span><span class="pv-t"><b>Watch module 1 free</b><span>' + E(c.outline[0] ? c.outline[0].title : '') + '</span></span></button>' : '') + '</div>' +
-    '<div style="flex:1.4 1 480px;min-width:0"><ol class="mods">' + c.outline.map(function (m, i) { return '<li' + (more && i >= CUT ? ' class="hide extra"' : '') + '><span class="num" style="flex:0 0 40px">' + String(i + 1).padStart(2, '0') + '</span><span class="d4" style="flex:1">' + E(m.title) + (P && P.modules && P.modules[i] ? '<span class="desc">' + E(P.modules[i]) + '</span>' : '') + '</span>' + (i === 0 && c.preview ? '<button type="button" class="pill pv-pill" data-preview>Free preview</button>' : m.lessons ? '<span class="small muted">' + m.lessons + (m.lessons === 1 ? ' lesson' : ' lessons') + '</span>' : '') + '</li>'; }).join('') + '</ol>' +
+    '<div style="flex:1.4 1 480px;min-width:0">' + stageList(c.outline.map(function (m, i) { return '<li' + (more && i >= CUT ? ' class="hide extra"' : '') + '><span class="num" style="flex:0 0 40px">' + String(i + 1).padStart(2, '0') + '</span><span class="d4" style="flex:1">' + E(m.title) + (P && P.modules && P.modules[i] ? '<span class="desc">' + E(P.modules[i]) + '</span>' : '') + '</span>' + (i === 0 && c.preview ? '<button type="button" class="pill pv-pill" data-preview>Free preview</button>' : m.lessons ? '<span class="small muted">' + m.lessons + (m.lessons === 1 ? ' lesson' : ' lessons') + '</span>' : '') + '</li>'; }), method) +
     (more ? '<button type="button" class="btn btn-line btn-s" id="allmods" style="margin-top:20px">Show all ' + n + ' modules</button>' : '') + '</div></div></section>' : '';
 
   var cert = '<section class="sandbg"><div class="wrap sec rowf" style="align-items:center;gap:48px 72px"><div style="flex:1 1 420px;min-width:0;display:flex;justify-content:center">' + T.certificate({ n: 'Your Name Here', title: c.title, no: 'TPC-000000', date: 'DD Month YYYY', example: true, cls: 'tilt', style: 'max-width:600px' }) + '</div>' +
@@ -108,15 +126,21 @@ T.catalogue().then(function (list) {
   var incl = '<section><div class="wrap sec stack" style="gap:48px"><div class="stack"><p class="eyebrow">What is included</p><h2 class="d2" style="max-width:12em">Everything in <em>one payment.</em></h2></div><div class="bento">' + tiles.map(function (t) { return '<div class="tile"><span class="ic">' + ic(t[0]) + '</span><h3>' + t[1] + '</h3><p>' + t[2] + '</p></div>'; }).join('') + '</div>' +
     (c.care ? '<p class="carenote">This certification teaches coaching skills. It does not qualify you to diagnose or treat medical or mental health conditions, and it is not a substitute for clinical training.</p>' : '') + '</div></section>';
 
-  var offer = '<section style="padding:24px" class="cta-wrap"><div class="offer"><div class="l"><p class="eyebrow" style="color:var(--sun)">Enrolment open</p><h2>Become a <em>' + E(c.title) + '.</em></h2>' + priceBlock(56) + '<div class="rowf" style="align-items:center;gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div>' +
+  var offer = '<section style="padding:24px" class="cta-wrap"><div class="offer"><div class="l"><p class="eyebrow" style="color:var(--sun)">Enrolment open</p><h2>Become a <em>' + E(c.title) + '.</em></h2>' + priceBlock(56, true) + '<div class="rowf" style="align-items:center;gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div>' +
     '<div class="r"><ul class="ticks">' + ['All ' + n + ' modules', 'Final exam with retakes', 'Numbered, verifiable certificate', '12 months of access', 'Study on any device'].concat(g ? [g + '-day money-back guarantee'] : []).map(function (x) { return '<li>' + ic('check', 20) + x + '</li>'; }).join('') + '</ul></div></div></section>';
 
   // the offer again, halfway down: same real deadline, same price, big and bold
   var mid = c.offer ? '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">Launch offer · ' + c.offer.pct + '% off</p>' +
       '<h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em> <s>' + E(T.money(c.full, c.cur)) + '</s></h2><p class="mo-sub">The launch price ends ' + E(T.endDate(c.offer.until)) + '. After that, ' + E(c.title) + ' is ' + E(T.money(c.full, c.cur)) + '.</p></div>' +
-      '<div class="mo-timer"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '<div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>'
+      '<div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>'
     : '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">Enrolment open</p><h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em></h2></div><div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>';
   var care = c.care ? '<section><div class="wrap" style="padding-bottom:24px"><p class="carenote" style="margin:0">This certification teaches coaching skills. It does not qualify you to diagnose or treat medical or mental health conditions, and it is not a substitute for clinical training.</p></div></section>' : '';
+
+  var yes = c.who.concat(['Anyone who wants a certificate clients can check online']).slice(0, 4);
+  var no = ['You want a licence to diagnose or treat. This is coaching, not therapy.', 'You want a live classroom. This course is online and self-paced.', 'You cannot set aside a few hours a week to study.'];
+  var fit = '<section><div class="wrap sec stack" style="gap:36px"><div class="stack" style="gap:14px"><p class="eyebrow">Honest fit check</p><h2 class="d2">Is this <em>for you?</em></h2></div><div class="fit">' +
+    '<div class="fit-yes"><h3>Made for</h3><ul>' + yes.map(function (x) { return '<li>' + ic('check', 20) + '<span>' + E(x) + '</span></li>'; }).join('') + '</ul></div>' +
+    '<div class="fit-no"><h3>Not yet, if</h3><ul>' + no.map(function (x) { return '<li><span class="x" aria-hidden="true">×</span><span>' + E(x) + '</span></li>'; }).join('') + '</ul></div></div></div></section>';
 
   var rel = list.filter(function (x) { return x.id !== c.id && x.tag === c.tag; }).concat(list.filter(function (x) { return x.id !== c.id && x.tag !== c.tag; })).slice(0, 3);
   var related = '<section><div class="wrap sec stack" style="gap:40px"><div class="rowf" style="align-items:flex-end;justify-content:space-between"><h2 class="d2">You might also <em>like.</em></h2><a class="btn btn-line btn-s" href="/certifications">View all ' + list.length + '</a></div><div class="cgrid">' + rel.map(function (x, i) {
@@ -124,8 +148,8 @@ T.catalogue().then(function (list) {
 
   var spec = '<section><div class="wrap sec rowf" style="gap:40px 72px"><div class="stack" style="flex:1 1 320px;min-width:0;gap:18px"><p class="eyebrow">Programme specification</p><h2 class="d2" style="max-width:9em">The award, <em>in full.</em></h2><p class="lead">What you study, how you are examined and what you hold at the end.</p></div>' +
     '<dl class="spec" style="flex:1.5 1 480px;min-width:0">' + [['Award', c.title], ['School', school], ['Curriculum', n + ' modules, taken in order'], ['Study mode', 'Online, self-paced, on any device'], ['Access', '12 months from enrolment'], ['Assessment', 'Final examination, multiple choice'], ['Pass mark', '80%, with retakes allowed'], ['Certificate', 'Named, numbered and publicly verifiable']].concat(g ? [['Guarantee', g + '-day money-back guarantee']] : []).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + E(r[1]) + '</dd></div>'; }).join('') + '</dl></div></section>';
-  main.innerHTML = hero + nums + why + day + life + learn + mid + outline + care + clients + uses + cert + stories + document.getElementById('tpl-steps').innerHTML + doubts + offer + document.getElementById('tpl-faq').innerHTML + related +
-    '<div class="sticky-enrol" id="sticky"><span class="t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + (c.offer ? '<span class="st-end">' + c.offer.pct + '% off ends in ' + T.timerHtml(c.offer.until, true) + '</span>' : '') + '<button class="btn btn-sea btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol now</button></div>';
+  main.innerHTML = hero + nums + fit + why + day + life + learn + mid + outline + care + clients + uses + cert + stories + document.getElementById('tpl-steps').innerHTML + doubts + offer + document.getElementById('tpl-faq').innerHTML + related +
+    '<div class="sticky-enrol" id="sticky"><span class="t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + (c.offer ? '<span class="st-end">' + c.offer.pct + '% off until ' + E(T.endDate(c.offer.until)) + '</span>' : '') + '<button class="btn btn-sea btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol now</button></div>';
   T.tick();
   [].forEach.call(document.querySelectorAll('[data-preview]'), function (b) { b.addEventListener('click', function () { preview(c); }); });
   fetch('/tutor.json', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (t) { if (t) tutor(t); }).catch(function () {});

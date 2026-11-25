@@ -586,3 +586,40 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .sandbg{background:var(--paper)}
 .doubt{background:#fff}
 .offerbar{background:var(--sun);color:var(--ink);border-bottom:0} .offerbar b{color:var(--ink)} .offerbar a{color:var(--ink)} .offerbar a:hover{color:#000;text-decoration:underline}
+
+/* ---- course page: method stages, fit check, ask first ---- */
+.stage{margin-bottom:28px}
+.stage .st-h{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline;padding:22px 24px;border-radius:24px;background:var(--ink);color:#D9CFC3;margin-bottom:6px}
+.stage .st-n{grid-row:span 2;font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;color:var(--sun)}
+.stage h3{margin:0;font-size:30px;line-height:1.05;color:#fff}
+.stage .st-h p{margin:0;font-size:16px;grid-column:2}
+.stage .st-m{grid-column:2;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);margin-top:4px}
+.stage .mods{border-bottom:0}
+.fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.fit>div{border-radius:28px;padding:clamp(24px,3vw,40px)}
+.fit h3{font-size:30px;margin:0 0 14px}
+.fit ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.fit li{display:flex;gap:12px;align-items:flex-start;font-size:18px;line-height:1.4}
+.fit-yes{background:#fff;border:1px solid var(--line)} .fit-yes svg{flex:none;color:var(--sea);margin-top:2px}
+.fit-no{background:var(--ink);color:#D9CFC3} .fit-no h3{color:#fff}
+.fit-no .x{flex:none;width:22px;text-align:center;font-size:24px;line-height:1;color:var(--sun)}
+.askfirst{margin:0;font-size:15px;color:#D9CFC3} .askfirst a{color:var(--sun);font-weight:700}
+@media (max-width:760px){.fit{grid-template-columns:1fr}.stage .st-n{font-size:34px}.stage h3{font-size:24px}}
+
+/* ---- certifications page: quiz ---- */
+.quizband .wrap{padding-bottom:40px}
+.quiz{background:var(--ink);color:#D9CFC3;border-radius:36px;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:20px;scroll-margin-top:90px}
+.quiz .eyebrow{color:var(--sun)}
+.quiz h2{color:#fff;font-size:clamp(32px,3.8vw,56px);line-height:1;margin:0;max-width:18em} .quiz h2 em{color:var(--sun)}
+.q-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.q-opt{min-height:64px;padding:16px 20px;border-radius:18px;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:17px;text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.q-opt:hover,.q-opt:focus-visible{border-color:var(--sun);background:rgba(240,168,104,.12)}
+.q-back{align-self:flex-start;background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:10px 18px;font:inherit;font-size:15px;cursor:pointer} .q-back:hover{border-color:#fff}
+.q-why{margin:0;font-size:17px;max-width:40em}
+.q-recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.q-rec{display:flex;flex-direction:column;gap:10px;padding:22px 24px;border-radius:22px;background:var(--paper);color:var(--ink);text-decoration:none}
+.q-rec:hover{color:var(--ink);box-shadow:0 0 0 3px var(--sun)}
+.q-rec .q-t{font-family:var(--serif);font-size:28px;line-height:1.05}
+.q-rec .q-go{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--sea)} .q-rec .arrow{width:16px;height:16px}
+.q-load{margin:0}
+#quiz{scroll-margin-top:40px}
