@@ -26,6 +26,12 @@ BRAND_NAME = "The Peers Certification"
 SITE_ORIGIN = "https://thepeerscertification.com"
 CURRENCY = "gbp"
 PASS_MARK = "80"
+# Launch offer: 30% off every certification until the end of 31 December 2026 (UK time). After that date the full price
+# comes back on its own, on the pages and at checkout. To end it early, or for a new offer, change these two lines.
+OFFER_PCT = "30"
+OFFER_UNTIL = "2026-12-31T23:59:59Z"
+# Money-back guarantee shown next to the price (must match the Refunds page).
+GUARANTEE_DAYS = "14"
 CERT_PREFIX = "TPC"
 NOTIFY_TO = "info@thepeerscertification.com"
 # Namecheap Private Email: the site sends from this mailbox. Its password is the SMTP_PASS secret (Cloudflare > peers > Settings > Variables and Secrets).

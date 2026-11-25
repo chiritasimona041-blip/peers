@@ -18,6 +18,9 @@ export type Env = {
   SMTP_PORT?: string;
   SMTP_USER?: string;
   SMTP_PASS?: string;
+  OFFER_PCT?: string;
+  OFFER_UNTIL?: string;
+  GUARANTEE_DAYS?: string;
 };
 
 const b64 = (s: string) => {

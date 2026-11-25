@@ -46,6 +46,29 @@
     var was = c.was ? '<s class="was">' + esc(money(c.was, c.cur)) + '</s>' : '';
     return '<span class="pricerow"><span class="price"' + (size ? ' style="font-size:' + size + 'px"' : '') + '>' + esc(money(c.price, c.cur)) + '</span>' + was + '</span>';
   }
+  // ---- launch offer: the end date comes from the server; every [data-until] counts down, and the page refreshes once at zero ----
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function timeLeft(until) { var ms = Date.parse(until) - Date.now(); if (!(ms > 0)) return null; var t = Math.floor(ms / 1000); return [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60]; }
+  function endDate(until) { try { return new Date(until).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Europe/London' }).replace(' ', '\u00a0'); } catch (e) { return ''; } }
+  function timerHtml(until, compact) { return '<span class="timer' + (compact ? ' compact' : '') + '" data-until="' + esc(until) + '"></span>'; }
+  var bornAt = Date.now();
+  function tick() {
+    [].forEach.call(document.querySelectorAll('[data-until]'), function (el) {
+      var l = timeLeft(el.getAttribute('data-until'));
+      if (!l) {
+        el.textContent = 'Offer ended';
+        var k = 'ended:' + el.getAttribute('data-until'), seen = false;
+        try { seen = sessionStorage.getItem(k); sessionStorage.setItem(k, '1'); } catch (e) { seen = true; }
+        if (!seen && Date.now() - bornAt > 5000) setTimeout(function () { location.reload(); }, 1500);
+        return;
+      }
+      el.setAttribute('aria-label', 'Offer ends in ' + l[0] + ' days ' + l[1] + ' hours ' + l[2] + ' minutes');
+      el.innerHTML = el.classList.contains('compact') ? l[0] + 'd ' + pad2(l[1]) + 'h ' + pad2(l[2]) + 'm ' + pad2(l[3]) + 's'
+        : ['days', 'hrs', 'min', 'sec'].map(function (u, i) { return '<span class="tu"><b>' + (i ? pad2(l[i]) : l[i]) + '</b><i>' + u + '</i></span>'; }).join('');
+    });
+  }
+  setInterval(tick, 1000);
+  function saveHtml(c) { return c.was ? '<span class="savepill">Save ' + esc(money(c.was - c.price, c.cur)) + (c.offer ? ' · ' + c.offer.pct + '% off' : '') + '</span>' : ''; }
   function url(c) { return c.slug ? '/' + c.slug : '/certification?c=' + encodeURIComponent(c.id); }
   function titleHtml(t) { var m = /^(Certified)\s+(.*)$/.exec(t); return m ? esc(m[1]) + ' <em>' + esc(m[2]) + '</em>' : esc(t); }
 
@@ -65,7 +88,7 @@
   function chrome() {
     var h = $('#site-header'), f = $('#site-footer');
     var path = location.pathname.replace(/\/+$/, '') || '/';
-    var links = [['Verify a certificate', '/verify']];
+    var links = [['Certifications', '/certifications'], ['Verify a certificate', '/verify']];
     var cur = function (href) { return href === path ? ' aria-current="page"' : ''; };
     function render(w) {
       var acct = w.role === 'learner' ? ['My learning', '/learn'] : w.role === 'admin' ? ['Admin', '/admin'] : ['Sign in', '/login'];
@@ -84,6 +107,16 @@
       m.addEventListener('click', function () { m.classList.add('hide'); });
     }
     if (h) { render({ role: 'anon' }); who().then(render); }
+    // site-wide launch offer ribbon, on sales pages only (never in admin, learning or account pages)
+    if (h && !/^\/(admin|learn|account|setup|login|set-password|forgot|reset)(\/|$)/.test(path)) catalogue().then(function (list) {
+      var o = null; list.forEach(function (c) { if (!o && c.offer) o = c.offer; });
+      if (!o || $('.offerbar')) return;
+      var bar = document.createElement('div');
+      bar.className = 'offerbar';
+      bar.innerHTML = '<div class="wrap"><span><b>Launch offer:</b> ' + o.pct + '% off<span class="wide-only"> every certification</span> until ' + esc(endDate(o.until)) + '</span><span class="ends">Ends in ' + timerHtml(o.until, true) + '</span>' +
+        (path === '/certifications' ? '' : '<a href="/certifications">See all 20' + ARROW + '</a>') + '</div>';
+      h.parentNode.insertBefore(bar, h); tick();
+    }, function () {});
     if (f) {
       f.innerHTML = '<footer class="site-foot"><div class="wrap in">' +
         '<div class="rowf" style="gap:48px 72px"><div class="stack" style="flex:1.4 1 380px;min-width:0">' +
@@ -207,6 +240,6 @@
   }
   function signOut() { return api('POST', '/api/logout', {}).then(function () { location.href = '/'; }); }
 
-  window.TCC = { certificate: certificate, $: $, esc: esc, api: api, sha: sha, pwHash: pwHash, pwProblem: pwProblem, money: money, date: date, q: q, note: note, who: who, catalogue: catalogue, enrol: enrol, requireLearner: requireLearner, signOut: signOut, photoFor: photoFor, priceHtml: priceHtml, titleHtml: titleHtml, url: url, ARROW: ARROW };
+  window.TCC = { timerHtml: timerHtml, endDate: endDate, saveHtml: saveHtml, tick: tick, certificate: certificate, $: $, esc: esc, api: api, sha: sha, pwHash: pwHash, pwProblem: pwProblem, money: money, date: date, q: q, note: note, who: who, catalogue: catalogue, enrol: enrol, requireLearner: requireLearner, signOut: signOut, photoFor: photoFor, priceHtml: priceHtml, titleHtml: titleHtml, url: url, ARROW: ARROW };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', chrome); else chrome();
 })();

@@ -496,3 +496,44 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
   .app .wrap{max-width:none;padding:0;gap:0} .app{padding:0;margin:0}
   .certificate{width:270mm;margin:0 auto;break-inside:avoid}
 }
+
+/* ---- launch offer, guarantee line, free preview (course pages) ---- */
+.offerbar{background:var(--sea);color:#E3EFEC;font-size:14px;line-height:1.4}
+.offerbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 18px;padding-top:9px;padding-bottom:9px;text-align:center}
+.offerbar b{color:var(--sun)} .offerbar .ends{white-space:nowrap}
+.offerbar a{display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:700;text-decoration:none;white-space:nowrap} .offerbar a:hover{color:var(--sun)} .offerbar .arrow{width:15px;height:15px}
+.timer.compact{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.offerbox{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 22px;max-width:580px;padding:16px 18px 16px 20px;border:1px solid rgba(240,168,104,.6);background:rgba(240,168,104,.1);border-radius:22px}
+.ob-h{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sun)}
+.ob-t{margin:3px 0 0;font-size:15px;color:inherit}
+.timer:not(.compact){display:inline-flex;gap:6px}
+.timer .tu{display:flex;flex-direction:column;align-items:center;min-width:54px;padding:7px 6px 6px;border-radius:12px;background:rgba(255,255,255,.1)}
+.timer .tu b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.timer .tu i{margin-top:3px;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.assure{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;font-size:14px}
+.assure span{display:inline-flex;align-items:center;gap:7px} .assure svg{flex:none;color:var(--sun)}
+.lhero.power .assure{color:#D9CFC3} .offer .assure{color:#DCEAE7}
+.lhero.power .btn-line,.offer .btn-line{color:#fff;border-color:rgba(255,255,255,.5)} .lhero.power .btn-line:hover,.offer .btn-line:hover{color:#fff;border-color:#fff}
+.btn-line svg{margin-right:2px}
+.sticky-enrol .st-end{font-size:13px;color:var(--sea);white-space:nowrap}
+.modal .box.wide{max-width:980px}
+.pv-frame{display:block;width:100%;aspect-ratio:16/10;min-height:300px;border:0;border-radius:16px;background:#14110F}
+@media (max-width:760px){
+  .offerbar{font-size:13px} .offerbar a{display:none}
+  .offerbox{padding:14px} .timer .tu{min-width:48px} .timer .tu b{font-size:24px}
+  .sticky-enrol .st-end{display:none}
+}
+.offerbox .ob-l{display:flex;flex-direction:column;gap:6px;min-width:0}
+.offerbox .ob-t{margin:0;font-size:14px;opacity:.85}
+.offerbox .timer .tu{min-width:50px} .offerbox .timer .tu b{font-size:26px}
+.lhero .copy{gap:20px}
+.hero-lede{font-size:19px;max-width:30em}
+.offerbox{max-width:600px;align-items:stretch}
+.offerbox .ob-r{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.offerbox .price{line-height:1}
+.lhero .copy{padding-top:36px;padding-bottom:48px}
+@media (min-width:601px){.offerbox{flex-wrap:nowrap}.offerbox .ob-l{flex:1 1 auto}.offerbox .ob-r{flex:none}}
+@media (max-width:760px){.offerbar .wide-only{display:none}}
+.floatcard .small.muted{color:#6A615A !important}
+.pv-pill{border:0;cursor:pointer;align-self:center} .pv-pill:hover{background:var(--ink);color:#fff}
+.faq-contact{flex:1 1 100%;margin:8px 0 0;font-size:17px} .faq-contact a{color:var(--sea);font-weight:700}

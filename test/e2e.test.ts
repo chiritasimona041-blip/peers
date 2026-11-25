@@ -1,6 +1,7 @@
 import { env, SELF } from "cloudflare:test";
 import { putDoc } from "../src/store";
 import { nudgeUnpaid, studyReminders, dailySummary } from "../src/jobs";
+import { offerNow, payPrice } from "../src/shop";
 import { describe, it, expect, beforeAll } from "vitest";
 
 const BASE = "https://coaching.test";
@@ -296,13 +297,20 @@ describe("online enrolment, exam and certificate", () => {
     expect((await nia.req("GET", "/api/certificates")).json.certificates).toMatchObject([{ no: certNo }]);
     expect((await nia.req("GET", "/api/exam?course=life")).json).toMatchObject({ passed: true, cert: certNo });
   });
-  it("admin can change the price, the was price and the currency", async () => {
+  it("admin can change the price and the currency; a stored was price is never shown", async () => {
     expect((await adm.set("courses/life", { price: 19900, was: 29900, cur: "gbp" }, "update")).status).toBe(200);
-    let life = (await new C().req("GET", "/api/catalogue")).json.courses.find((x: any) => x.id === "life");
-    expect(life).toMatchObject({ price: 19900, was: 29900, cur: "gbp", title: "Certified Life Coach" });
-    await adm.set("courses/life", { was: 0 }, "update");
-    life = (await new C().req("GET", "/api/catalogue")).json.courses.find((x: any) => x.id === "life");
-    expect(life.was).toBe(0);
+    const life = (await new C().req("GET", "/api/catalogue")).json.courses.find((x: any) => x.id === "life");
+    expect(life).toMatchObject({ price: 19900, full: 19900, was: 0, offer: null, cur: "gbp", title: "Certified Life Coach" });
+  });
+  it("a launch offer is real: dated, rounded down, and gone after its end", () => {
+    const e = { OFFER_PCT: "30", OFFER_UNTIL: "2026-12-31T23:59:59Z" } as any;
+    const before = Date.parse("2026-12-31T23:00:00Z"), after = Date.parse("2027-01-01T00:00:00Z");
+    expect(offerNow(e, before)).toEqual({ pct: 30, until: "2026-12-31T23:59:59.000Z" });
+    expect(offerNow(e, after)).toBeNull();
+    expect(offerNow({} as any, before)).toBeNull();
+    expect(offerNow({ OFFER_PCT: "95", OFFER_UNTIL: "2030-01-01" } as any, before)).toBeNull();
+    expect(payPrice(29500, offerNow(e, before))).toBe(20600);
+    expect(payPrice(29500, null)).toBe(29500);
   });
   it("each certification address carries its own title and description; an unknown one is a 404", async () => {
     const r = await SELF.fetch("https://example.com/certified-life-coach");

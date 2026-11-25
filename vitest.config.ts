@@ -7,7 +7,7 @@ export default defineConfig(async () => {
     plugins: [
       cloudflareTest({
         wrangler: { configPath: "./wrangler.toml" },
-        miniflare: { bindings: { TEST_MIGRATIONS: migrations, SETUP_TOKEN: "test-setup-token", NOTIFY_TO: "info@coaching.test", STRIPE_WEBHOOK_SECRET: "whsec_test" } },
+        miniflare: { bindings: { TEST_MIGRATIONS: migrations, SETUP_TOKEN: "test-setup-token", NOTIFY_TO: "info@coaching.test", STRIPE_WEBHOOK_SECRET: "whsec_test", OFFER_PCT: "" } },
       }),
     ],
     test: { setupFiles: ["./test/setup.ts"] },

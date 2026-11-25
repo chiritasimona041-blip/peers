@@ -28,15 +28,27 @@ async function hmacHex(secret: string, msg: string) {
 }
 const sameStr = (a: string, b: string) => { if (a.length !== b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i); return d === 0; };
 
-// What a visitor may see of a course: never lessons, never exam answers.
-const publicCourse = (id: string, d: Doc) => ({
+/** A real, dated offer from the site settings (OFFER_PCT, OFFER_UNTIL). It is simply off before setup and after its end date,
+ *  so the price on the page, at checkout and in Stripe always goes back to the full price when the countdown ends. */
+export type Offer = { pct: number; until: string } | null;
+export function offerNow(env: Env, now = Date.now()): Offer {
+  const pct = Number(env.OFFER_PCT || 0), until = Date.parse(String(env.OFFER_UNTIL || ""));
+  return Number.isFinite(pct) && pct > 0 && pct < 90 && Number.isFinite(until) && until > now ? { pct, until: new Date(until).toISOString() } : null;
+}
+/** What the buyer pays now: the offer price, rounded down to a whole unit (e.g. $206.50 -> $206), or the full price. */
+export const payPrice = (price: number, offer: Offer) => (offer ? Math.floor((price * (100 - offer.pct)) / 10000) * 100 : price);
+const guaranteeDays = (env: Env) => { const n = Number(env.GUARANTEE_DAYS || 0); return Number.isInteger(n) && n > 0 && n <= 60 ? n : 0; };
+const firstLesson = (d: Doc) => { const u = String(d?.modules?.[0]?.lessons?.[0]?.url || ""); return /^https:\/\/[^\s"'<>]+$/.test(u) ? u : ""; };
+
+// What a visitor may see of a course: never lessons (except module 1, the free preview), never exam answers.
+const publicCourse = (id: string, d: Doc, offer: Offer = null, guarantee = 0) => ({
   id, title: S(d.title, 120), tag: S(d.tag, 40), blurb: S(d.blurb, 400),
-  price: Number(d.price) || 0, cur: S(d.cur, 3) || "",
+  price: payPrice(Number(d.price) || 0, offer), full: Number(d.price) || 0, cur: S(d.cur, 3) || "",
   modules: Array.isArray(d.modules) ? d.modules.length : 0,
   outline: (Array.isArray(d.modules) ? d.modules : []).slice(0, 40).map((m: Doc) => ({ title: S(m?.title, 120), lessons: Array.isArray(m?.lessons) ? m.lessons.length : 0 })),
   learn: (Array.isArray(d.learn) ? d.learn : []).slice(0, 12).map((x: unknown) => S(x, 200)),
   img: /^[a-z]{1,20}$/.test(String(d.img)) ? String(d.img) : "", featured: !!d.featured,
-  sub: S(d.sub, 60), was: Number.isInteger(d.was) && d.was > d.price ? d.was : 0, care: !!d.care,
+  sub: S(d.sub, 60), was: offer ? Number(d.price) || 0 : 0, offer, guarantee, preview: firstLesson(d), care: !!d.care,
   who: (Array.isArray(d.who) ? d.who : []).slice(0, 6).map((x: unknown) => S(x, 120)),
   slug: slugOf(d.title),
   // optional long-form landing page content, written by an admin
@@ -48,11 +60,11 @@ export async function coursePage(c: Context, slug: string): Promise<Response> {
   const rows = await listDocs(c.env, "courses");
   const row = rows.find((r) => forSale(r.data) && slugOf(r.data.title) === slug);
   if (!row) { const nf = await c.env.ASSETS.fetch(new Request(new URL("/404.html", c.req.url))); return new Response(nf.body, { status: 404, headers: { "Content-Type": "text/html; charset=utf-8" } }); }
-  const d = publicCourse(row.id, row.data), b = brand(c.env), url = origin(c) + "/" + slug;
+  const offer = offerNow(c.env), d = publicCourse(row.id, row.data, offer, guaranteeDays(c.env)), b = brand(c.env), url = origin(c) + "/" + slug;
   const page = await c.env.ASSETS.fetch(new Request(new URL("/certification/", c.req.url)));
   const desc = escHtml(S(String((d.page as Doc | null)?.lede || d.blurb), 300));
   const ld = { "@context": "https://schema.org", "@type": "Course", name: d.title, description: S(String((d.page as Doc | null)?.lede || d.blurb), 300), url, provider: { "@type": "Organization", name: b, url: origin(c) },
-    offers: { "@type": "Offer", price: (d.price / 100).toFixed(2), priceCurrency: (d.cur || String(c.env.CURRENCY || "gbp")).toUpperCase(), url, category: "Paid" } };
+    offers: { "@type": "Offer", price: (d.price / 100).toFixed(2), priceCurrency: (d.cur || String(c.env.CURRENCY || "gbp")).toUpperCase(), url, category: "Paid", ...(offer ? { priceValidUntil: offer.until.slice(0, 10) } : {}) } };
   const head = `<title>${escHtml(d.title)} | ${escHtml(b)}</title>\n<meta name="description" content="${desc}">\n<link rel="canonical" href="${escHtml(url)}">\n<meta property="og:type" content="website">\n<meta property="og:title" content="${escHtml(d.title)}">\n<meta property="og:description" content="${desc}">\n<meta property="og:url" content="${escHtml(url)}">` +
     (d.img ? `\n<meta property="og:image" content="${escHtml(origin(c))}/img/${d.img}.jpg">` : "") + `\n<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>`;
   const html = (await page.text()).replace(/<title>[^<]*<\/title>\s*<meta name="description"[^>]*>/, () => head);
@@ -90,8 +102,8 @@ export async function fulfil(env: Env, orderId: string, siteOrigin: string) {
 export function registerShop(app: Hono<any>) {
   // ---------- public catalogue ----------
   app.get("/api/catalogue", async (c) => {
-    const rows = await listDocs(c.env, "courses");
-    return c.json({ courses: rows.filter((r) => forSale(r.data)).map((r) => publicCourse(r.id, r.data)).sort((x, y) => Number(y.featured) - Number(x.featured) || x.title.localeCompare(y.title)) });
+    const rows = await listDocs(c.env, "courses"), offer = offerNow(c.env), guarantee = guaranteeDays(c.env);
+    return c.json({ courses: rows.filter((r) => forSale(r.data)).map((r) => publicCourse(r.id, r.data, offer, guarantee)).sort((x, y) => Number(y.featured) - Number(x.featured) || x.title.localeCompare(y.title)) });
   });
 
   // ---------- enrol: name + email, then straight to payment ----------
@@ -110,7 +122,8 @@ export function registerShop(app: Hono<any>) {
     await hit(c.env, "enrol:" + ctx.ip, 20, 3600_000);
     const id = crypto.randomUUID();
     const cur = (S(d!.cur, 3) || c.env.CURRENCY || "gbp").toLowerCase();
-    const o: Doc = { course, title: S(d!.title, 120), n, e, amount: d!.price, cur, status: "pending", at: new Date().toISOString() };
+    const amount = payPrice(d!.price, offerNow(c.env)); // the price shown on the page right now
+    const o: Doc = { course, title: S(d!.title, 120), n, e, amount, cur, status: "pending", at: new Date().toISOString() };
     const base = origin(c);
     const form = new URLSearchParams({
       mode: "payment", customer_email: e, client_reference_id: id,
@@ -118,7 +131,7 @@ export function registerShop(app: Hono<any>) {
       "metadata[order]": id,
       "line_items[0][quantity]": "1",
       "line_items[0][price_data][currency]": cur,
-      "line_items[0][price_data][unit_amount]": String(d!.price),
+      "line_items[0][price_data][unit_amount]": String(amount),
       "line_items[0][price_data][product_data][name]": o.title,
     });
     const r = await fetch("https://api.stripe.com/v1/checkout/sessions", { method: "POST", headers: { Authorization: `Bearer ${c.env.STRIPE_SECRET_KEY}`, "Content-Type": "application/x-www-form-urlencoded" }, body: form });
