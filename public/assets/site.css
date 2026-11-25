@@ -609,3 +609,9 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .lhero h1.ctitle em{font-style:italic;color:var(--sun)}
 .lhero .promise{margin:0;font-family:var(--serif);font-size:clamp(28px,2.6vw,40px);line-height:1.1;color:#E9E1D6;max-width:16em}
 .lhero .promise em{font-style:italic;color:var(--sun)}
+/* modules section: room to breathe */
+.modsec .sec{padding-top:clamp(72px,8vw,128px);padding-bottom:clamp(72px,8vw,128px)}
+.stage{margin-bottom:48px} .stage:last-child{margin-bottom:0}
+.stage .st-h{padding:28px 32px;gap:6px 20px;margin-bottom:14px}
+.stage .mods li{padding:22px 12px}
+@media (min-width:900px){.mods-head{top:120px}}

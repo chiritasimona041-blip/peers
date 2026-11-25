@@ -129,7 +129,7 @@
         '<div class="col"><span>Support</span><a href="/#faq">FAQ</a><a href="/contact">Contact</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/refunds">Refunds</a></div>' +
         '</div></div>' +
         '<div class="wordmark" aria-hidden="true">The Peers <em>Certification</em></div>' +
-        '<div class="legal"><span class="foot-mark">' + EMBLEM + 'thepeerscertification.com</span><span>Photography shown is placeholder imagery.</span></div></div></footer>';
+        '<div class="legal"><span class="foot-mark">' + EMBLEM + 'thepeerscertification.com</span></div></div></footer>';
       var form = $('.news', f), msg = $('[role=status]', f);
       form.addEventListener('submit', function (e) {
         e.preventDefault();
