@@ -617,3 +617,5 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 /* admin: view course page */
 .eye{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--ink);background:#fff}
 .eye:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.eyes{display:inline-flex;gap:8px}
+.previewnote{margin:0 0 20px;border-color:rgba(240,168,104,.7);background:#FBF1E8;color:var(--ink)} .previewnote a{color:var(--sea);font-weight:700}

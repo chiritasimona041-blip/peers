@@ -107,11 +107,13 @@ function learners() {
   return add + (D.learners.length ? table(H, rows) : empty('No learners yet.'));
 }
 function courses() {
-  var H = ['Certification', 'Price', 'Modules', 'Exam questions', 'View', 'On sale', ''];
+  var H = ['Certification', 'Price', 'Modules', 'Exam questions', 'Page · Lessons', 'On sale', ''];
   // the public course page, opened in a new tab (same address the Worker serves: /certified-life-coach)
   var EYE = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
   var view = function (c) { var slug = String(c.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    return '<a class="eye" href="/' + E(slug) + '" target="_blank" rel="noopener" title="View the course page" aria-label="View the ' + E(c.title) + ' page">' + EYE + '</a>'; };
+    return '<span class="eyes"><a class="eye" href="/' + E(slug) + '" target="_blank" rel="noopener" title="View the course page" aria-label="View the ' + E(c.title) + ' page">' + EYE + '</a>' +
+      '<a class="eye" href="/learn/course?c=' + encodeURIComponent(c.id) + '" target="_blank" rel="noopener" title="View the lessons" aria-label="View the ' + E(c.title) + ' lessons">' + BOOK + '</a></span>'; };
+  var BOOK = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg>';
   return '<p class="small muted">Only show a was price that the certification was really sold at. Learners need every module ticked and ' + 'the pass mark in the final exam to earn a certificate. A certification with no exam questions cannot be completed.</p>' + table(H, D.courses.map(function (c) {
     var q = (examFor(c.id).q || []).length, isOpen = open === c.id, mods = (c.modules || []).length;
     var r = row(H, [E(c.title), E(T.money(c.price, c.cur)), String(mods), q ? badge(q + ' questions', 'good') : badge('None yet', 'bad'), view(c), c.live === false ? badge('Hidden') : badge('On sale', 'good'), '<button type="button" class="btn btn-line btn-s" data-open="' + E(c.id) + '">' + (isOpen ? 'Close' : 'Edit') + '</button>']);

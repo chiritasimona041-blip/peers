@@ -36,6 +36,7 @@ function loadMine(w) {
 }
 
 var course, done = {}, key = '', cur = { m: 0, l: 0 };
+var preview = false; // an admin looking at the lessons: ticks stay on this page, nothing is saved
 var okUrl = /^https:\/\//i; // a module opens in a frame only from a secure address
 function vid(url) {
   var m = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/.exec(url || ''); if (m) return 'https://www.youtube-nocookie.com/embed/' + m[1];
@@ -44,7 +45,7 @@ function vid(url) {
 }
 function flat() { var a = []; course.modules.forEach(function (m, mi) { (m.lessons || []).forEach(function (l, li) { a.push({ m: mi, l: li }); }); }); return a; }
 function k(p) { return course.id + ':' + p.m + ':' + p.l; }
-function save() { return T.api('POST', '/api/db/doc', { path: 'lsub/' + key, op: 'update', data: { w: done } }); }
+function save() { return preview ? Promise.resolve() : T.api('POST', '/api/db/doc', { path: 'lsub/' + key, op: 'update', data: { w: done } }); }
 var TICK = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 var LOCK = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 var sideOpen = false;
@@ -70,9 +71,9 @@ function draw() {
           '<span class="stepn' + (on ? ' on' : '') + '">' + (on ? TICK : step) + '</span><span class="les-t">' + T.esc(l.title) + (on ? '<span class="sr"> (complete)</span>' : '') + '</span>' + tag + '</button></li>';
       }).join('');
     }).join('') +
-    (allDone
+    (allDone && !preview
       ? '<li class="exam-step"><a class="btn btn-sun btn-block" href="' + examUrl + '">Take the final exam</a></li>'
-      : '<li class="exam-step"><div class="les lock"><span class="stepn">' + LOCK + '</span><span class="les-t">Final exam<small>Complete all ' + word + 's to unlock</small></span></div></li>') + '</ol>';
+      : '<li class="exam-step"><div class="les lock"><span class="stepn">' + LOCK + '</span><span class="les-t">Final exam<small>' + (preview ? 'Learners take it after the last ' + word : 'Complete all ' + word + 's to unlock') + '</small></span></div></li>') + '</ol>';
   document.getElementById('sidetoggle').addEventListener('click', function () { sideOpen = !sideOpen; draw(); });
   var les = ((course.modules[cur.m] || {}).lessons || [])[cur.l];
   var box = document.getElementById('lesson');
@@ -90,7 +91,7 @@ function draw() {
     '<div class="stepnav">' + (prev ? '<button type="button" class="btn btn-line" id="prev">← Previous</button>' : '<span></span>') +
     '<div class="rowf" style="gap:12px;justify-content:flex-end">' +
     (isDone ? (next ? '<button type="button" class="btn btn-sea" id="next">Next ' + word + ' →</button>' : '') : '<button type="button" class="btn btn-sea" id="mark">Mark as complete' + (next ? ' and continue →' : '') + '</button>') +
-    (!next && allDone ? '<a class="btn btn-sun" href="' + examUrl + '">Take the final exam</a>' : '') + '</div></div>' +
+    (!next && allDone && !preview ? '<a class="btn btn-sun" href="' + examUrl + '">Take the final exam</a>' : '') + '</div></div>' +
     (!next && isDone && !allDone ? '<p class="small muted">' + (all.length - n) + ' ' + word + (all.length - n === 1 ? '' : 's') + ' still to complete before the final exam unlocks.</p>' : '') +
     '<p class="note hide" role="alert" id="m"></p>';
   if (frame) {
@@ -110,9 +111,19 @@ function draw() {
 function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 document.addEventListener('keydown', function (e) { var b = document.getElementById('exitfull'); if (e.key === 'Escape' && b && document.querySelector('.frame.full')) b.click(); });
 document.getElementById('side').addEventListener('click', function (e) { var b = e.target.closest('button.les'); if (!b) return; cur = { m: +b.dataset.m, l: +b.dataset.l }; sideOpen = false; draw(); });
-T.requireLearner().then(function (w) { key = w.key; return loadMine(w); }).then(function (d) {
+T.who().then(function (w) {
+  if (w.role === 'admin') { // admin preview: the course as a learner sees it, without an enrolment
+    preview = true;
+    return T.api('GET', '/api/db/doc?path=' + encodeURIComponent('courses/' + T.q('c'))).then(function (r) {
+      if (!r.exists) return { courses: [], done: {} };
+      var c = r.data; c.id = T.q('c'); return { courses: [c], done: {} };
+    });
+  }
+  return T.requireLearner().then(function (w2) { key = w2.key; return loadMine(w2); });
+}).then(function (d) {
   course = d.courses.filter(function (c) { return c.id === T.q('c'); })[0];
-  if (!course) { document.getElementById('title').textContent = 'You are not enrolled on this certification.'; document.querySelector('.player').innerHTML = '<a class="btn btn-ink" href="/learn">Back to my learning</a>'; return; }
+  if (!course) { document.getElementById('title').textContent = preview ? 'That certification was not found.' : 'You are not enrolled on this certification.'; document.querySelector('.player').innerHTML = '<a class="btn btn-ink" href="' + (preview ? '/admin' : '/learn') + '">' + (preview ? 'Back to admin' : 'Back to my learning') + '</a>'; return; }
+  if (preview) { var pv = document.createElement('p'); pv.className = 'note previewnote'; pv.innerHTML = '<b>Admin preview.</b> You are seeing the lessons as a learner does. Ticks are not saved. <a href="/admin">Back to admin</a>'; var pl = document.querySelector('.player'); pl.parentNode.insertBefore(pv, pl); }
   course.modules = Array.isArray(course.modules) ? course.modules : [];
   done = d.done; document.getElementById('title').textContent = course.title; document.title = course.title + ' | The Peers Certification';
   var first = flat().filter(function (p) { return !done[k(p)]; })[0]; if (first) cur = first;
