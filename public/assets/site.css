@@ -614,3 +614,6 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .stage .st-h{padding:28px 32px;gap:6px 20px;margin-bottom:14px}
 .stage .mods li{padding:22px 12px}
 @media (min-width:900px){.mods-head{top:120px}}
+/* admin: view course page */
+.eye{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--ink);background:#fff}
+.eye:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
