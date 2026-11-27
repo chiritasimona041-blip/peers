@@ -19,7 +19,7 @@
 <div class="field"><label for="p2">Type it again</label><input id="p2" type="password" autocomplete="new-password" required></div>
 <button class="btn btn-sea btn-block" type="submit" disabled>Save password and sign in</button><p class="note hide" role="alert" id="m"></p></form></main>
 <div id="site-footer"></div>
-<script src="/assets/app.js?v=20261127"></script>
+<script src="/assets/app.js?v=20261127b"></script>
 <script>
 var T = window.TCC, m = document.getElementById('m'), t = T.q('t'), email = '', btn = document.querySelector('#f button');
 T.api('GET', '/api/reset/check?t=' + encodeURIComponent(t)).then(function (r) {

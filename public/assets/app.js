@@ -88,7 +88,7 @@
   function chrome() {
     var h = $('#site-header'), f = $('#site-footer');
     var path = location.pathname.replace(/\/+$/, '') || '/';
-    var links = [['Verify a certificate', '/verify']];
+    var links = [['Certifications', '/certifications'], ['Verify a certificate', '/verify']];
     var cur = function (href) { return href === path ? ' aria-current="page"' : ''; };
     function render(w) {
       var acct = w.role === 'learner' ? ['My learning', '/learn'] : w.role === 'admin' ? ['Admin', '/admin'] : ['Sign in', '/login'];
@@ -124,7 +124,7 @@
         '<form class="news" novalidate><label class="sr" for="news-email">Email address</label><input id="news-email" type="email" placeholder="Your email address" autocomplete="email"><button class="btn btn-sun btn-s" type="submit">Sign me up</button></form>' +
         '<p class="small hide" role="status" style="color:var(--sun)"></p></div>' +
         '<div class="cols">' +
-        '<div class="col"><span>Explore</span><a href="/#how-it-works">How it works</a><a href="/verify">Verify a certificate</a></div>' +
+        '<div class="col"><span>Certifications</span><a href="/certifications">All certifications</a><a href="/#how-it-works">How it works</a><a href="/verify">Verify a certificate</a></div>' +
         '<div class="col"><span>Your account</span><a href="/login">Sign in</a><a href="/learn">My learning</a><a href="/account">Account settings</a></div>' +
         '<div class="col"><span>Support</span><a href="/#faq">FAQ</a><a href="/contact">Contact</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/refunds">Refunds</a></div>' +
         '</div></div>' +
