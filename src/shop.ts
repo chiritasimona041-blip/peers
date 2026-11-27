@@ -10,6 +10,8 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const COURSE_ID = /^[A-Za-z0-9-]{1,24}$/;
 const SET_PW_MS = 7 * 864e5;
 const passMark = (env: Env, exam?: Doc | null) => Math.min(100, Math.max(1, Number(exam?.pass ?? env.PASS_MARK ?? 80) || 80));
+// Stripe keys with any stray spaces or line breaks from copy and paste removed
+const stripeKey = (env: Env) => String(env.STRIPE_SECRET_KEY || "").trim();
 const origin = (c: Context) => String(c.env.SITE_ORIGIN || "").replace(/\/+$/, "") || new URL(c.req.url).origin;
 
 async function hit(env: Env, k: string, max: number, windowMs: number) {
@@ -117,7 +119,7 @@ export function registerShop(app: Hono<any>) {
     if (!forSale(d)) throw new HttpErr(404, "That certification is not open for enrolment.");
     const acct = await getDoc(c.env, "lacct", lmKey(e));
     if (acct && !acct.gone && Array.isArray(acct.c) && acct.c.includes(course)) throw new HttpErr(409, "You are already enrolled on this certification. Please sign in.");
-    if (!c.env.STRIPE_SECRET_KEY) throw new HttpErr(503, "Online payment is not switched on yet.");
+    if (!stripeKey(c.env)) throw new HttpErr(503, "Online payment is not switched on yet.");
     await hit(c.env, "enrol:" + ctx.ip, 20, 3600_000);
     const id = crypto.randomUUID();
     const cur = (S(d!.cur, 3) || c.env.CURRENCY || "gbp").toLowerCase();
@@ -133,7 +135,7 @@ export function registerShop(app: Hono<any>) {
       "line_items[0][price_data][unit_amount]": String(amount),
       "line_items[0][price_data][product_data][name]": o.title,
     });
-    const r = await fetch("https://api.stripe.com/v1/checkout/sessions", { method: "POST", headers: { Authorization: `Bearer ${c.env.STRIPE_SECRET_KEY}`, "Content-Type": "application/x-www-form-urlencoded" }, body: form });
+    const r = await fetch("https://api.stripe.com/v1/checkout/sessions", { method: "POST", headers: { Authorization: `Bearer ${stripeKey(c.env)}`, "Content-Type": "application/x-www-form-urlencoded" }, body: form });
     const s: any = await r.json().catch(() => null);
     if (!r.ok || !s?.url) { console.log("stripe session failed", r.status, s?.error?.message); throw new HttpErr(502, "We could not open the payment page. Please try again."); }
     await putDoc(c.env, "orders", id, { ...o, sid: S(s.id, 120) });
@@ -142,7 +144,7 @@ export function registerShop(app: Hono<any>) {
 
   // ---------- Stripe tells us the payment went through ----------
   app.post("/api/stripe/webhook", async (c) => {
-    const secret = c.env.STRIPE_WEBHOOK_SECRET;
+    const secret = String(c.env.STRIPE_WEBHOOK_SECRET || "").trim();
     if (!secret) throw new HttpErr(503, "Not configured");
     const raw = await c.req.text();
     const sig = c.req.header("Stripe-Signature") || "";
@@ -167,8 +169,8 @@ export function registerShop(app: Hono<any>) {
   app.get("/api/order", async (c) => {
     const id = String(c.req.query("o") || "");
     let o = /^[0-9a-f-]{36}$/.test(id) ? await getDoc(c.env, "orders", id) : null;
-    if (o && o.status !== "paid" && o.sid && c.env.STRIPE_SECRET_KEY) {
-      const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(String(o.sid))}`, { headers: { Authorization: `Bearer ${c.env.STRIPE_SECRET_KEY}` } }).catch(() => null);
+    if (o && o.status !== "paid" && o.sid && stripeKey(c.env)) {
+      const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(String(o.sid))}`, { headers: { Authorization: `Bearer ${stripeKey(c.env)}` } }).catch(() => null);
       const s: any = r && r.ok ? await r.json().catch(() => null) : null;
       // the same checks as the webhook: paid, this order, and exactly the amount and currency we asked for
       if (s && s.payment_status === "paid" && (s.metadata?.order === id || s.client_reference_id === id) && Number(s.amount_total) === Number(o.amount) && String(s.currency).toLowerCase() === o.cur) {

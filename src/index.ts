@@ -306,11 +306,11 @@ app.get("/api/admin/emails", async (c) => {
 // Admin-only: shows whether the Stripe keys reach the site, and which mode they are in. Never shows the keys.
 app.get("/api/admin/pay-check", (c) => {
   if (c.get("ctx").role !== "admin") throw new HttpErr(403, "Not allowed");
-  const k = String(c.env.STRIPE_SECRET_KEY || ""), w = String(c.env.STRIPE_WEBHOOK_SECRET || "");
-  const kind = (v: string) => (!v ? "missing" : /^(sk|rk)_test_/.test(v) ? "test key" : /^(sk|rk)_live_/.test(v) ? "live key" : v.trim() !== v ? "has a space before or after it" : "not a secret key (should start with sk_test_ or sk_live_)");
+  const k = String(c.env.STRIPE_SECRET_KEY || "").trim(), w = String(c.env.STRIPE_WEBHOOK_SECRET || "");
+  const kind = (v: string) => (!v ? "missing" : /^(sk|rk)_test_/.test(v) ? "test key" : /^(sk|rk)_live_/.test(v) ? "live key" : "not a secret key (should start with sk_test_ or sk_live_)");
   return c.json({
     STRIPE_SECRET_KEY: kind(k),
-    STRIPE_WEBHOOK_SECRET: !w ? "missing" : /^whsec_/.test(w.trim()) ? (w.trim() === w ? "set" : "has a space before or after it") : "not a webhook secret (should start with whsec_)",
+    STRIPE_WEBHOOK_SECRET: !w ? "missing" : /^whsec_/.test(w.trim()) ? (w.trim() === w ? "set" : "set (stray spaces are ignored)") : "not a webhook secret (should start with whsec_)",
     webhook_url: new URL("/api/stripe/webhook", c.req.url).toString(),
     payments_on: !!k,
   });
