@@ -164,6 +164,28 @@ export function registerShop(app: Hono<any>) {
     return c.json({ received: true });
   });
 
+  // Admin-only: what Stripe says about an order, and why it was or was not completed. Completes it when everything matches.
+  app.get("/api/admin/order-check", async (c) => {
+    if ((c.get("ctx") as Ctx).role !== "admin") throw new HttpErr(403, "Not allowed");
+    const id = String(c.req.query("o") || "");
+    const o = /^[0-9a-f-]{36}$/.test(id) ? await getDoc(c.env, "orders", id) : null;
+    if (!o) return c.json({ error: "No such order" }, 404);
+    if (!o.sid) return c.json({ order: { status: o.status }, problem: "This order never reached Stripe checkout." });
+    const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(String(o.sid))}`, { headers: { Authorization: `Bearer ${stripeKey(c.env)}` } }).catch((e) => ({ ok: false, status: 0, json: async () => ({ error: { message: String(e) } }) }) as any);
+    const s: any = await r.json().catch(() => null);
+    if (!r.ok) return c.json({ order: { status: o.status, session: String(o.sid).slice(0, 8) }, stripe_error: { http: r.status, message: s?.error?.message || "no answer" } });
+    const checks = {
+      payment_status: s.payment_status, status: s.status,
+      this_order: s.metadata?.order === id || s.client_reference_id === id,
+      amount_stripe: s.amount_total, amount_order: o.amount, amount_matches: Number(s.amount_total) === Number(o.amount),
+      currency_stripe: s.currency, currency_order: o.cur, currency_matches: String(s.currency).toLowerCase() === o.cur,
+    };
+    const ok = checks.payment_status === "paid" && checks.this_order && checks.amount_matches && checks.currency_matches;
+    if (ok && o.status !== "paid") await fulfil(c.env, id, origin(c));
+    const after = await getDoc(c.env, "orders", id);
+    return c.json({ order_status_now: after?.status, completed_now: ok && o.status !== "paid", checks });
+  });
+
   // the thank-you page asks whether the payment has landed yet
   // and if the webhook has not arrived yet, we ask Stripe ourselves, so the buyer never waits on it
   app.get("/api/order", async (c) => {
