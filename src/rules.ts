@@ -1,5 +1,5 @@
 import { hashPassword } from "./crypto";
-import { brand, sendMail, type Env } from "./mail";
+import { brand, sendMail, sendLetter, firstName, siteUrl, type Env } from "./mail";
 import { delDoc, getDoc, putDoc, listDocs, type Doc } from "./store";
 import { HttpErr, S, isHex64 } from "./util";
 
@@ -77,7 +77,11 @@ export async function writeDoc(env: Env, ctx: Ctx, op: "set" | "update" | "delet
       if (m._pw) clean._pw = m._pw;
       await putDoc(env, coll, id, clean);
       if (prev && clean.e && !clean.gone && clean.lock && !prev.lock)
-        await sendMail(env, clean.e, `Your ${brand(env)} account is locked`, `Hi ${clean.n}, your ${brand(env)} courses are now paused. Please contact us if you have any questions.`);
+        await sendLetter(env, clean.e, "Your account is paused", {
+          title: "Your account is paused.",
+          hello: `Hi ${firstName(clean.n)},`,
+          paras: [`Your courses at ${brand(env)} are paused for now, so you won't be able to sign in for the moment.`, "If you think this is a mistake, or you have any questions, just reply to this email and we'll help."],
+        });
       return;
     }
     case "lsub": { // a learner's own lesson progress: w = lessons ticked, p = progress per module
@@ -100,6 +104,6 @@ export async function addDoc(env: Env, ctx: Ctx, coll: string, data: Doc) {
   const to = env.NOTIFY_TO || env.SMTP_USER || "";
   const subject = S((rec as any).subject, 200) || `New ${S((rec as any).kind, 40)} form`;
   const lines = Object.entries(((rec as any).fields || {}) as Record<string, unknown>).map(([k, v]) => `${S(k, 90)}: ${S(v, 2000)}`);
-  await sendMail(env, to, subject, lines.join("\n") || "(no fields)");
+  await sendLetter(env, to, subject, { title: subject, signoff: false, paras: lines.length ? lines.map((x) => x.replace(/^([^:]{1,90}):/, "**$1:**")) : ["(no fields)"], button: { label: "Open admin", url: `${siteUrl(env)}/admin` } });
   return id;
 }

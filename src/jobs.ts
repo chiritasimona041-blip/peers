@@ -1,6 +1,6 @@
 // Timed jobs, run by the hourly schedule in wrangler.toml: a single reminder for an unfinished enrolment,
 // study reminders for learners who have gone quiet, and a daily summary for the team.
-import { brand, sendMail, type Env } from "./mail";
+import { brand, sendMail, sendLetter, firstName, type Env } from "./mail";
 import { listDocs, putDoc, type Doc } from "./store";
 import { slugOf } from "./shop";
 import { ensureSchema } from "./schema";
@@ -22,8 +22,15 @@ export async function nudgeUnpaid(env: Env, now = Date.now()) {
     await putDoc(env, "orders", id, { ...o, nudged: new Date(now).toISOString() });
     if (settled.has(key(o))) continue; // they paid on another try, or have had the reminder already
     settled.add(key(o));
-    await sendMail(env, o.e, `Your place on ${o.title} is still open`,
-      `Hi ${o.n},\n\nYou started enrolling on ${o.title} and did not finish. Your place is still open, and enrolling takes about a minute:\n\n${site(env)}/${slugOf(o.title)}\n\nIf something stopped you, or you have a question before you decide, reply to this email and we will help.\n\nThis is the only reminder we will send about this enrolment.\n\n${brand(env)}`);
+    await sendLetter(env, o.e, `Your place on ${o.title} is still open`, {
+      title: "Your place is still open.",
+      preheader: "Finishing your enrolment takes about a minute.",
+      hello: `Hi ${firstName(o.n)},`,
+      paras: [`You started enrolling on **${o.title}** but didn't finish. Your place is still here, and it only takes a minute.`],
+      button: { label: "Finish enrolling", url: `${site(env)}/${slugOf(o.title)}` },
+      after: ["Have a question before you decide? Just reply to this email and we'll help.", "This is the only reminder we'll send about this enrolment."],
+      small: `You're receiving this because you started enrolling at ${brand(env)}.`,
+    });
     sent++;
   }
   return sent;
@@ -43,7 +50,7 @@ export async function studyReminders(env: Env, now = Date.now()) {
     const lastActive = Math.max(p.upd, at(a.at));
     const count = p.upd > (a.nu || 0) ? 0 : a.nc || 0; // studying again resets the run of reminders
     if (now - lastActive < 7 * DAY || now - (a.nu || 0) < 14 * DAY || count >= 3) continue;
-    let text = "";
+    let text = "", lines: string[] = [], btn = { label: "", url: "" };
     for (const cid of a.c) {
       const c = courses.get(cid);
       if (!c || certified.has(`${id}|${cid}`)) continue;
@@ -51,14 +58,24 @@ export async function studyReminders(env: Env, now = Date.now()) {
       (Array.isArray(c.modules) ? c.modules : []).forEach((m: Doc, mi: number) => (Array.isArray(m?.lessons) ? m.lessons : []).forEach((l: Doc, li: number) => lessons.push({ mi, title: String(l?.title || m?.title || ""), done: !!p.w[`${cid}:${mi}:${li}`] })));
       if (!lessons.length) continue;
       const done = lessons.filter((l) => l.done).length, next = lessons.find((l) => !l.done);
-      text = next
-        ? `${done ? `You are ${done} of ${lessons.length} modules into ${c.title}.` : `${c.title} is waiting for you.`} Next up is Module ${next.mi + 1}: ${next.title}.\n\nPick up where you left off:\n\n${site(env)}/learn/course?c=${encodeURIComponent(cid)}`
-        : `You have finished every module of ${c.title}. The final exam is open, and it is all that stands between you and your certificate:\n\n${site(env)}/learn/exam?c=${encodeURIComponent(cid)}`;
+      text = c.title;
+      if (next) {
+        lines = [done ? `You're **${done} of ${lessons.length}** modules into **${c.title}**. Nice work.` : `**${c.title}** is waiting for you.`, `Next up: **Module ${next.mi + 1}, ${next.title}**.`, "Even twenty minutes keeps the momentum going."];
+        btn = { label: "Continue my course", url: `${site(env)}/learn/course?c=${encodeURIComponent(cid)}` };
+      } else {
+        lines = [`You've finished every module of **${c.title}**.`, "The final exam is open, and it's all that stands between you and your certificate."];
+        btn = { label: "Take the final exam", url: `${site(env)}/learn/exam?c=${encodeURIComponent(cid)}` };
+      }
       break;
     }
     if (!text) continue;
     await putDoc(env, "lacct", id, { ...a, nu: now, nc: count + 1 });
-    await sendMail(env, a.e, "Your next module is ready", `Hi ${a.n},\n\n${text}\n\nEven twenty minutes keeps the momentum going.\n\nYou can turn these reminders off in your account settings.\n\n${brand(env)}`);
+    await sendLetter(env, a.e, "Your next module is ready", {
+      title: `Ready for the next step, ${firstName(a.n)}?`,
+      preheader: "Pick up right where you left off.",
+      paras: lines, button: btn, unsub: true,
+      small: "You can turn these reminders off any time in your account settings.",
+    });
     sent++;
   }
   return sent;
@@ -87,7 +104,7 @@ export async function dailySummary(env: Env, now = Date.now()) {
     ...enquiries.map((l) => `  ${l.subject || "Enquiry"}`),
     `Newsletter sign-ups: ${signups}`,
   ];
-  await sendMail(env, to, `${brand(env)}: the last 24 hours`, `${lines.join("\n")}\n\nFull details: ${site(env)}/admin`);
+  await sendLetter(env, to, `${brand(env)}: the last 24 hours`, { title: "The last 24 hours", signoff: false, paras: lines.map((x) => x.trim()), button: { label: "Open admin", url: `${site(env)}/admin` } });
   return true;
 }
 

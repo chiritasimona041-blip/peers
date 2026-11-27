@@ -1,6 +1,6 @@
 // Enrolment (straight to payment, no basket), final exam, certificates and public verification.
 import type { Hono, Context } from "hono";
-import { brand, sendMail, type Env } from "./mail";
+import { brand, sendMail, sendLetter, firstName, type Env } from "./mail";
 import type { Ctx } from "./rules";
 import { getDoc, putDoc, listDocs, type Doc } from "./store";
 import { sha256, newToken } from "./crypto";
@@ -90,13 +90,30 @@ export async function fulfil(env: Env, orderId: string, siteOrigin: string) {
   if (!a._pw) {
     const token = newToken();
     await putDoc(env, "rtok", await sha256(token), { k: key, kind: "l", exp: Date.now() + SET_PW_MS });
-    await sendMail(env, a.e, `Welcome to ${b}: set your password`,
-      `Hi ${a.n},\n\nYou are enrolled on ${o.title}. Choose a password to open your account and start the first module. This link works once and lasts 7 days:\n\n${siteOrigin}/set-password?t=${token}\n\nIf it expires, use "Forgot your password?" on the sign in page.\n\n${b}`);
+    await sendLetter(env, a.e, `Welcome to ${o.title}`, {
+      title: `Welcome, ${firstName(a.n)}.`,
+      preheader: "Choose your password and start module 1 today.",
+      paras: [`You're enrolled on **${o.title}**, and your place is ready.`, "Choose a password to open your account. It takes a few seconds, and then you can start module 1 straight away."],
+      button: { label: "Choose my password", url: `${siteOrigin}/set-password?t=${token}` },
+      bullets: ["Study online, at your own pace, on any device", "12 months of access to every module", "A final exam and a certificate anyone can verify"],
+      after: ["This link works once and stays valid for 7 days. If it runs out, use “Forgot your password?” on the sign-in page."],
+      small: `You're receiving this because you enrolled at ${b}.`,
+    });
   } else {
-    await sendMail(env, a.e, `You are enrolled on ${o.title}`, `Hi ${a.n},\n\n${o.title} has been added to your account. Sign in to start:\n\n${siteOrigin}/login\n\n${b}`);
+    await sendLetter(env, a.e, `${o.title} is now in your account`, {
+      title: `It's ready, ${firstName(a.n)}.`,
+      preheader: "Sign in and start module 1 whenever you like.",
+      paras: [`**${o.title}** has been added to your account, next to your other courses.`, "Sign in whenever you're ready and start with module 1."],
+      button: { label: "Sign in and start", url: `${siteOrigin}/login` },
+      small: `You're receiving this because you enrolled at ${b}.`,
+    });
   }
   const team = env.NOTIFY_TO || env.SMTP_USER || "";
-  if (team) await sendMail(env, team, `New enrolment: ${o.title}`, `${a.n} <${a.e}>\n${o.title}\n${(o.amount / 100).toFixed(2)} ${String(o.cur).toUpperCase()}\n${isNew ? "New learner" : "Existing learner"}`);
+  if (team) await sendLetter(env, team, `New enrolment: ${o.title}`, {
+    title: "New enrolment", signoff: false,
+    paras: [`**${a.n}** (${a.e}) enrolled on **${o.title}**.`, `Paid: **${(o.amount / 100).toFixed(2)} ${String(o.cur).toUpperCase()}** · ${isNew ? "New learner" : "Existing learner"}`],
+    button: { label: "Open admin", url: `${siteOrigin}/admin` },
+  });
   return true;
 }
 
@@ -265,7 +282,15 @@ export function registerShop(app: Hono<any>) {
       }
       if (!cert) throw new HttpErr(500, "Server error");
       const bn = brand(c.env);
-      const job = sendMail(c.env, S(a.e, 120), `You passed: ${title}`, `Hi ${S(a.n, 80)},\n\nCongratulations. You scored ${pct}% and are now certified: ${title}.\n\nYour certificate number is ${cert}. Sign in to download it:\n\n${origin(c)}/login\n\nAnyone can check it at ${origin(c)}/verify\n\n${bn}`);
+      const job = sendLetter(c.env, S(a.e, 120), `Congratulations: you passed ${title}`, {
+        title: `You did it, ${firstName(a.n)}.`,
+        preheader: `You're now certified: ${title}.`,
+        paras: [`You scored **${pct}%** on the final exam, and you are now certified: **${title}**.`, "Your certificate is ready to download whenever you like."],
+        box: { label: "Certificate number", value: cert },
+        button: { label: "Download my certificate", url: `${origin(c)}/login` },
+        after: [`Anyone can check your certificate at ${origin(c).replace(/^https?:\/\//, "")}/verify using the number above. Add it to your website, LinkedIn profile or CV.`],
+        small: `You're receiving this because you passed a final exam at ${bn}.`,
+      });
       try { c.executionCtx.waitUntil(job); } catch { await job; }
     }
     await putDoc(c.env, "lexam", id, { ...rec, k: x.key, course, tries: (rec.tries || 0) + 1, best: Math.max(rec.best || 0, pct), last: pct, cert, at: new Date().toISOString() });

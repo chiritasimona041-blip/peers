@@ -248,11 +248,11 @@ describe("online enrolment, exam and certificate", () => {
     expect(a).toMatchObject({ n: "Nia New", c: ["life"] });
     expect((await new C().req("GET", "/api/order?o=" + order)).json.paid).toBe(true);
     const mails = (await adm.req("GET", "/api/admin/emails")).json.emails;
-    expect(mails.filter((m: any) => m.to_email === "nia@example.com" && m.subject.includes("set your password")).length).toBe(1);
+    expect(mails.filter((m: any) => m.to_email === "nia@example.com" && m.subject.startsWith("Welcome to")).length).toBe(1);
     expect(mails.some((m: any) => m.to_email === "info@coaching.test" && m.subject.startsWith("New enrolment"))).toBe(true);
   });
   it("the learner sets a password from the email link and sees only the course they bought", async () => {
-    const mail = (await adm.req("GET", "/api/admin/emails")).json.emails.find((m: any) => m.to_email === "nia@example.com" && m.subject.includes("set your password"));
+    const mail = (await adm.req("GET", "/api/admin/emails")).json.emails.find((m: any) => m.to_email === "nia@example.com" && m.subject.startsWith("Welcome to"));
     const tok = /set-password\?t=([0-9a-f]{64})/.exec(mail.body)![1];
     expect((await new C().req("POST", "/api/reset", { t: tok, h: await sha("NiaPass123") })).json.ok).toBe(true);
     expect((await nia.login("nia@example.com", "NiaPass123")).json.ok).toBe(true);

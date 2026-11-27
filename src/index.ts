@@ -1,7 +1,7 @@
 import { Hono, type Context } from "hono";
 import { getCookie, setCookie, deleteCookie } from "hono/cookie";
 import { hashPassword, verifyPassword, sha256, newToken } from "./crypto";
-import { brand, sendMail, smtpSend, type Env } from "./mail";
+import { brand, sendMail, sendLetter, renderLetter, firstName, smtpSend, type Env } from "./mail";
 import { addDoc, knownColl, readDoc, readList, writeDoc, type Ctx } from "./rules";
 import { delDoc, getDoc, listDocs, putDoc } from "./store";
 import { HttpErr, S, isHex64, lmKey } from "./util";
@@ -153,8 +153,14 @@ app.post("/api/forgot", async (c) => {
   const token = newToken();
   await putDoc(c.env, "rtok", await sha256(token), { k: key, kind, e: kind === "a" ? email : undefined, exp: Date.now() + RESET_MS });
   const link = `${siteOrigin(c)}/set-password?t=${token}`;
-  const job = sendMail(c.env, S(a.e, 120), `Reset your ${brand(c.env)} password`,
-    `Hi ${S(a.n, 80)},\n\nSomeone asked to reset the password for your ${brand(c.env)} account. Use this link to choose a new one. It works once and expires in 30 minutes:\n\n${link}\n\nIf this was not you, you can ignore this email and your password will stay the same.\n\n${brand(c.env)}`);
+  const job = sendLetter(c.env, S(a.e, 120), "Reset your password", {
+    title: "Choose a new password.",
+    preheader: "This link works once and expires in 30 minutes.",
+    hello: `Hi ${firstName(a.n)},`,
+    paras: [`We received a request to reset the password for your ${brand(c.env)} account.`],
+    button: { label: "Choose a new password", url: link },
+    after: ["This link works once and expires in 30 minutes.", "If you didn't ask for this, you can safely ignore this email. Your password won't change."],
+  });
   try { c.executionCtx.waitUntil(job); } catch { await job; }
   return c.json(reply);
 });
@@ -324,7 +330,10 @@ app.get("/api/admin/mail-check", async (c) => {
   const probe = await smtpSend(e, "", "", "", true);
   const to = String(c.req.query("to") || "").trim().toLowerCase();
   let test: any = null;
-  if (to && probe.ok) test = await smtpSend(e, to, `${brand(e)} email test`, `This is a test email from the ${brand(e)} website. If you can read this, system email is working.`);
+  if (to && probe.ok) {
+    const l = renderLetter(e, { title: "It works.", preheader: "Your website can send email.", paras: [`This is a test email from the ${brand(e)} website.`, "If you can read this, email is set up correctly: welcome emails, password resets and certificates will all arrive like this one."] });
+    test = await smtpSend(e, to, `${brand(e)}: email test`, l.text, false, l.html);
+  }
   return c.json({ config: cfg, login: probe, test });
 });
 
