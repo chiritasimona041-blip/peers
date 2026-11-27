@@ -303,6 +303,19 @@ app.get("/api/admin/emails", async (c) => {
   return c.json({ emails: (await c.env.DB.prepare("SELECT * FROM email_log ORDER BY id DESC LIMIT 100").all()).results });
 });
 
+// Admin-only: shows whether the Stripe keys reach the site, and which mode they are in. Never shows the keys.
+app.get("/api/admin/pay-check", (c) => {
+  if (c.get("ctx").role !== "admin") throw new HttpErr(403, "Not allowed");
+  const k = String(c.env.STRIPE_SECRET_KEY || ""), w = String(c.env.STRIPE_WEBHOOK_SECRET || "");
+  const kind = (v: string) => (!v ? "missing" : /^(sk|rk)_test_/.test(v) ? "test key" : /^(sk|rk)_live_/.test(v) ? "live key" : v.trim() !== v ? "has a space before or after it" : "not a secret key (should start with sk_test_ or sk_live_)");
+  return c.json({
+    STRIPE_SECRET_KEY: kind(k),
+    STRIPE_WEBHOOK_SECRET: !w ? "missing" : /^whsec_/.test(w.trim()) ? (w.trim() === w ? "set" : "has a space before or after it") : "not a webhook secret (should start with whsec_)",
+    webhook_url: new URL("/api/stripe/webhook", c.req.url).toString(),
+    payments_on: !!k,
+  });
+});
+
 // Admin-only: shows whether the mailbox settings are set and whether the mail server accepts them. Never shows secrets.
 app.get("/api/admin/mail-check", async (c) => {
   if (c.get("ctx").role !== "admin") throw new HttpErr(403, "Not allowed");
