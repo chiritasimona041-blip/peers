@@ -163,10 +163,20 @@ export function registerShop(app: Hono<any>) {
   });
 
   // the thank-you page asks whether the payment has landed yet
+  // and if the webhook has not arrived yet, we ask Stripe ourselves, so the buyer never waits on it
   app.get("/api/order", async (c) => {
     const id = String(c.req.query("o") || "");
-    const o = /^[0-9a-f-]{36}$/.test(id) ? await getDoc(c.env, "orders", id) : null;
-    return c.json(o ? { ok: true, paid: o.status === "paid", title: o.title } : { ok: false });
+    let o = /^[0-9a-f-]{36}$/.test(id) ? await getDoc(c.env, "orders", id) : null;
+    if (o && o.status !== "paid" && o.sid && c.env.STRIPE_SECRET_KEY) {
+      const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(String(o.sid))}`, { headers: { Authorization: `Bearer ${c.env.STRIPE_SECRET_KEY}` } }).catch(() => null);
+      const s: any = r && r.ok ? await r.json().catch(() => null) : null;
+      // the same checks as the webhook: paid, this order, and exactly the amount and currency we asked for
+      if (s && s.payment_status === "paid" && (s.metadata?.order === id || s.client_reference_id === id) && Number(s.amount_total) === Number(o.amount) && String(s.currency).toLowerCase() === o.cur) {
+        await fulfil(c.env, id, origin(c));
+        o = await getDoc(c.env, "orders", id);
+      }
+    }
+    return c.json(o ? { ok: true, paid: o!.status === "paid", title: o!.title } : { ok: false });
   });
 
   // ---------- final exam ----------
