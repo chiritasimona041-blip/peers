@@ -113,7 +113,7 @@
       if (!o || $('.offerbar')) return;
       var bar = document.createElement('div');
       bar.className = 'offerbar';
-      bar.innerHTML = '<div class="wrap"><span><b>Launch offer:</b> ' + o.pct + '% off<span class="wide-only"> every certification</span> until ' + esc(endDate(o.until)) + '</span><span class="ends">Ends in ' + timerHtml(o.until, true) + '</span>' +
+      bar.innerHTML = '<div class="wrap"><span><b>' + esc(o.name || 'Launch offer') + ':</b> ' + o.pct + '% off<span class="wide-only"> every certification</span> until ' + esc(endDate(o.until)) + '</span><span class="ends">Ends in ' + timerHtml(o.until, true) + '</span>' +
         (path === '/certifications' ? '' : '<a href="/certifications">See all 20' + ARROW + '</a>') + '</div>';
       h.parentNode.insertBefore(bar, h); tick();
     }, function () {});

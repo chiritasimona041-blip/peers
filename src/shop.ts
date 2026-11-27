@@ -32,13 +32,13 @@ const sameStr = (a: string, b: string) => { if (a.length !== b.length) return fa
 
 /** A real, dated offer from the site settings (OFFER_PCT, OFFER_UNTIL). It is simply off before setup and after its end date,
  *  so the price on the page, at checkout and in Stripe always goes back to the full price when the countdown ends. */
-export type Offer = { pct: number; until: string } | null;
+export type Offer = { pct: number; until: string; name: string } | null;
 export function offerNow(env: Env, now = Date.now()): Offer {
   const pct = Number(env.OFFER_PCT || 0), until = Date.parse(String(env.OFFER_UNTIL || ""));
-  return Number.isFinite(pct) && pct > 0 && pct < 90 && Number.isFinite(until) && until > now ? { pct, until: new Date(until).toISOString() } : null;
+  return Number.isFinite(pct) && pct > 0 && pct < 90 && Number.isFinite(until) && until > now ? { pct, until: new Date(until).toISOString(), name: String(env.OFFER_NAME || "Launch offer").slice(0, 40) } : null;
 }
-/** What the buyer pays now: the offer price, rounded down to a whole unit (e.g. $206.50 -> $206), or the full price. */
-export const payPrice = (price: number, offer: Offer) => (offer ? Math.floor((price * (100 - offer.pct)) / 10000) * 100 : price);
+/** What the buyer pays now: the offer price, rounded down to a multiple of 5 (e.g. $997.50 -> $995), or the full price. */
+export const payPrice = (price: number, offer: Offer) => (offer ? Math.floor((price * (100 - offer.pct)) / 50000) * 500 : price);
 const guaranteeDays = (env: Env) => { const n = Number(env.GUARANTEE_DAYS || 0); return Number.isInteger(n) && n > 0 && n <= 60 ? n : 0; };
 
 // What a visitor may see of a course: never lessons, never exam answers.

@@ -7,7 +7,7 @@
    "title": "Certified Life Coach",
    "tag": "Foundations",
    "img": "session",
-   "price": 29500,
+   "price": 199500,
    "featured": true,
    "blurb": "The certification most coaches start with. Learn how to listen, ask the questions that unlock people, and run sessions clients pay for and come back to.",
    "who": [
@@ -205,7 +205,7 @@
    "title": "Certified Transformational Coach",
    "tag": "Foundations",
    "img": "beach",
-   "price": 25000,
+   "price": 299500,
    "blurb": "Guide people through the big changes: a new direction, a new identity, a life that finally fits. You learn the method while going through it yourself.",
    "who": [
     "Aspiring coaches with no experience yet",
@@ -391,7 +391,7 @@
    "title": "Certified Mindset Coach",
    "tag": "Foundations",
    "img": "portrait",
-   "price": 25000,
+   "price": 99500,
    "blurb": "Most people are held back by what they believe about themselves. Learn to spot those beliefs, challenge them and help clients build ones that serve them.",
    "who": [
     "Aspiring coaches",
@@ -577,7 +577,7 @@
    "title": "Certified Neuroscience Coach",
    "tag": "Mind and performance",
    "img": "neuroscience",
-   "price": 24500,
+   "price": 99500,
    "blurb": "Clients trust a coach who can explain why change is hard and how the brain makes it stick. Add brain science to your coaching, no science background needed.",
    "who": [
     "New coaches who want a credible specialism",
@@ -763,7 +763,7 @@
    "title": "Certified Productivity Coach",
    "tag": "Mind and performance",
    "img": "desk",
-   "price": 24000,
+   "price": 99500,
    "blurb": "Everyone wants more done in less time, and businesses pay well for it. Learn the psychology of focus and the tools that turn busy people into effective ones.",
    "who": [
     "Aspiring coaches",
@@ -945,7 +945,7 @@
    "title": "Certified Visualization Coach",
    "tag": "Mind and performance",
    "img": "visualization",
-   "price": 24500,
+   "price": 99500,
    "blurb": "Athletes and performers have used mental imagery for decades. Learn to guide clients through visualisations that build clarity, confidence and momentum.",
    "who": [
     "Aspiring coaches",
@@ -1131,7 +1131,7 @@
    "title": "Certified Stress Management Coach",
    "tag": "Mind and performance",
    "img": "stress",
-   "price": 29500,
+   "price": 99500,
    "care": true,
    "blurb": "Stress is the reason most people look for a coach in the first place. Learn how it works on the body and mind, and how to coach people back to balance.",
    "who": [
@@ -1318,7 +1318,7 @@
    "title": "Certified CBT Practitioner Coach",
    "tag": "Mind and performance",
    "img": "call",
-   "price": 24500,
+   "price": 99500,
    "care": true,
    "blurb": "Thoughts shape feelings, and feelings shape what people do. Learn the cognitive behavioural tools coaches use to help clients break unhelpful patterns.",
    "who": [
@@ -1505,7 +1505,7 @@
    "title": "Certified ADHD Coach",
    "tag": "Mind and performance",
    "img": "adhd",
-   "price": 25000,
+   "price": 99500,
    "care": true,
    "blurb": "Demand for ADHD coaches has grown fast, and good ones are hard to find. Learn practical strategies that help children, teens and adults work with their brain.",
    "who": [
@@ -1700,7 +1700,7 @@
    "title": "Certified Relationship Coach",
    "tag": "Relationships and family",
    "img": "relationship",
-   "price": 29500,
+   "price": 199500,
    "blurb": "Relationships are where people feel their biggest wins and deepest struggles. Learn to coach individuals and couples towards the connection they want.",
    "who": [
     "Aspiring coaches",
@@ -1882,7 +1882,7 @@
    "title": "Certified Parenting Coach",
    "tag": "Relationships and family",
    "img": "parenting",
-   "price": 35000,
+   "price": 199500,
    "blurb": "Parents rarely get support that is practical and free of judgement. Learn to help them communicate better, guide behaviour kindly and enjoy family life again.",
    "who": [
     "Aspiring coaches",
@@ -2076,7 +2076,7 @@
    "title": "Certified Teen Life Coach",
    "tag": "Relationships and family",
    "img": "teen",
-   "price": 25000,
+   "price": 99500,
    "blurb": "Teenagers will often talk to a coach when they will not talk to anyone else. Learn to earn that trust and help them build confidence for what comes next.",
    "who": [
     "Aspiring coaches",
@@ -2262,7 +2262,7 @@
    "title": "Certified Postpartum Transition Coach",
    "tag": "Relationships and family",
    "img": "postpartum",
-   "price": 29500,
+   "price": 99500,
    "care": true,
    "blurb": "The months after birth change everything, and most new mothers get very little support. Learn to guide them through recovery, identity and finding their feet.",
    "who": [
@@ -2445,7 +2445,7 @@
    "title": "Certified Family Constellations Practitioner",
    "tag": "Relationships and family",
    "img": "constellations",
-   "price": 23500,
+   "price": 99500,
    "care": true,
    "blurb": "Some patterns run through whole families. Learn the systemic constellation method for helping clients see inherited dynamics and step out of them.",
    "who": [
@@ -2624,7 +2624,7 @@
    "title": "Certified Menopause Coach",
    "tag": "Wellbeing and healing",
    "img": "menopause",
-   "price": 25000,
+   "price": 99500,
    "care": true,
    "blurb": "Millions of women go through menopause with little guidance. Become the informed, steady support they are looking for, with our most in-depth curriculum.",
    "who": [
@@ -2843,7 +2843,7 @@
    "title": "Certified Laughter Therapist",
    "tag": "Wellbeing and healing",
    "img": "laughter",
-   "price": 22500,
+   "price": 99500,
    "blurb": "The most fun you can have getting certified. Learn the science of laughter and how to lead sessions for workplaces, care homes, schools and communities.",
    "who": [
     "Aspiring coaches",
@@ -3025,7 +3025,7 @@
    "title": "Certified Pet Loss Grief Coach",
    "tag": "Wellbeing and healing",
    "img": "petloss",
-   "price": 25000,
+   "price": 99500,
    "care": true,
    "blurb": "Losing a pet is losing family, and people are often left to grieve alone. Learn to hold that space with compassion and help them find peace.",
    "who": [
@@ -3204,7 +3204,7 @@
    "title": "Certified Inner Child Healing Practitioner",
    "tag": "Wellbeing and healing",
    "img": "innerchild",
-   "price": 29500,
+   "price": 99500,
    "care": true,
    "blurb": "So much of adult life is shaped in childhood. Learn to guide clients back to those roots with care, and help them reconnect with who they really are.",
    "who": [
@@ -3383,7 +3383,7 @@
    "title": "Certified Journal Therapy Coach",
    "tag": "Wellbeing and healing",
    "img": "journal",
-   "price": 35000,
+   "price": 99500,
    "blurb": "A pen and a page can do what hours of talking cannot. Learn to use therapeutic writing with clients, and to run journalling workshops of your own.",
    "who": [
     "Aspiring coaches",
@@ -3565,7 +3565,7 @@
    "title": "Certified HSP Coach",
    "tag": "Wellbeing and healing",
    "img": "hsp",
-   "price": 19500,
+   "price": 99500,
    "care": true,
    "blurb": "Highly sensitive people feel everything more, and often think something is wrong with them. Learn to help them turn sensitivity into their strength.",
    "who": [

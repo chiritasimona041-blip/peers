@@ -305,11 +305,14 @@ describe("online enrolment, exam and certificate", () => {
   it("a launch offer is real: dated, rounded down, and gone after its end", () => {
     const e = { OFFER_PCT: "30", OFFER_UNTIL: "2026-12-31T23:59:59Z" } as any;
     const before = Date.parse("2026-12-31T23:00:00Z"), after = Date.parse("2027-01-01T00:00:00Z");
-    expect(offerNow(e, before)).toEqual({ pct: 30, until: "2026-12-31T23:59:59.000Z" });
+    expect(offerNow(e, before)).toEqual({ pct: 30, until: "2026-12-31T23:59:59.000Z", name: "Launch offer" });
     expect(offerNow(e, after)).toBeNull();
     expect(offerNow({} as any, before)).toBeNull();
     expect(offerNow({ OFFER_PCT: "95", OFFER_UNTIL: "2030-01-01" } as any, before)).toBeNull();
-    expect(payPrice(29500, offerNow(e, before))).toBe(20600);
+    expect(payPrice(29500, offerNow(e, before))).toBe(20500);
+    expect(payPrice(199500, { pct: 50, until: "", name: "" })).toBe(99500);
+    expect(payPrice(299500, { pct: 50, until: "", name: "" })).toBe(149500);
+    expect(payPrice(99500, { pct: 50, until: "", name: "" })).toBe(49500);
     expect(payPrice(29500, null)).toBe(29500);
   });
   it("each certification address carries its own title and description; an unknown one is a 404", async () => {

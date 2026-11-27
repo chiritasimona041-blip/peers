@@ -20,6 +20,7 @@ export type Env = {
   SMTP_PASS?: string;
   OFFER_PCT?: string;
   OFFER_UNTIL?: string;
+  OFFER_NAME?: string;
   GUARANTEE_DAYS?: string;
 };
 

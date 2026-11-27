@@ -28,8 +28,9 @@ CURRENCY = "gbp"
 PASS_MARK = "80"
 # Launch offer: 30% off every certification until the end of 31 December 2026 (UK time). After that date the full price
 # comes back on its own, on the pages and at checkout. To end it early, or for a new offer, change these two lines.
-OFFER_PCT = "30"
-OFFER_UNTIL = "2026-12-31T23:59:59Z"
+OFFER_PCT = "50"
+OFFER_UNTIL = "2026-11-30T23:59:59Z"
+OFFER_NAME = "Black Friday"
 # Money-back guarantee shown next to the price (must match the Refunds page).
 GUARANTEE_DAYS = "14"
 CERT_PREFIX = "TPC"

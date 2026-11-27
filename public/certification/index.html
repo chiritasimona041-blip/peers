@@ -60,7 +60,7 @@ T.catalogue().then(function (list) {
   // the launch offer is real: it ends on its date and the full price comes back on its own
   var priceBlock = function (size, noTimer) {
     if (!c.offer) return '<div class="rowf" style="align-items:center;gap:10px 18px">' + T.priceHtml(c, size) + save + '</div>';
-    return '<div class="offerbox"><div class="ob-l"><p class="ob-h">Launch offer · ' + c.offer.pct + '% off</p>' + T.priceHtml(c, size) +
+    return '<div class="offerbox"><div class="ob-l"><p class="ob-h">' + E(c.offer.name || 'Launch offer') + ' · ' + c.offer.pct + '% off</p>' + T.priceHtml(c, size) +
       '<p class="ob-t">You save ' + E(T.money(c.full - c.price, c.cur)) + '. Full price ' + E(T.money(c.full, c.cur)) + ' after ' + E(T.endDate(c.offer.until)) + '.</p></div>' +
       (noTimer ? '' : '<div class="ob-r"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '</div>') + '</div>';
   };
@@ -129,7 +129,7 @@ T.catalogue().then(function (list) {
     '<div class="r"><ul class="ticks">' + ['All ' + n + ' modules', 'Final exam with retakes', 'Numbered, verifiable certificate', '12 months of access', 'Study on any device'].concat(g ? [g + '-day money-back guarantee'] : []).map(function (x) { return '<li>' + ic('check', 20) + x + '</li>'; }).join('') + '</ul></div></div></section>';
 
   // the offer again, halfway down: same real deadline, same price, big and bold
-  var mid = c.offer ? '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">Launch offer · ' + c.offer.pct + '% off</p>' +
+  var mid = c.offer ? '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">' + E(c.offer.name || 'Launch offer') + ' · ' + c.offer.pct + '% off</p>' +
       '<h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em> <s>' + E(T.money(c.full, c.cur)) + '</s></h2><p class="mo-sub">The launch price ends ' + E(T.endDate(c.offer.until)) + '. After that, ' + E(c.title) + ' is ' + E(T.money(c.full, c.cur)) + '.</p></div>' +
       '<div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>'
     : '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">Enrolment open</p><h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em></h2></div><div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>';
