@@ -699,3 +699,53 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
 .youSave{font-size:13px;font-weight:700;color:#2E6B4F}
 @media (max-width:900px){.salehero{grid-template-columns:1fr;padding:30px 22px;gap:24px} .sh-clock{padding:20px;align-items:stretch} .sh-clock .timer{justify-content:space-between} .sh-clock .timer .tu{min-width:0;flex:1} .sh-clock .timer .tu b{font-size:32px}}
 @media (prefers-reduced-motion:reduce){.sh-tag .dot{animation:none}}
+
+/* ===== Course page: light, warm theme ===== */
+.lite{--peach:#FCE9D6;--peach2:#F9DCC0;--warm:#FFF8F1}
+.lite .lhero.power{background:radial-gradient(circle at 0% 0%,#FFFFFF 0%,rgba(255,255,255,0) 45%),linear-gradient(160deg,#FFF8F1 0%,#FCE9D6 100%);color:#4A403A}
+.lite .lhero.power h1{color:var(--ink)} .lite .lhero.power h1 em,.lite .lhero.power .eyebrow{color:var(--sea)}
+.lite .lhero.power .lead,.lite .lhero.power .small,.lite .lhero.power .assure{color:#4A403A}
+.lite .lhero.power .crumb{color:#7A6C62}
+.lite .lhero.power .price{color:var(--ink)} .lite .lhero.power .was{color:#8A7D73}
+.lite .lhero.power .fact{background:#fff;border-color:rgba(29,25,22,.08);color:var(--ink);box-shadow:0 6px 18px -12px rgba(29,25,22,.3)} .lite .lhero.power .fact svg{color:var(--sea)}
+.lite .lhero.power .btn-sea,.lite .offer .btn-sea,.lite .midoffer .btn-sea{background:var(--sea);color:#fff;box-shadow:0 14px 30px -12px rgba(168,82,29,.65)}
+.lite .lhero.power .btn-sea:hover,.lite .offer .btn-sea:hover,.lite .midoffer .btn-sea:hover{background:#8E4417}
+.lite .lhero.power .pic{border-radius:48px 0 0 48px}
+.lite .assure svg{color:var(--good)}
+.lite .offerbox{background:#fff;border:1.5px solid rgba(168,82,29,.35);box-shadow:0 24px 50px -30px rgba(168,82,29,.55)}
+.lite .offerbox .ob-h{color:var(--sea)} .lite .offerbox .price{color:var(--ink)} .lite .offerbox .ob-t,.lite .offerbox .small{color:#4A403A}
+.lite .timer .tu{background:var(--peach);color:var(--sea)} .lite .timer .tu b{color:var(--ink)} .lite .timer .tu i{opacity:1;color:var(--sea)}
+/* strips and sections */
+.lite .dark{background:linear-gradient(180deg,#FFF8F1 0%,#FCE9D6 100%);color:#4A403A}
+.lite .dark h2,.lite .dark h3{color:var(--ink)} .lite .dark .eyebrow,.lite .dark em{color:var(--sea) !important}
+.lite .dark .nums>div{border-color:rgba(168,82,29,.18)} .lite .nums b{color:var(--sea)} .lite .nums span{color:#4A403A}
+.lite .dark .step{border-color:rgba(168,82,29,.25)} .lite .dark .step .n{color:var(--sea)} .lite .dark p{color:#4A403A}
+.lite .dark .use,.lite .dark [class*="use"]{color:#4A403A}
+.lite .fit-no{background:var(--peach);color:#4A403A} .lite .fit-no h3{color:var(--ink)} .lite .fit-no .x{color:var(--sea)}
+.lite .whycard{background:#fff;color:#4A403A;border:1px solid rgba(29,25,22,.07);box-shadow:0 24px 50px -30px rgba(29,25,22,.35)}
+.lite .whycard .small{color:var(--sea) !important} .lite .whycard .d4{color:var(--ink)} .lite .whycard .lines>*{border-color:var(--line)}
+.lite .ocard:nth-child(1),.lite .ocard:nth-child(2){background:linear-gradient(150deg,#FFF8F1,#FCE9D6);border-color:rgba(168,82,29,.15);color:#4A403A}
+.lite .ocard:nth-child(1) h3,.lite .ocard:nth-child(2) h3{color:var(--ink)} .lite .ocard:nth-child(1) .n,.lite .ocard:nth-child(2) .n{color:var(--sea)}
+.lite .stage .st-h{background:linear-gradient(120deg,#FCE9D6,#F9DCC0);color:#4A403A}
+.lite .stage h3{color:var(--ink)} .lite .stage .st-n,.lite .stage .st-m{color:var(--sea)}
+/* mid offer band: bright and warm */
+.lite .midoffer{background:linear-gradient(120deg,#F7B57A 0%,#F0A868 45%,#E98C52 100%);color:#2A211C}
+.lite .midoffer::before{background:radial-gradient(circle,rgba(255,255,255,.45),rgba(255,255,255,0) 70%)}
+.lite .midoffer h2{color:var(--ink)} .lite .midoffer h2 em{color:#7A3510} .lite .midoffer h2 s{color:#7A5A44}
+.lite .midoffer .eyebrow{color:#7A3510} .lite .midoffer .mo-sub,.lite .midoffer .assure{color:#2A211C}
+.lite .midoffer .assure svg{color:#2A211C}
+.lite .midoffer .timer .tu{background:#fff;box-shadow:0 10px 24px -14px rgba(122,53,16,.6)}
+.lite .midoffer .btn-sea{background:var(--ink)} .lite .midoffer .btn-sea:hover{background:#000}
+.lite .midoffer .btn-line{color:var(--ink);border-color:rgba(29,25,22,.4)}
+/* closing offer card */
+.lite .offer{background:linear-gradient(140deg,#FFF8F1 0%,#FCE9D6 100%);color:#4A403A;border:1px solid rgba(168,82,29,.15);box-shadow:0 40px 80px -50px rgba(168,82,29,.6)}
+.lite .offer h2{color:var(--ink)} .lite .offer h2 em{color:var(--sea)} .lite .offer .eyebrow{color:var(--sea) !important}
+.lite .offer .price{color:var(--ink)} .lite .offer .was{color:#8A7D73} .lite .offer .assure{color:#4A403A}
+.lite .offer .r{background:#fff;color:#4A403A} .lite .offer .r *{border-color:var(--line)}
+.lite .offer .r svg{color:var(--good)}
+.lite .offer .btn-line{color:var(--ink);border-color:rgba(29,25,22,.35)}
+.lite .lhero .promise{color:#4A403A} .lite .lhero .promise em{color:var(--sea)}
+.lite .offer .ticks li{color:var(--ink)} .lite .offer .ticks svg{color:var(--good)}
+.lite .quad{border-color:rgba(168,82,29,.25)} .lite .quad .n,.lite .dark .n,.lite .dark .num{color:var(--sea) !important;opacity:1}
+.lite .offer .btn-sun{background:var(--sea);color:#fff;box-shadow:0 14px 30px -12px rgba(168,82,29,.65)} .lite .offer .btn-sun:hover{background:#8E4417;color:#fff}
+.lite .midoffer .btn-sun{background:var(--ink);color:#fff;box-shadow:0 14px 30px -12px rgba(29,25,22,.6)} .lite .midoffer .btn-sun:hover{background:#000;color:#fff}
