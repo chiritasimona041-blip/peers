@@ -677,3 +677,25 @@ body.lp .nav.desk,body.lp .burger,body.lp .mmenu{display:none !important}
  .home .dark::before{width:500px;height:500px;top:-200px;right:-200px}
 }
 .home section:not(.dark) .tile{background:#fff;border:1px solid rgba(29,25,22,.07);box-shadow:0 1px 2px rgba(29,25,22,.04),0 18px 40px -26px rgba(29,25,22,.28)}
+
+/* ===== Directory sale hero ===== */
+.salehero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;margin:8px 0 4px;padding:44px 48px;border-radius:32px;color:#F6F1EA;background:radial-gradient(circle at 90% 0%,rgba(240,168,104,.45),rgba(240,168,104,0) 50%),radial-gradient(circle at 0% 100%,rgba(168,82,29,.5),rgba(168,82,29,0) 55%),#14110F;box-shadow:0 40px 80px -40px rgba(20,17,15,.7)}
+.salehero .sh-copy{display:flex;flex-direction:column;gap:16px}
+.sh-tag{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin:0;padding:8px 16px;border-radius:999px;background:var(--sun);color:#14110F;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.sh-tag .dot{width:8px;height:8px;border-radius:50%;background:#B3261E;animation:shpulse 1.4s ease-in-out infinite}
+@keyframes shpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.sh-h{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.02em;margin:0;color:#fff}
+.sh-h b{font-weight:400;font-style:italic;color:var(--sun)}
+.sh-p{margin:0;font-size:18px;line-height:1.55;color:#E8DFD4;max-width:34em} .sh-p b{color:#fff}
+.sh-ok{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:15px;font-weight:600;color:#fff}
+.sh-ok li::before{content:"✓";color:var(--sun);margin-right:8px}
+.sh-clock{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:28px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.sh-lbl{margin:0;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+.sh-clock .timer .tu{min-width:70px;padding:12px 6px 10px;border-radius:16px;background:rgba(0,0,0,.35)}
+.sh-clock .timer .tu b{font-size:44px}
+.sh-btn{background:var(--sun);color:#14110F;border:0;width:100%;justify-content:center}
+.sh-btn:hover{background:#fff}
+.offtag{position:absolute;right:14px;top:14px;padding:8px 12px;border-radius:999px;background:#B3261E;color:#fff;font-size:15px;font-weight:800;letter-spacing:.02em;box-shadow:0 8px 20px -8px rgba(179,38,30,.7)}
+.youSave{font-size:13px;font-weight:700;color:#2E6B4F}
+@media (max-width:900px){.salehero{grid-template-columns:1fr;padding:30px 22px;gap:24px} .sh-clock{padding:20px;align-items:stretch} .sh-clock .timer{justify-content:space-between} .sh-clock .timer .tu{min-width:0;flex:1} .sh-clock .timer .tu b{font-size:32px}}
+@media (prefers-reduced-motion:reduce){.sh-tag .dot{animation:none}}
