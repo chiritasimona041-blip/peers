@@ -49,7 +49,7 @@
   // ---- launch offer: the end date comes from the server; every [data-until] counts down, and the page refreshes once at zero ----
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function timeLeft(until) { var ms = Date.parse(until) - Date.now(); if (!(ms > 0)) return null; var t = Math.floor(ms / 1000); return [Math.floor(t / 86400), Math.floor(t % 86400 / 3600), Math.floor(t % 3600 / 60), t % 60]; }
-  function endDate(until) { try { return new Date(until).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Europe/London' }).replace(' ', '\u00a0'); } catch (e) { return ''; } }
+  function endDate(until) { try { var d = new Date(until), t = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: d.getMinutes() ? '2-digit' : undefined }).toLowerCase().replace(' ', ''); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }).replace(' ', '\u00a0') + (d.getUTCHours() === 23 && d.getUTCMinutes() === 59 ? '' : ' at\u00a0' + t); } catch (e) { return ''; } }
   function timerHtml(until, compact) { return '<span class="timer' + (compact ? ' compact' : '') + '" data-until="' + esc(until) + '"></span>'; }
   var bornAt = Date.now();
   function tick() {
@@ -68,7 +68,7 @@
     });
   }
   setInterval(tick, 1000);
-  function saveHtml(c) { return c.was ? '<span class="savepill">Save ' + esc(money(c.was - c.price, c.cur)) + (c.offer ? ' · ' + c.offer.pct + '% off' : '') + '</span>' : ''; }
+  function saveHtml(c) { return c.was ? '<span class="savepill">Save ' + esc(money(c.was - c.price, c.cur)) + (c.offer ? ' · ' + (c.pct || c.offer.pct) + '% off' : '') + '</span>' : ''; }
   function url(c) { return c.slug ? '/' + c.slug : '/certification?c=' + encodeURIComponent(c.id); }
   function titleHtml(t) { var m = /^(Certified)\s+(.*)$/.exec(t); return m ? esc(m[1]) + ' <em>' + esc(m[2]) + '</em>' : esc(t); }
 
@@ -113,7 +113,7 @@
       if (!o || $('.offerbar')) return;
       var bar = document.createElement('div');
       bar.className = 'offerbar';
-      bar.innerHTML = '<div class="wrap"><span><b>' + esc(o.name || 'Launch offer') + ':</b> ' + o.pct + '% off<span class="wide-only"> every certification</span> until ' + esc(endDate(o.until)) + '</span><span class="ends">Ends in ' + timerHtml(o.until, true) + '</span>' +
+      bar.innerHTML = '<div class="wrap"><span><b>' + esc(o.name || 'Launch offer') + ':</b> ' + o.pct + '%+ off<span class="wide-only"> every certification</span> until ' + esc(endDate(o.until)) + '</span><span class="ends">Ends in ' + timerHtml(o.until, true) + '</span>' +
         (path === '/certifications' ? '' : '<a href="/certifications">See all 20' + ARROW + '</a>') + '</div>';
       h.parentNode.insertBefore(bar, h); tick();
     }, function () {});

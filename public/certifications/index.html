@@ -6,7 +6,7 @@
 <title>All certifications | The Peers Certification</title>
 <meta name="description" content="Every coaching certification we offer, each with the full course, final exam and a verifiable certificate.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=20261127f">
+<link rel="stylesheet" href="/assets/site.css?v=20261127g">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -19,12 +19,12 @@
 <div class="filters" id="filters" role="group" aria-label="Filter certifications"></div></div>
 <section class="panel-top"><div class="wrap sec" style="padding-top:56px"><div class="cgrid" id="grid"><p class="muted">Loading certifications…</p></div></div></section></main>
 <div id="site-footer"></div>
-<script src="/assets/app.js?v=20261127b"></script>
+<script src="/assets/app.js?v=20261127g"></script>
 <script>
 var T = window.TCC, E = T.esc, all = [], cur = 'All';
 function card(c, i) {
   var u = T.url(c);
-  return '<article class="icard"><a class="pic" href="' + u + '"><img src="' + T.photoFor(c, i) + '" alt="" loading="lazy"><span class="tagpill">' + E(c.tag) + '</span>' + (c.offer ? '<span class="offtag">−' + c.offer.pct + '%</span>' : '') + '</a><div class="body"><p class="eyebrow">' + E(c.sub) + '</p><h3><a href="' + u + '">' + E(c.title) + '</a></h3><p style="font-size:16px">' + E(c.blurb) + '</p><p class="small muted">' + c.modules + ' modules · Final exam · Certificate</p><div class="foot"><span class="stack" style="gap:4px">' + T.priceHtml(c) + (c.offer && c.was ? '<span class="youSave">You save ' + E(T.money(c.was - c.price, c.cur)) + '</span>' : '') + '</span>' + '<span class="rowf" style="gap:8px"><a class="btn btn-line btn-s" href="' + u + '">Details</a><button class="btn btn-ink btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol</button></span></div></div></article>';
+  return '<article class="icard"><a class="pic" href="' + u + '"><img src="' + T.photoFor(c, i) + '" alt="" loading="lazy"><span class="tagpill">' + E(c.tag) + '</span>' + (c.offer ? '<span class="offtag">−' + (c.pct || c.offer.pct) + '%</span>' : '') + '</a><div class="body"><p class="eyebrow">' + E(c.sub) + '</p><h3><a href="' + u + '">' + E(c.title) + '</a></h3><p style="font-size:16px">' + E(c.blurb) + '</p><p class="small muted">' + c.modules + ' modules · Final exam · Certificate</p><div class="foot"><span class="stack" style="gap:4px">' + T.priceHtml(c) + (c.offer && c.was ? '<span class="youSave">You save ' + E(T.money(c.was - c.price, c.cur)) + '</span>' : '') + '</span>' + '<span class="rowf" style="gap:8px"><a class="btn btn-line btn-s" href="' + u + '">Details</a><button class="btn btn-ink btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol</button></span></div></div></article>';
 }
 function draw() {
   var list = all.filter(function (c) { return cur === 'All' || c.tag === cur; });
@@ -40,12 +40,12 @@ T.catalogue().then(function (list) {
   document.getElementById('filters').addEventListener('click', function (e) { var b = e.target.closest('.filt'); if (!b) return; cur = b.dataset.t; draw(); });
   var o = list[0].offer;
   if (o) {
-    var maxSave = 0; list.forEach(function (c) { if (c.was - c.price > maxSave) maxSave = c.was - c.price; });
+    var maxSave = 0, maxPct = o.pct; list.forEach(function (c) { if (c.was - c.price > maxSave) maxSave = c.was - c.price; if (c.pct > maxPct) maxPct = c.pct; });
     var end = T.endDate(o.until);
     document.getElementById('sale').innerHTML = '<section class="salehero" aria-label="' + E(o.name) + ' sale"><div class="sh-copy">' +
       '<p class="sh-tag"><span class="dot" aria-hidden="true"></span>' + E(o.name) + ' · ends ' + E(end) + '</p>' +
-      '<h2 class="sh-h"><b>' + o.pct + '% off</b> every certification.</h2>' +
-      '<p class="sh-p">All ' + list.length + ' courses at ' + (o.pct === 50 ? 'half price' : o.pct + '% off') + ', with savings of up to <b>' + E(T.money(maxSave, list[0].cur)) + '</b>. On ' + E(end) + ' at midnight every price goes back to full, and this sale is gone.</p>' +
+      '<h2 class="sh-h">' + (maxPct > o.pct ? 'Up to <b>' + maxPct + '% off</b> every certification.' : '<b>' + o.pct + '% off</b> every certification.') + '</h2>' +
+      '<p class="sh-p">Every one of our ' + list.length + ' certifications is at least ' + o.pct + '% off, with savings of up to <b>' + E(T.money(maxSave, list[0].cur)) + '</b>. When the timer hits zero, every price goes back to full and this sale is gone.</p>' +
       '<ul class="sh-ok"><li>14-day money-back guarantee</li><li>One payment, nothing extra</li><li>Start the same day</li></ul></div>' +
       '<div class="sh-clock"><p class="sh-lbl">Sale ends in</p>' + T.timerHtml(o.until) + '<a class="btn sh-btn" href="#grid">Choose your certification</a></div></section>';
     T.tick();

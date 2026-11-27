@@ -39,12 +39,17 @@ export function offerNow(env: Env, now = Date.now()): Offer {
 }
 /** What the buyer pays now: the offer price, rounded down to a multiple of 5 (e.g. $997.50 -> $995), or the full price. */
 export const payPrice = (price: number, offer: Offer) => (offer ? Math.floor((price * (100 - offer.pct)) / 50000) * 500 : price);
+/** A course may carry its own sale price (offerPrice), used only while the offer runs and only if it is below the full price. */
+export const coursePay = (d: Doc, offer: Offer) => {
+  const full = Number(d.price) || 0, own = Number(d.offerPrice) || 0;
+  return offer && own > 0 && own < full ? own : payPrice(full, offer);
+};
 const guaranteeDays = (env: Env) => { const n = Number(env.GUARANTEE_DAYS || 0); return Number.isInteger(n) && n > 0 && n <= 60 ? n : 0; };
 
 // What a visitor may see of a course: never lessons, never exam answers.
 const publicCourse = (id: string, d: Doc, offer: Offer = null, guarantee = 0) => ({
   id, title: S(d.title, 120), tag: S(d.tag, 40), blurb: S(d.blurb, 400),
-  price: payPrice(Number(d.price) || 0, offer), full: Number(d.price) || 0, cur: S(d.cur, 3) || "",
+  price: coursePay(d, offer), full: Number(d.price) || 0, pct: offer && Number(d.price) ? Math.round((1 - coursePay(d, offer) / Number(d.price)) * 100) : 0, cur: S(d.cur, 3) || "",
   modules: Array.isArray(d.modules) ? d.modules.length : 0,
   outline: (Array.isArray(d.modules) ? d.modules : []).slice(0, 40).map((m: Doc) => ({ title: S(m?.title, 120), lessons: Array.isArray(m?.lessons) ? m.lessons.length : 0 })),
   learn: (Array.isArray(d.learn) ? d.learn : []).slice(0, 12).map((x: unknown) => S(x, 200)),
@@ -140,7 +145,7 @@ export function registerShop(app: Hono<any>) {
     await hit(c.env, "enrol:" + ctx.ip, 20, 3600_000);
     const id = crypto.randomUUID();
     const cur = (S(d!.cur, 3) || c.env.CURRENCY || "gbp").toLowerCase();
-    const amount = payPrice(d!.price, offerNow(c.env)); // the price shown on the page right now
+    const amount = coursePay(d!, offerNow(c.env)); // the price shown on the page right now
     const o: Doc = { course, title: S(d!.title, 120), n, e, amount, cur, status: "pending", at: new Date().toISOString() };
     const base = origin(c);
     const form = new URLSearchParams({

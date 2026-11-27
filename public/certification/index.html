@@ -6,7 +6,7 @@
 <title>Certification | The Peers Certification</title>
 <meta name="description" content="What you learn, how the exam works and how to enrol.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=20261127f">
+<link rel="stylesheet" href="/assets/site.css?v=20261127g">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <template id="tpl-steps"><section class="dark"><div class="wrap sec stack" style="gap:64px"><div class="stack"><p class="eyebrow">How it works</p><h2 class="d2" style="max-width:14em">Enrolled today, <em>certified</em> in months.</h2></div><div class="steps"><div class="step"><span class="n">1</span><h3>Enrol in two minutes</h3><p>Name, email, card. Your login arrives by email straight away.</p></div><div class="step"><span class="n">2</span><h3>Study around your life</h3><p>Short modules on any device, at your own pace, with 12 months of access.</p></div><div class="step"><span class="n">3</span><h3>Pass the final exam</h3><p>Multiple choice, 80% to pass, retake it if you need to.</p></div><div class="step"><span class="n">4</span><h3>Download your certificate</h3><p>Named, numbered and checkable online by any client.</p></div></div></div></section></template>
 <template id="tpl-faq"><section class="panel" style="margin-top:24px"><div class="wrap sec rowf" style="gap:32px 72px"><div class="stack" style="flex:1 1 320px;min-width:0"><p class="eyebrow">Questions</p><h2 class="d2" style="max-width:8em">Asked before <em>enrolling.</em></h2></div><div style="flex:1.6 1 520px;min-width:0;border-bottom:1px solid var(--line)"><details class="faq" open><summary>How do I get access after paying?</summary><p>Your login details are emailed as soon as payment goes through. Choose a password and start the first module straight away.</p></details><details class="faq"><summary>Do I need any experience?</summary><p>No. Each certification starts from the foundations and builds up to running real sessions.</p></details><details class="faq"><summary>How long does it take?</summary><p>It is self-paced. At a few hours a week you can finish in a few months, and you have 12 months of access.</p></details><details class="faq"><summary>How is the exam marked?</summary><p>The final exam is multiple choice and marked instantly. You need 80% to pass and can retake it.</p></details><details class="faq"><summary>Who recognises the certificate?</summary><p>Your certificate is issued by The Peers Certification. Coaching is not a regulated profession, so you do not need a licence to practise; what clients look for is training they can check, and every certificate carries a number anyone can verify on our site.</p></details><details class="faq"><summary>Can I get a refund?</summary><p>Yes. You are covered by our 14-day money-back guarantee, as long as you have not completed the course or downloaded the certificate.</p></details></div></div></section></template>
 <div id="site-footer"></div>
-<script src="/assets/app.js?v=20261127b"></script>
+<script src="/assets/app.js?v=20261127g"></script>
 <script>
 var T = window.TCC, main = document.getElementById('main'), E = T.esc;
 var IC = {
@@ -60,7 +60,7 @@ T.catalogue().then(function (list) {
   // the launch offer is real: it ends on its date and the full price comes back on its own
   var priceBlock = function (size, noTimer) {
     if (!c.offer) return '<div class="rowf" style="align-items:center;gap:10px 18px">' + T.priceHtml(c, size) + save + '</div>';
-    return '<div class="offerbox"><div class="ob-l"><p class="ob-h">' + E(c.offer.name || 'Launch offer') + ' · ' + c.offer.pct + '% off</p>' + T.priceHtml(c, size) +
+    return '<div class="offerbox"><div class="ob-l"><p class="ob-h">' + E(c.offer.name || 'Launch offer') + ' · ' + (c.pct || c.offer.pct) + '% off</p>' + T.priceHtml(c, size) +
       '<p class="ob-t">You save ' + E(T.money(c.full - c.price, c.cur)) + '. Full price ' + E(T.money(c.full, c.cur)) + ' after ' + E(T.endDate(c.offer.until)) + '.</p></div>' +
       (noTimer ? '' : '<div class="ob-r"><p class="ob-h">Offer ends in</p>' + T.timerHtml(c.offer.until) + '</div>') + '</div>';
   };
@@ -129,7 +129,7 @@ T.catalogue().then(function (list) {
     '<div class="r"><ul class="ticks">' + ['All ' + n + ' modules', 'Final exam with retakes', 'Numbered, verifiable certificate', '12 months of access', 'Study on any device'].concat(g ? [g + '-day money-back guarantee'] : []).map(function (x) { return '<li>' + ic('check', 20) + x + '</li>'; }).join('') + '</ul></div></div></section>';
 
   // the offer again, halfway down: same real deadline, same price, big and bold
-  var mid = c.offer ? '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">' + E(c.offer.name || 'Launch offer') + ' · ' + c.offer.pct + '% off</p>' +
+  var mid = c.offer ? '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">' + E(c.offer.name || 'Launch offer') + ' · ' + (c.pct || c.offer.pct) + '% off</p>' +
       '<h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em> <s>' + E(T.money(c.full, c.cur)) + '</s></h2><p class="mo-sub">The ' + E(c.offer.name || 'launch') + ' price ends ' + E(T.endDate(c.offer.until)) + '. After that, ' + E(c.title) + ' is ' + E(T.money(c.full, c.cur)) + '.</p></div>' +
       '<div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>'
     : '<section class="midoffer"><div class="wrap"><div class="mo-copy"><p class="eyebrow">Enrolment open</p><h2>Start for <em>' + E(T.money(c.price, c.cur)) + '</em></h2></div><div class="mo-timer"><div class="rowf" style="gap:12px">' + enrolBtn('btn-sun', 'Enrol now') + tryBtn + '</div>' + assure + '</div></div></section>';
@@ -148,7 +148,7 @@ T.catalogue().then(function (list) {
   var spec = '<section><div class="wrap sec rowf" style="gap:40px 72px"><div class="stack" style="flex:1 1 320px;min-width:0;gap:18px"><p class="eyebrow">Programme specification</p><h2 class="d2" style="max-width:9em">The award, <em>in full.</em></h2><p class="lead">What you study, how you are examined and what you hold at the end.</p></div>' +
     '<dl class="spec" style="flex:1.5 1 480px;min-width:0">' + [['Award', c.title], ['School', school], ['Curriculum', n + ' modules, taken in order'], ['Study mode', 'Online, self-paced, on any device'], ['Access', '12 months from enrolment'], ['Assessment', 'Final examination, multiple choice'], ['Pass mark', '80%, with retakes allowed'], ['Certificate', 'Named, numbered and publicly verifiable']].concat(g ? [['Guarantee', g + '-day money-back guarantee']] : []).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + E(r[1]) + '</dd></div>'; }).join('') + '</dl></div></section>';
   main.innerHTML = hero + nums + fit + why + day + life + learn + mid + outline + care + clients + uses + cert + stories + document.getElementById('tpl-steps').innerHTML + doubts + offer + document.getElementById('tpl-faq').innerHTML +
-    '<div class="sticky-enrol" id="sticky"><span class="t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + (c.offer ? '<span class="st-end">' + c.offer.pct + '% off until ' + E(T.endDate(c.offer.until)) + '</span>' : '') + '<button class="btn btn-sea btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol now</button></div>';
+    '<div class="sticky-enrol" id="sticky"><span class="t">' + E(c.title) + '</span>' + T.priceHtml(c, 26) + (c.offer ? '<span class="st-end">' + (c.pct || c.offer.pct) + '% off until ' + E(T.endDate(c.offer.until)) + '</span>' : '') + '<button class="btn btn-sea btn-s" type="button" data-enrol="' + E(c.id) + '">Enrol now</button></div>';
   T.tick();
   fetch('/tutor.json', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (t) { if (t) tutor(t); }).catch(function () {});
   var am = document.getElementById('allmods');
